@@ -14,8 +14,7 @@ public class Poll {
     @ManyToOne
     private Customer user;
 
-    @ManyToOne
-    private Statuses status;
+    private PollStatus status;
 
     private String question;
 
@@ -29,7 +28,7 @@ public class Poll {
 
     protected Poll(){}
 
-    public Poll(Customer user, Statuses status, String question, int timeLimitInMinutes, boolean privatePoll){
+    public Poll(Customer user, PollStatus status, String question, int timeLimitInMinutes, boolean privatePoll){
         this.user = user;
         this.status = status;
         this.question = question;

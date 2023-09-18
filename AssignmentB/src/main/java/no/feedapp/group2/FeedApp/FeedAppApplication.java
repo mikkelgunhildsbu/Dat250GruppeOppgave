@@ -18,7 +18,7 @@ public class FeedAppApplication {
 	}
 
 	@Bean
-	public CommandLineRunner demo(CustomerRepository cr, PollRepository pr, StatusesRepository sr) {
+	public CommandLineRunner demo(CustomerRepository cr, PollRepository pr) {
 		return (args) -> {
 			// save a few customers
 			Customer user1 = new Customer("TestUser", "test@test.com", "secret");
@@ -41,22 +41,8 @@ public class FeedAppApplication {
 			log.info(customer.toString());
 			log.info("");
 
-			Statuses statusOpen = new Statuses("Open");
-			Statuses statusClosed = new Statuses("Closed");
-			sr.save(statusOpen);
-			sr.save(statusClosed);
-
-			// fetch all statuses
-			log.info("Statuses found with findAll():");
-			log.info("-------------------------------");
-			for (Statuses status: sr.findAll()){
-				log.info(status.toString());
-			}
-			log.info("");
-
-
 			//Saving a few polls
-			pr.save(new Poll(user1, statusOpen, "Test question", 10, false));
+			pr.save(new Poll(user1, PollStatus.OPEN, "Test question", 10, false));
 
 			// fetch all polls
 			log.info("Polls found with findAll():");
