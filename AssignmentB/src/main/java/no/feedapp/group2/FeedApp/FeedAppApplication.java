@@ -41,8 +41,15 @@ public class FeedAppApplication {
 			log.info(customer.toString());
 			log.info("");
 
+			Customer customerByEmail = cr.findByEmail("test2@test.com");
+			log.info("Customer found with findByEmail(test2@test.com):");
+			log.info("--------------------------------");
+			log.info(customerByEmail.toString());
+			log.info("");
+
 			//Saving a few polls
 			pr.save(new Poll(user1, PollStatus.OPEN, "Test question", 10, false));
+			pr.save(new Poll(user2, PollStatus.CLOSED, "Question 2", 25, true));
 
 			// fetch all polls
 			log.info("Polls found with findAll():");
