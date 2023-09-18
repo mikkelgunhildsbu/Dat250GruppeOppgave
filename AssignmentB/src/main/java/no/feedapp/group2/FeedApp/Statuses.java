@@ -10,4 +10,16 @@ public class Statuses {
     @GeneratedValue
     private Long statusId;
     private String statusValue;
+
+    protected Statuses(){}
+    public Statuses(String statusValue){
+        this.statusValue = statusValue;
+    }
+
+    @Override
+    public String toString() {
+        return String.format(
+                "Status[id=%d, value='%s']",
+                statusId, statusValue);
+    }
 }
