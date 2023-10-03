@@ -1,5 +1,10 @@
 package no.feedapp.group2.FeedApp;
 
+import no.feedapp.group2.FeedApp.domain.Customer;
+import no.feedapp.group2.FeedApp.domain.Poll;
+import no.feedapp.group2.FeedApp.domain.PollStatus;
+import no.feedapp.group2.FeedApp.repositories.CustomerRepository;
+import no.feedapp.group2.FeedApp.repositories.PollRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;

@@ -1,7 +1,6 @@
-package no.feedapp.group2.FeedApp;
+package no.feedapp.group2.FeedApp.repositories;
 
-import java.util.List;
-
+import no.feedapp.group2.FeedApp.domain.Customer;
 import org.springframework.data.repository.CrudRepository;
 
 public interface CustomerRepository extends CrudRepository<Customer, Long> {

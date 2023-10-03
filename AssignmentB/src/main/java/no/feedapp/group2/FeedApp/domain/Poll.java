@@ -1,7 +1,6 @@
-package no.feedapp.group2.FeedApp;
+package no.feedapp.group2.FeedApp.domain;
 
 import jakarta.persistence.*;
-import lombok.Setter;
 
 @Entity
 public class Poll {
