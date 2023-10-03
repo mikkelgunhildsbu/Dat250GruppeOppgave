@@ -1,5 +1,6 @@
 package no.feedapp.group2.FeedApp.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,6 +24,7 @@ public class Customer {
     private Role role;
 
     @OneToMany(mappedBy = "user")
+    @JsonIgnore
     private Collection<Poll> polls;
 
     protected Customer(){}
