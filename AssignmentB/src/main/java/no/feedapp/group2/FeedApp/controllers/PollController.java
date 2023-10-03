@@ -8,10 +8,11 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class PollController {
+    private PollRepository pollRepository;
 
-    private final PollRepository pollRepository;
+    public PollController() {}
 
-    public PollController(PollRepository pollRepository) {
+    public PollController(PollRepository pollRepository){
         this.pollRepository = pollRepository;
     }
 
@@ -23,7 +24,7 @@ public class PollController {
 
     @GetMapping("/poll/{id}")
     public ResponseEntity<Poll> getPollById(@PathVariable String id) {
-        Poll poll = pollRepository.findByPollId(Long.parseLong(id));
+        Poll poll = pollRepository.findById(Long.parseLong(id));
 
         if (poll != null) {
             return ResponseEntity.ok(poll);
@@ -32,28 +33,28 @@ public class PollController {
         }
     }
 
-    @GetMapping()
-    public ResponseEntity<Poll> getPollByCustomerId(@RequestParam()) {
-        return null;
-    }
+//    @GetMapping()
+//    public ResponseEntity<Poll> getPollByCustomerId(@RequestParam()) {
+//        return null;
+//    }
 
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Poll> updatePoll(@PathVariable String id, @RequestBody Poll updatePoll) {
-        try {
-            Poll existingPoll = pollRepository.findByPollId(Long.parseLong(id));
-            if (existingPoll != null) {
-                existingPoll.setQuestion(updatePoll.getQuestion());
-                existingPoll.settimeLimitInMinutes(updatePoll.gettimeLimitInMinutes());
-
-                return new ResponseEntity<>(existingPoll, HttpStatus.OK);
-            } else {
-                return new ResponseEntity<>(existingPoll, HttpStatus.NOT_FOUND);
-            }
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
+//    @PutMapping("/{id}")
+//    public ResponseEntity<Poll> updatePoll(@PathVariable String id, @RequestBody Poll updatePoll) {
+//        try {
+//            Poll existingPoll = pollRepository.findByPollId(Long.parseLong(id));
+//            if (existingPoll != null) {
+//                existingPoll.setQuestion(updatePoll.getQuestion());
+//                existingPoll.settimeLimitInMinutes(updatePoll.gettimeLimitInMinutes());
+//
+//                return new ResponseEntity<>(existingPoll, HttpStatus.OK);
+//            } else {
+//                return new ResponseEntity<>(existingPoll, HttpStatus.NOT_FOUND);
+//            }
+//        } catch (Exception e) {
+//            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//    }
 
 
     @DeleteMapping("/{id}")
