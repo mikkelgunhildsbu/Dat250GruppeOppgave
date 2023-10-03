@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$USER_HOME$/Insync/marius.hatland@gmail.com/OneDrive/Studie/Master/1semester/DAT250/projectAssignments/Dat250GruppeOppgave/AssignmentB" />
+        <option name="gradleJvm" value="17" />
+        <option name="modules">
+          <set>
+            <option value="$USER_HOME$/Insync/marius.hatland@gmail.com/OneDrive/Studie/Master/1semester/DAT250/projectAssignments/Dat250GruppeOppgave/AssignmentB" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>
