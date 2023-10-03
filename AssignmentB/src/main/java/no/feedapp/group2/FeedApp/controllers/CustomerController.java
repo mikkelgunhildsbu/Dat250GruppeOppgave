@@ -1,5 +1,6 @@
 package no.feedapp.group2.FeedApp.controllers;
 
+import no.feedapp.group2.FeedApp.DTO.CustomerDTO;
 import no.feedapp.group2.FeedApp.DTO.CustomerUpdateDTO;
 import no.feedapp.group2.FeedApp.domain.Customer;
 import no.feedapp.group2.FeedApp.repositories.CustomerRepository;
@@ -19,17 +20,17 @@ public class CustomerController {
     }
 
     @PostMapping("/customer")
-    public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer){
+    public ResponseEntity<CustomerDTO> createCustomer(@RequestBody Customer customer){
         customerRepository.save(customer);
-        return ResponseEntity.status(HttpStatus.CREATED).body(customer);
+        return ResponseEntity.status(HttpStatus.CREATED).body(CustomerDTO.ConvertToDTO(customer));
     }
 
     @GetMapping("/customer/{id}")
-    public ResponseEntity<Customer> getCustomerById(@PathVariable String id){
+    public ResponseEntity<CustomerDTO> getCustomerById(@PathVariable String id){
         Customer customer = customerRepository.findByUserId(Long.parseLong(id));
 
         if (customer != null){
-            return ResponseEntity.ok(customer);
+            return ResponseEntity.ok(CustomerDTO.ConvertToDTO(customer));
         }
         else{
             return ResponseEntity.notFound().build();
@@ -37,7 +38,7 @@ public class CustomerController {
     }
 
     @PutMapping("/customer/{id}")
-    public ResponseEntity<Customer> updateCustomer(@PathVariable String id, @RequestBody CustomerUpdateDTO updatedCustomer){
+    public ResponseEntity<CustomerUpdateDTO> updateCustomer(@PathVariable String id, @RequestBody CustomerUpdateDTO updatedCustomer){
         try{
             Customer existingCustomer = customerRepository.findByUserId(Long.parseLong(id));
 
@@ -57,7 +58,7 @@ public class CustomerController {
 
             customerRepository.save(existingCustomer);
 
-            return ResponseEntity.ok(existingCustomer);
+            return ResponseEntity.ok(updatedCustomer);
 
         } catch (Exception e){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
