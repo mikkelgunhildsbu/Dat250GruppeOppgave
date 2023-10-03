@@ -1,10 +1,13 @@
 package no.feedapp.group2.FeedApp.controllers;
 
+import jakarta.transaction.Transactional;
 import no.feedapp.group2.FeedApp.domain.Poll;
 import no.feedapp.group2.FeedApp.repositories.PollRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class PollController {
@@ -32,11 +35,15 @@ public class PollController {
         }
     }
 
-    @GetMapping()
-    public ResponseEntity<Poll> getPollByCustomerId() {
-        return null;
+    @GetMapping("poll/user/{userId}")
+    public ResponseEntity<List<Poll>> getPollByCustomerId(@PathVariable Long userId) {
+        List<Poll> polls = pollRepository.findPollsByUserUserId(userId);
+        if (!polls.isEmpty()) {
+            return ResponseEntity.ok(polls);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
-
 
     @PutMapping("/{id}")
     public ResponseEntity<Poll> updatePoll(@PathVariable String id, @RequestBody Poll updatePoll) {
@@ -45,6 +52,8 @@ public class PollController {
             if (existingPoll != null) {
                 existingPoll.setQuestion(updatePoll.getQuestion());
                 existingPoll.setTimeLimitInMinutes(updatePoll.getTimeLimitInMinutes());
+                existingPoll.setGreenCount(updatePoll.getGreenCount());
+                existingPoll.setRedCount(updatePoll.getRedCount());
 
                 return new ResponseEntity<>(existingPoll, HttpStatus.OK);
             } else {
@@ -57,7 +66,7 @@ public class PollController {
 
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Poll> deletePoll(@PathVariable String id) {
+    public ResponseEntity<Void> deletePoll(@PathVariable String id) {
         try {
             pollRepository.deletePollById(Long.parseLong(id));
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -66,5 +75,13 @@ public class PollController {
         }
     }
 
-
+    @DeleteMapping("poll/user/{userId}")
+    public ResponseEntity<Void> deleteAllPollsBysUserId(@PathVariable Long userId) {
+        try {
+            pollRepository.deletePollsByUserUserId(userId);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }
