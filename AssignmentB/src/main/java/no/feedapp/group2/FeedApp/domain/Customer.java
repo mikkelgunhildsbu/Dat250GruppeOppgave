@@ -7,29 +7,19 @@ import lombok.Setter;
 import java.util.Collection;
 
 @Entity
+@Getter
+@Setter
 public class Customer {
-
-
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    @Getter
-    @Setter
     private Long userId;
 
-    @Getter
-    @Setter
     private String userName;
 
-    @Getter
-    @Setter
     private String email;
 
-    @Getter
-    @Setter
     private String password;
 
-    @Getter
-    @Setter
     private Role role;
 
     @OneToMany(mappedBy = "user")
