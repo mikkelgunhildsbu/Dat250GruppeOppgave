@@ -23,7 +23,7 @@ public class PollController {
 
     @GetMapping("/poll/{id}")
     public ResponseEntity<Poll> getPollById(@PathVariable String id) {
-        Poll poll = pollRepository.findByPollId(Long.parseLong(id));
+        Poll poll = pollRepository.findById(Long.parseLong(id));
 
         if (poll != null) {
             return ResponseEntity.ok(poll);
@@ -33,7 +33,7 @@ public class PollController {
     }
 
     @GetMapping()
-    public ResponseEntity<Poll> getPollByCustomerId(@RequestParam()) {
+    public ResponseEntity<Poll> getPollByCustomerId() {
         return null;
     }
 
@@ -41,10 +41,10 @@ public class PollController {
     @PutMapping("/{id}")
     public ResponseEntity<Poll> updatePoll(@PathVariable String id, @RequestBody Poll updatePoll) {
         try {
-            Poll existingPoll = pollRepository.findByPollId(Long.parseLong(id));
+            Poll existingPoll = pollRepository.findById(Long.parseLong(id));
             if (existingPoll != null) {
                 existingPoll.setQuestion(updatePoll.getQuestion());
-                existingPoll.settimeLimitInMinutes(updatePoll.gettimeLimitInMinutes());
+                existingPoll.setTimeLimitInMinutes(updatePoll.getTimeLimitInMinutes());
 
                 return new ResponseEntity<>(existingPoll, HttpStatus.OK);
             } else {
