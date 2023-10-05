@@ -8,4 +8,6 @@ import lombok.Setter;
 public class PollUpdateDTO {
     private String question;
     private int timeLimitInMinutes;
+    private int redCount;
+    private int greenCount;
 }

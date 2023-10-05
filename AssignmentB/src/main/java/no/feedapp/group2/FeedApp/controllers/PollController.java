@@ -2,6 +2,7 @@ package no.feedapp.group2.FeedApp.controllers;
 
 import no.feedapp.group2.FeedApp.DTO.Poll.PollCreateDTO;
 import no.feedapp.group2.FeedApp.DTO.Poll.PollDTO;
+import no.feedapp.group2.FeedApp.DTO.Poll.PollUpdateDTO;
 import no.feedapp.group2.FeedApp.domain.Customer;
 import no.feedapp.group2.FeedApp.domain.Poll;
 import no.feedapp.group2.FeedApp.repositories.CustomerRepository;
@@ -55,8 +56,8 @@ public class PollController {
         }
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<PollDTO> updatePoll(@PathVariable String id, @RequestBody Poll updatePoll) {
+    @PutMapping("/poll/{id}")
+    public ResponseEntity<PollDTO> updatePoll(@PathVariable String id, @RequestBody PollUpdateDTO updatePoll) {
         try {
             Poll existingPoll = pollRepository.findById(Long.parseLong(id));
             if (existingPoll != null) {
@@ -75,7 +76,7 @@ public class PollController {
     }
 
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/poll/{id}")
     public ResponseEntity<Void> deletePoll(@PathVariable String id) {
         try {
             pollRepository.deletePollById(Long.parseLong(id));
@@ -85,7 +86,7 @@ public class PollController {
         }
     }
 
-    @DeleteMapping("poll")
+    @DeleteMapping("/poll")
     public ResponseEntity<Void> deleteAllPollsBysUserId(@RequestParam(name = "userId") long userId) {
         try {
             pollRepository.deletePollsByUserUserId(userId);
