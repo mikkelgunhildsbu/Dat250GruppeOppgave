@@ -1,6 +1,6 @@
 package no.feedapp.group2.FeedApp.repositories;
 
-import no.feedapp.group2.FeedApp.domain.Customer;
+import jakarta.transaction.Transactional;
 import no.feedapp.group2.FeedApp.domain.Poll;
 import org.springframework.data.repository.CrudRepository;
 
@@ -8,6 +8,12 @@ import java.util.List;
 
 public interface PollRepository extends CrudRepository<Poll, Long> {
     Poll findById(long Id);
+    @Transactional
+    void deletePollById(long Id);
 
-    Poll deletePollById(long userId);
+    @Transactional
+    void deletePollsByUserUserId(long Id);
+    List<Poll> findPollsByUserUserId(Long UserId);
+
+
 }
