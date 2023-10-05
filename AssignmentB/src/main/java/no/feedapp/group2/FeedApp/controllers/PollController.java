@@ -1,6 +1,5 @@
 package no.feedapp.group2.FeedApp.controllers;
 
-import jakarta.transaction.Transactional;
 import no.feedapp.group2.FeedApp.domain.Poll;
 import no.feedapp.group2.FeedApp.repositories.PollRepository;
 import org.springframework.http.HttpStatus;
@@ -57,7 +56,7 @@ public class PollController {
 
                 return new ResponseEntity<>(existingPoll, HttpStatus.OK);
             } else {
-                return new ResponseEntity<>(existingPoll, HttpStatus.NOT_FOUND);
+                return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
             }
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
