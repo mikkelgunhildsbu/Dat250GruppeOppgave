@@ -76,7 +76,7 @@ public class PollController {
     }
 
     @DeleteMapping("poll")
-    public ResponseEntity<Void> deleteAllPollsBysUserId(@RequestParam(name = "userId") Long userId) {
+    public ResponseEntity<Void> deleteAllPollsBysUserId(@RequestParam(name = "userId") long userId) {
         try {
             pollRepository.deletePollsByUserUserId(userId);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
