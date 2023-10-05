@@ -1,4 +1,4 @@
-package no.feedapp.group2.FeedApp.DTO;
+package no.feedapp.group2.FeedApp.DTO.Customer;
 
 import lombok.Getter;
 import lombok.Setter;

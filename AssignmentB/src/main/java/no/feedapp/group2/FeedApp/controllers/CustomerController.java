@@ -1,7 +1,7 @@
 package no.feedapp.group2.FeedApp.controllers;
 
-import no.feedapp.group2.FeedApp.DTO.CustomerDTO;
-import no.feedapp.group2.FeedApp.DTO.CustomerUpdateDTO;
+import no.feedapp.group2.FeedApp.DTO.Customer.CustomerDTO;
+import no.feedapp.group2.FeedApp.DTO.Customer.CustomerUpdateDTO;
 import no.feedapp.group2.FeedApp.domain.Customer;
 import no.feedapp.group2.FeedApp.repositories.CustomerRepository;
 import org.springframework.http.HttpStatus;

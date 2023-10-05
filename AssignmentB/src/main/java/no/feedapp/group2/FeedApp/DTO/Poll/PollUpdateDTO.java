@@ -1,4 +1,4 @@
-package no.feedapp.group2.FeedApp.DTO;
+package no.feedapp.group2.FeedApp.DTO.Poll;
 
 import lombok.Getter;
 import lombok.Setter;
