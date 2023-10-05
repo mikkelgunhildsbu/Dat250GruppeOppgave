@@ -4,6 +4,7 @@ import no.feedapp.group2.FeedApp.DTO.Customer.CustomerDTO;
 import no.feedapp.group2.FeedApp.DTO.Customer.CustomerUpdateDTO;
 import no.feedapp.group2.FeedApp.domain.Customer;
 import no.feedapp.group2.FeedApp.repositories.CustomerRepository;
+import no.feedapp.group2.FeedApp.repositories.PollRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,9 +13,11 @@ import org.springframework.web.bind.annotation.*;
 public class CustomerController {
 
     private final CustomerRepository customerRepository;
+    private final PollRepository pollRepository;
 
-    public CustomerController(CustomerRepository customerRepository) {
+    public CustomerController(CustomerRepository customerRepository, PollRepository pollRepository) {
         this.customerRepository = customerRepository;
+        this.pollRepository = pollRepository;
     }
 
     @PostMapping("/customer")
@@ -66,8 +69,9 @@ public class CustomerController {
     @DeleteMapping("customer/{id}")
     public ResponseEntity<String> deleteCustomer(@PathVariable String id){
         try{
+            pollRepository.deletePollsByUserUserId(Long.parseLong(id));
             customerRepository.deleteById(Long.parseLong(id));
-            return ResponseEntity.ok().build();
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         } catch (Exception e){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
