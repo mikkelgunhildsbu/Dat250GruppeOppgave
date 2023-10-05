@@ -35,8 +35,8 @@ public class PollController {
         }
     }
 
-    @GetMapping("poll/user/{userId}")
-    public ResponseEntity<List<Poll>> getPollByCustomerId(@PathVariable Long userId) {
+    @GetMapping("/poll")
+    public ResponseEntity<List<Poll>> getPollByCustomerId(@RequestParam (name = "userId") long userId) {
         List<Poll> polls = pollRepository.findPollsByUserUserId(userId);
         if (!polls.isEmpty()) {
             return ResponseEntity.ok(polls);
@@ -75,8 +75,8 @@ public class PollController {
         }
     }
 
-    @DeleteMapping("poll/user/{userId}")
-    public ResponseEntity<Void> deleteAllPollsBysUserId(@PathVariable Long userId) {
+    @DeleteMapping("poll")
+    public ResponseEntity<Void> deleteAllPollsBysUserId(@RequestParam(name = "userId") Long userId) {
         try {
             pollRepository.deletePollsByUserUserId(userId);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
