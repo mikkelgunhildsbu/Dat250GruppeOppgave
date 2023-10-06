@@ -7,13 +7,12 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface PollRepository extends CrudRepository<Poll, Long> {
-    Poll findById(long Id);
+    Poll getPollById(long Id);
+
     @Transactional
     void deletePollById(long Id);
 
     @Transactional
     void deletePollsByUserUserId(long Id);
     List<Poll> findPollsByUserUserId(Long UserId);
-
-
 }

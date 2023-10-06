@@ -9,7 +9,7 @@ public interface ICustomerService {
      * A method for creating a customer and persistently store it in the database.
      * @param customer the customer that should be created.
      */
-    void CreateCustomer(Customer customer);
+    void createCustomer(Customer customer);
 
     /**
      * Finds a customer by their id.
@@ -18,7 +18,7 @@ public interface ICustomerService {
      * @return A customer if one is found, null otherwise.
      */
     @Nullable
-    Customer GetCustomerById(Long id);
+    Customer getCustomerById(Long id);
 
     /**
      * Updates an existing customer if one is found.
@@ -27,12 +27,12 @@ public interface ICustomerService {
      * @param updatedCustomer {@link no.feedapp.group2.FeedApp.DTO.Customer.CustomerUpdateDTO}
      * @return True if operation was executed successful, false otherwise.
      */
-    boolean UpdateCustomer(Long id, CustomerUpdateDTO updatedCustomer);
+    boolean updateCustomer(Long id, CustomerUpdateDTO updatedCustomer);
 
     /**
      * A method for deleting an existing customer
      *
      * @param id The customer id.
      */
-    void DeleteCustomer(Long id);
+    void deleteCustomer(Long id);
 }

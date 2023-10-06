@@ -3,10 +3,9 @@ package no.feedapp.group2.FeedApp.controllers;
 import no.feedapp.group2.FeedApp.DTO.Poll.PollCreateDTO;
 import no.feedapp.group2.FeedApp.DTO.Poll.PollDTO;
 import no.feedapp.group2.FeedApp.DTO.Poll.PollUpdateDTO;
-import no.feedapp.group2.FeedApp.domain.Customer;
 import no.feedapp.group2.FeedApp.domain.Poll;
-import no.feedapp.group2.FeedApp.repositories.CustomerRepository;
 import no.feedapp.group2.FeedApp.repositories.PollRepository;
+import no.feedapp.group2.FeedApp.services.IPollService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,24 +18,22 @@ import java.util.stream.Collectors;
 public class PollController {
 
     private final PollRepository pollRepository;
-    private final CustomerRepository customerRepository;
+    private final IPollService pollService;
 
-    public PollController(PollRepository pollRepository, CustomerRepository customerRepository) {
+    public PollController(PollRepository pollRepository, IPollService pollService) {
         this.pollRepository = pollRepository;
-        this.customerRepository = customerRepository;
+        this.pollService = pollService;
     }
 
     @PostMapping("/poll")
     public ResponseEntity<PollDTO> createPoll(@RequestBody PollCreateDTO pollDTO) {
-        Customer customer = customerRepository.findByUserId(pollDTO.getUserId());
-        Poll poll = PollCreateDTO.convertToPoll(pollDTO,customer);
-        pollRepository.save(poll);
+        Poll poll = pollService.createPoll(pollDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(PollDTO.PollToDTO(poll));
     }
 
     @GetMapping("/poll/{id}")
     public ResponseEntity<PollDTO> getPollById(@PathVariable String id) {
-        Poll poll = pollRepository.findById(Long.parseLong(id));
+        Poll poll = pollService.getPollById(Long.parseLong(id));
 
         if (poll != null) {
             return ResponseEntity.ok(PollDTO.PollToDTO(poll));
@@ -47,7 +44,7 @@ public class PollController {
 
     @GetMapping("/poll")
     public ResponseEntity<List<PollDTO>> getPollByCustomerId(@RequestParam (name = "userId") long userId) {
-        List<Poll> polls = pollRepository.findPollsByUserUserId(userId);
+        List<Poll> polls = pollService.getPollsByUserId(userId);
         if (!polls.isEmpty()) {
             List<PollDTO> pollDTOs = polls.stream().map(PollDTO::PollToDTO).collect(Collectors.toList());
             return ResponseEntity.ok(pollDTOs);
@@ -57,42 +54,25 @@ public class PollController {
     }
 
     @PutMapping("/poll/{id}")
-    public ResponseEntity<PollDTO> updatePoll(@PathVariable String id, @RequestBody PollUpdateDTO updatePoll) {
-        try {
-            Poll existingPoll = pollRepository.findById(Long.parseLong(id));
-            if (existingPoll != null) {
-                existingPoll.setQuestion(updatePoll.getQuestion());
-                existingPoll.setTimeLimitInMinutes(updatePoll.getTimeLimitInMinutes());
-                existingPoll.setGreenCount(updatePoll.getGreenCount());
-                existingPoll.setRedCount(updatePoll.getRedCount());
-
-                return new ResponseEntity<>(PollDTO.PollToDTO(existingPoll), HttpStatus.OK);
-            } else {
-                return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
-            }
-        } catch (Exception e) {
+    public ResponseEntity<PollDTO> updatePoll(@PathVariable String id, @RequestBody PollUpdateDTO pollUpdateDTO) {
+        var updatedPoll = pollService.updatePoll(Long.parseLong(id), pollUpdateDTO);
+        if (updatedPoll == null) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+
+        return ResponseEntity.ok(PollDTO.PollToDTO(updatedPoll));
     }
 
 
     @DeleteMapping("/poll/{id}")
     public ResponseEntity<Void> deletePoll(@PathVariable String id) {
-        try {
-            pollRepository.deletePollById(Long.parseLong(id));
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+        pollService.deletePoll(Long.parseLong(id));
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @DeleteMapping("/poll")
     public ResponseEntity<Void> deleteAllPollsBysUserId(@RequestParam(name = "userId") long userId) {
-        try {
-            pollRepository.deletePollsByUserUserId(userId);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+        pollService.deletePollsByUserId(userId);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

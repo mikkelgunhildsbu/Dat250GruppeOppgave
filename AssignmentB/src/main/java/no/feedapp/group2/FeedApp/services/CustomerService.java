@@ -21,18 +21,18 @@ public class CustomerService implements ICustomerService{
     }
 
     @Override
-    public void CreateCustomer(Customer customer) {
+    public void createCustomer(Customer customer) {
         customerRepository.save(customer);
     }
 
     @Nullable
     @Override
-    public Customer GetCustomerById(Long id) {
+    public Customer getCustomerById(Long id) {
        return customerRepository.findByUserId(id);
     }
 
     @Override
-    public boolean UpdateCustomer(Long id, CustomerUpdateDTO updatedCustomer) {
+    public boolean updateCustomer(Long id, CustomerUpdateDTO updatedCustomer) {
         Customer existingCustomer = customerRepository.findByUserId(id);
 
         if (existingCustomer == null){
@@ -56,7 +56,7 @@ public class CustomerService implements ICustomerService{
 
     @Override
     @Transactional
-    public void DeleteCustomer(Long id) {
+    public void deleteCustomer(Long id) {
         pollRepository.deletePollsByUserUserId(id);
         customerRepository.deleteById(id);
     }
