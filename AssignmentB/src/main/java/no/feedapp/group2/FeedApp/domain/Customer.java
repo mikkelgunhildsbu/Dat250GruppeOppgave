@@ -29,10 +29,11 @@ public class Customer {
 
     protected Customer(){}
 
-    public Customer(String userName, String email, String password){
+    public Customer(String userName, String email, String password, Role role){
         this.userName = userName;
         this.email = email;
         this.password = password;
+        this.role = role;
     }
 
     @Override
