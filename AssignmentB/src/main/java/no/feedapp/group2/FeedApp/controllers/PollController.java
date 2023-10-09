@@ -60,7 +60,7 @@ public class PollController {
     public ResponseEntity<PollDTO> updatePoll(@Parameter(description = "The poll id") @PathVariable String id, @RequestBody PollUpdateDTO pollUpdateDTO) {
         var updatedPoll = pollService.updatePoll(Long.parseLong(id), pollUpdateDTO);
         if (updatedPoll == null) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
         return ResponseEntity.ok(PollDTO.PollToDTO(updatedPoll));
