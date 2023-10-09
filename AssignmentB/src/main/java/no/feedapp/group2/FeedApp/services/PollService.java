@@ -56,6 +56,8 @@ public class PollService implements IPollService{
         existingPoll.setGreenCount(pollUpdateDTO.getGreenCount());
         existingPoll.setRedCount(pollUpdateDTO.getRedCount());
 
+        pollRepository.save(existingPoll);
+
         return existingPoll;
     }
 
