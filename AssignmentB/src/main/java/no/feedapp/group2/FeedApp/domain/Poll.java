@@ -9,9 +9,8 @@ import lombok.Setter;
 @Setter
 public class Poll {
 
-
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @ManyToOne
@@ -29,9 +28,10 @@ public class Poll {
 
     private boolean privatePoll;
 
-    protected Poll(){}
+    protected Poll() {
+    }
 
-    public Poll(Customer user, PollStatus status, String question, int timeLimitInMinutes, boolean privatePoll){
+    public Poll(Customer user, PollStatus status, String question, int timeLimitInMinutes, boolean privatePoll) {
         this.user = user;
         this.status = status;
         this.question = question;
@@ -39,13 +39,5 @@ public class Poll {
         this.privatePoll = privatePoll;
         this.redCount = 0;
         this.greenCount = 0;
-    }
-
-
-    @Override
-    public String toString() {
-        return String.format(
-                "Poll[id=%d, user='%s', question='%s', redCount='%s', greenCount='%s']",
-                id, user.toString(), question, redCount, greenCount);
     }
 }
