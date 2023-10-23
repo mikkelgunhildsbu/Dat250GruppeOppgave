@@ -2,10 +2,8 @@ package no.feedapp.group2.FeedApp.controllers;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
-import jakarta.validation.ConstraintViolationException;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.Pattern;
 import no.feedapp.group2.FeedApp.DTO.Customer.CustomerDTO;
 import no.feedapp.group2.FeedApp.DTO.Customer.CustomerUpdateDTO;
 import no.feedapp.group2.FeedApp.controllers.exceptions.CustomerNotFoundException;
@@ -28,7 +26,7 @@ public class CustomerController {
 
     @Operation(summary = "Create a new customer")
     @PostMapping("/customer")
-    public ResponseEntity<CustomerDTO> createCustomer(@Valid @RequestBody Customer customer){
+    public ResponseEntity<CustomerDTO> createCustomer(@Valid @RequestBody Customer customer) {
         customerService.createCustomer(customer);
         return ResponseEntity.status(HttpStatus.CREATED).body(CustomerDTO.ConvertToDTO(customer));
     }

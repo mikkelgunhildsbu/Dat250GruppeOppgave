@@ -2,8 +2,6 @@ package no.feedapp.group2.FeedApp.DTO.Poll;
 
 import lombok.Getter;
 import lombok.Setter;
-import no.feedapp.group2.FeedApp.DTO.Customer.CustomerDTO;
-import no.feedapp.group2.FeedApp.domain.Customer;
 import no.feedapp.group2.FeedApp.domain.Poll;
 import no.feedapp.group2.FeedApp.domain.PollStatus;
 
@@ -19,7 +17,7 @@ public class PollDTO {
     private int redCount;
     private int greenCount;
 
-    public static PollDTO PollToDTO(Poll poll){
+    public static PollDTO PollToDTO(Poll poll) {
         var dto = new PollDTO();
         dto.setId(poll.getId());
         dto.setUserId(poll.getUser().getUserId());

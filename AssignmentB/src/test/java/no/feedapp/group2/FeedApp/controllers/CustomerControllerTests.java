@@ -34,7 +34,7 @@ class CustomerControllerTests {
     @Test
     void GetCustomer_With_Existing_Id_Returns_Customer() throws Exception, CustomerNotFoundException {
         // Arrange
-        var customer = new Customer("name", "Test", "", Role.GUEST);
+        var customer = new Customer("name", "Test", "", Role.VOTER);
         when(customerService.getCustomerById(1L)).thenReturn(customer);
 
         // Act
@@ -77,7 +77,7 @@ class CustomerControllerTests {
     @Test
     void PostCustomer_With_Valid_Customer_Returns_Created() throws Exception {
         // Arrange
-        var customer = new Customer("name", "Test@test.com", "test", Role.GUEST);
+        var customer = new Customer("name", "Test@test.com", "test", Role.ADMIN);
 
         // Act
         ResultActions resultActions = mockMvc.perform(

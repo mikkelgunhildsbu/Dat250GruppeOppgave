@@ -1,6 +1,5 @@
 package no.feedapp.group2.FeedApp.services;
 
-import jakarta.annotation.Nullable;
 import no.feedapp.group2.FeedApp.DTO.Customer.CustomerUpdateDTO;
 import no.feedapp.group2.FeedApp.controllers.exceptions.CustomerNotFoundException;
 import no.feedapp.group2.FeedApp.domain.Customer;
@@ -8,6 +7,7 @@ import no.feedapp.group2.FeedApp.domain.Customer;
 public interface ICustomerService {
     /**
      * A method for creating a customer and persistently store it in the database.
+     *
      * @param customer the customer that should be created.
      */
     void createCustomer(Customer customer);
@@ -18,7 +18,6 @@ public interface ICustomerService {
      * @param id the customer id.
      * @return A customer if one is found, null otherwise.
      */
-    @Nullable
     Customer getCustomerById(Long id) throws CustomerNotFoundException;
 
     /**
@@ -26,7 +25,7 @@ public interface ICustomerService {
      *
      * @param id              The customer id.
      * @param updatedCustomer {@link no.feedapp.group2.FeedApp.DTO.Customer.CustomerUpdateDTO}
-     * @return True if operation was executed successful, false otherwise.
+     * @return The updated customer if operation was executed successful, throws error if customer not found.
      */
     Customer updateCustomer(Long id, CustomerUpdateDTO updatedCustomer) throws CustomerNotFoundException;
 
