@@ -2,6 +2,7 @@ package no.feedapp.group2.FeedApp.services;
 
 import jakarta.annotation.Nullable;
 import no.feedapp.group2.FeedApp.DTO.Customer.CustomerUpdateDTO;
+import no.feedapp.group2.FeedApp.controllers.exceptions.CustomerNotFoundException;
 import no.feedapp.group2.FeedApp.domain.Customer;
 
 public interface ICustomerService {
@@ -18,21 +19,21 @@ public interface ICustomerService {
      * @return A customer if one is found, null otherwise.
      */
     @Nullable
-    Customer getCustomerById(Long id);
+    Customer getCustomerById(Long id) throws CustomerNotFoundException;
 
     /**
      * Updates an existing customer if one is found.
      *
-     * @param id The customer id.
+     * @param id              The customer id.
      * @param updatedCustomer {@link no.feedapp.group2.FeedApp.DTO.Customer.CustomerUpdateDTO}
      * @return True if operation was executed successful, false otherwise.
      */
-    boolean updateCustomer(Long id, CustomerUpdateDTO updatedCustomer);
+    Customer updateCustomer(Long id, CustomerUpdateDTO updatedCustomer) throws CustomerNotFoundException;
 
     /**
      * A method for deleting an existing customer
      *
      * @param id The customer id.
      */
-    void deleteCustomer(Long id);
+    void deleteCustomer(Long id) throws CustomerNotFoundException;
 }
