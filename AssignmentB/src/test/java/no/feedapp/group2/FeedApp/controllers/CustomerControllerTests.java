@@ -6,7 +6,7 @@ import no.feedapp.group2.FeedApp.DTO.Customer.CustomerUpdateDTO;
 import no.feedapp.group2.FeedApp.controllers.exceptions.CustomerNotFoundException;
 import no.feedapp.group2.FeedApp.domain.Customer;
 import no.feedapp.group2.FeedApp.domain.Role;
-import no.feedapp.group2.FeedApp.services.CustomerService;
+import no.feedapp.group2.FeedApp.services.ICustomerService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +29,7 @@ class CustomerControllerTests {
     private MockMvc mockMvc;
 
     @MockBean
-    private CustomerService customerService;
+    private ICustomerService customerService;
 
     @Test
     void GetCustomer_With_Existing_Id_Returns_Customer() throws Exception, CustomerNotFoundException {
