@@ -50,4 +50,14 @@ class CustomErrorHandlingController {
                 new CustomError("Customer not found", e.getMessage()));
         return error;
     }
+
+    @ExceptionHandler(PollNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ResponseBody
+    CustomErrorResponse onPollNotFoundException(PollNotFoundException e) {
+        CustomErrorResponse error = new CustomErrorResponse();
+        error.getErrors().add(
+                new CustomError("Poll not found", e.getMessage()));
+        return error;
+    }
 }
