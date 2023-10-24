@@ -184,7 +184,6 @@ class PollControllerTests {
     @Test
     void getPollByCustomerId_returns_not_found_when_customer_does_not_have_polls() throws Exception, CustomerNotFoundException {
         // Arrange
-        var customer = Mockito.mock(Customer.class);
 
         when(pollService.getPollsByUserId(1L)).thenReturn(java.util.List.of());
 
@@ -198,7 +197,7 @@ class PollControllerTests {
     @Test
     void updatePoll_returns_ok() throws PollNotFoundException, Exception {
         // Arrange
-        var pollUpdateDTO = new PollUpdateDTO("Question", 1, 1, 1);
+        var pollUpdateDTO = new PollUpdateDTO("Question", PollStatus.OPEN, 1, 1, 1);
         var customer = Mockito.mock(Customer.class);
         var poll = new Poll(customer, PollStatus.OPEN, "Question", 1, true);
         poll.setId(1L);
@@ -217,7 +216,7 @@ class PollControllerTests {
     @Test
     void updatePoll_returns_not_found_when_poll_does_not_exist() throws PollNotFoundException, Exception {
         // Arrange
-        var pollUpdateDTO = new PollUpdateDTO("Question", 1, 1, 1);
+        var pollUpdateDTO = new PollUpdateDTO("Question", PollStatus.CLOSED, 1, 1, 1);
 
         doThrow(new PollNotFoundException(1L)).when(pollService).updatePoll(Mockito.anyLong(), Mockito.any(PollUpdateDTO.class));
 
@@ -233,7 +232,7 @@ class PollControllerTests {
     @Test
     void updatePoll_returns_bad_request_when_id_is_invalid() throws Exception {
         // Arrange
-        var pollUpdateDTO = new PollUpdateDTO("Question", 1, 1, 1);
+        var pollUpdateDTO = new PollUpdateDTO("Question", PollStatus.UNKNOWN, 1, 1, 1);
 
         // Act
         ResultActions resultActionsString = mockMvc.perform(put("/poll/invalid")
