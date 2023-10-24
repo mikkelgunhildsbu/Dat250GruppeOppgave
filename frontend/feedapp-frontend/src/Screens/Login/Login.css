@@ -1,0 +1,94 @@
+.login-view {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.login-view .form-wrapper {
+    background-color: #ffffff;
+    height: 1024px;
+    width: 1440px;
+}
+
+.login-view .form {
+    align-items: center;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 4px #00000040;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    height: 600px;
+    justify-content: center;
+    left: 320px;
+    position: relative;
+    top: 212px;
+    width: 800px;
+}
+
+.login-view .text-wrapper-3 {
+    align-self: stretch;
+    color: var(--palette-text-primary);
+    font-family: var(--typography-h4-font-family);
+    font-size: var(--typography-h4-font-size);
+    font-style: var(--typography-h4-font-style);
+    font-weight: var(--typography-h4-font-weight);
+    letter-spacing: var(--typography-h4-letter-spacing);
+    line-height: var(--typography-h4-line-height);
+    margin-top: -1px;
+    position: relative;
+}
+
+.login-view .span {
+    align-items: flex-start;
+    align-self: stretch;
+    display: flex;
+    flex: 0 0 auto;
+    gap: 4px;
+    position: relative;
+    width: 100%;
+}
+
+.login-view .text-wrapper-4 {
+    color: var(--palette-text-secondary);
+    font-family: var(--typography-body1-font-family);
+    font-size: var(--typography-body1-font-size);
+    font-style: var(--typography-body1-font-style);
+    font-weight: var(--typography-body1-font-weight);
+    letter-spacing: var(--typography-body1-letter-spacing);
+    line-height: var(--typography-body1-line-height);
+    margin-top: -1px;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+}
+
+.login-view .link-instance {
+    flex: 0 0 auto !important;
+}
+
+.login-view .text-field-instance {
+    align-items: center !important;
+    align-self: stretch !important;
+    flex: 1 !important;
+    flex-grow: 1 !important;
+    justify-content: center !important;
+    width: 100% !important;
+}
+
+.login-view .design-component-instance-node {
+    align-items: center !important;
+    align-self: stretch !important;
+    flex: 1 !important;
+    flex-grow: 1 !important;
+    width: 100% !important;
+}
+
+.login-view .button-instance {
+    align-self: stretch !important;
+    display: flex !important;
+    flex: 1 !important;
+    flex-grow: 1 !important;
+    width: 100% !important;
+}

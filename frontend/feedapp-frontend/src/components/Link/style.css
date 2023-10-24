@@ -1,0 +1,61 @@
+.link {
+  align-items: flex-start;
+  display: inline-flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.link .text-wrapper {
+  font-family: var(--typography-body1-font-family);
+  font-size: var(--typography-body1-font-size);
+  font-style: var(--typography-body1-font-style);
+  font-weight: var(--typography-body1-font-weight);
+  letter-spacing: var(--typography-body1-letter-spacing);
+  line-height: var(--typography-body1-line-height);
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.link .underline {
+  align-self: stretch;
+  background-position: 50% 50%;
+  background-size: cover;
+  height: 1px;
+  position: relative;
+  width: 100%;
+}
+
+.link.focused {
+  border: 2px solid;
+  border-color: var(--lightfocus-ring-color);
+  border-radius: 4px;
+}
+
+.link .hovered {
+  margin-top: -1px;
+}
+
+.link .primary {
+  color: var(--palette-primary-main);
+}
+
+.link .inherit {
+  color: var(--palette-text-primary);
+}
+
+.link .enabled {
+  margin-top: -1px;
+}
+
+.link .color-primary {
+  background-image: url(https://c.animaapp.com/Enf9PaAO/img/underline-7.svg);
+}
+
+.link .color-inherit {
+  background-image: url(https://c.animaapp.com/Enf9PaAO/img/underline-6.svg);
+}
+
+.link .state-enabled {
+  opacity: 0.4;
+}

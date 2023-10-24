@@ -1,0 +1,19 @@
+.main-menu {
+  align-items: center;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 1024px;
+  justify-content: center;
+  padding: 255px 648px;
+  position: relative;
+}
+
+.main-menu .button-instance {
+  display: flex !important;
+  height: 144px !important;
+  margin-left: -413px !important;
+  margin-right: -413px !important;
+  width: 970px !important;
+}
