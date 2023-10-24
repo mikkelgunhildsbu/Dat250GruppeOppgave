@@ -1,111 +1,64 @@
-/*
-We're constantly improving the code you see. 
-Please share your feedback here: https://form.asana.com/?k=uvp-HPgd3_hyoXRBw1IcNg&d=1152665201300829
-*/
-
+import React, { useState } from "react";
 import PropTypes from "prop-types";
-import React from "react";
-import { useReducer } from "react";
 import "./style.css";
 
 export const TextField = ({
-  placeholder = "Placeholder",
-  value = "Value",
-  adornEnd = false,
-  placeholder1 = false,
-  value1 = true,
-  label = "Label",
-  adornStart = false,
-  helper = false,
-  variant,
-  size,
-  stateProp,
-  hasValue,
-  className,
-  underline = "https://c.animaapp.com/Enf9PaAO/img/underline-15.svg",
-}) => {
-  const [state, dispatch] = useReducer(reducer, {
-    variant: variant || "standard",
-    size: size || "medium",
-    state: stateProp || "error",
-    hasValue: hasValue || false,
-  });
+                            label,
+                            value,
+                            onChange,
+                            placeholder,
+                            className,
+                            stateProp,
+                            disabled = false,
+                            // other props you might need
+                          }) => {
+  // Local state to manage focus
+  const [isFocused, setIsFocused] = useState(false);
+
+  // Focus and blur handlers
+  const handleFocus = () => {
+    if (!disabled) {
+      setIsFocused(true);
+    }
+  };
+
+  const handleBlur = () => {
+    setIsFocused(false);
+  };
+
+  // Determine style based on field state
+  const fieldState = disabled ? "disabled" : isFocused ? "focused" : stateProp;
 
   return (
-    <div
-      className={`text-field ${className}`}
-      onMouseLeave={() => {
-        dispatch("mouse_leave");
-      }}
-      onMouseEnter={() => {
-        dispatch("mouse_enter");
-      }}
-    >
-      <div className={`input ${state.size}`}>
-        <div className={`temp-label state-0-${state.state} has-value-${state.hasValue}`}>
-          {!state.hasValue && <>Label</>}
+      <div className={`text-field ${className} state-${fieldState}`}>
+        {label && <label className={`label state-${fieldState}`}>{label}</label>}
 
-          {state.hasValue && <>{label}</>}
-        </div>
-        <div className={`label has-value-0-${state.hasValue} state-1-${state.state}`}>
-          {!state.hasValue && <>{label}</>}
-
-          {state.hasValue && (
-            <>
-              <>{value1 && <div className="value">{value}</div>}</>
-            </>
-          )}
-        </div>
-        <img
-          className={`img state-3-${state.state}`}
-          alt="Underline"
-          src={
-            state.state === "disabled"
-              ? "https://c.animaapp.com/Enf9PaAO/img/underline-25.svg"
-              : state.state === "focused"
-              ? "https://c.animaapp.com/Enf9PaAO/img/underline-24.svg"
-              : state.state === "enabled"
-              ? underline
-              : state.state === "hovered"
-              ? "https://c.animaapp.com/Enf9PaAO/img/underline-11.svg"
-              : "https://c.animaapp.com/Enf9PaAO/img/underline-27.svg"
-          }
+        <input
+            type="text"
+            value={value}
+            onChange={onChange}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+            placeholder={placeholder}
+            disabled={disabled}
+            className={`input state-${fieldState}`} // Adjust class names as necessary
         />
+
+        {/* Visuals for underline or other styling can be placed here */}
+        <div className={`underline state-${fieldState}`}></div>
+
+        {/* Any additional elements or styling based on focus, value, etc. */}
       </div>
-    </div>
   );
 };
 
-function reducer(state, action) {
-  switch (action) {
-    case "mouse_enter":
-      return {
-        ...state,
-        state: "hovered",
-      };
-
-    case "mouse_leave":
-      return {
-        ...state,
-        state: "enabled",
-      };
-  }
-
-  return state;
-}
-
 TextField.propTypes = {
-  placeholder: PropTypes.string,
-  value: PropTypes.string,
-  adornEnd: PropTypes.bool,
-  placeholder1: PropTypes.bool,
-  value1: PropTypes.bool,
   label: PropTypes.string,
-  adornStart: PropTypes.bool,
-  helper: PropTypes.bool,
-  variant: PropTypes.oneOf(["standard"]),
-  size: PropTypes.oneOf(["medium", "small"]),
-  stateProp: PropTypes.oneOf(["enabled", "focused", "hovered", "error", "disabled"]),
-  hasValue: PropTypes.bool,
-  underline: PropTypes.string,
+  value: PropTypes.string.isRequired, // value is now required
+  onChange: PropTypes.func.isRequired, // onChange function is now required
+  placeholder: PropTypes.string,
+  className: PropTypes.string,
+  stateProp: PropTypes.string,
+  disabled: PropTypes.bool,
+  // Add any other prop types as necessary
 };

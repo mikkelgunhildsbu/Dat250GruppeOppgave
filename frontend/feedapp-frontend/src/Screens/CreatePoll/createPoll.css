@@ -1,0 +1,95 @@
+.create-poll-screen {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.create-poll-screen .div-2 {
+    background-color: #ffffff;
+    height: 1024px;
+    position: relative;
+    width: 1440px;
+}
+
+.create-poll-screen .text-wrapper-2 {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 48px;
+    font-weight: 400;
+    left: 415px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 169px;
+}
+
+.create-poll-screen .switch-instance {
+    display: flex !important;
+    height: 52px !important;
+    justify-content: center !important;
+    left: 963px !important;
+    position: absolute !important;
+    top: 539px !important;
+    width: 89px !important;
+}
+
+.create-poll-screen .design-component-instance-node {
+    align-self: stretch !important;
+    flex: 1 !important;
+    flex-grow: 1 !important;
+    height: unset !important;
+    width: unset !important;
+}
+
+.create-poll-screen .switch-2 {
+    width: 58px !important;
+}
+
+.create-poll-screen .switch-3 {
+    display: flex !important;
+    height: 38px !important;
+    width: 58px !important;
+}
+
+.create-poll-screen .button-instance {
+    display: flex !important;
+    height: 100px !important;
+    left: 415px !important;
+    position: absolute !important;
+    top: 734px !important;
+    width: 560px !important;
+}
+
+.create-poll-screen .text-field-instance {
+    align-items: center !important;
+    height: 99px !important;
+    left: 259px !important;
+    position: absolute !important;
+    top: 362px !important;
+    width: 793px !important;
+}
+
+.create-poll-screen .text-field-2 {
+    align-items: center !important;
+    height: 88px !important;
+    left: 259px !important;
+    position: absolute !important;
+    top: 525px !important;
+    width: 311px !important;
+}
+
+.create-poll-screen .text-wrapper-3 {
+    color: var(--palette-text-primary);
+    font-family: var(--typography-h4-font-family);
+    font-size: var(--typography-h4-font-size);
+    font-style: var(--typography-h4-font-style);
+    font-weight: var(--typography-h4-font-weight);
+    left: 813px;
+    letter-spacing: var(--typography-h4-letter-spacing);
+    line-height: var(--typography-h4-line-height);
+    position: absolute;
+    top: 536px;
+    width: 128px;
+}

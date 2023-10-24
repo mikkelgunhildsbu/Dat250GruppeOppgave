@@ -1,0 +1,164 @@
+.view-poll {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.view-poll .div {
+    background-color: #ffffff;
+    height: 1024px;
+    position: relative;
+    width: 1440px;
+}
+
+.view-poll .text-wrapper-2 {
+    color: var(--palette-text-primary);
+    font-family: var(--typography-h4-font-family);
+    font-size: var(--typography-h4-font-size);
+    font-style: var(--typography-h4-font-style);
+    font-weight: var(--typography-h4-font-weight);
+    left: 135px;
+    letter-spacing: var(--typography-h4-letter-spacing);
+    line-height: var(--typography-h4-line-height);
+    position: absolute;
+    top: 199px;
+    width: 1000px;
+}
+
+.view-poll .p {
+    color: var(--palette-text-primary);
+    font-family: var(--typography-h4-font-family);
+    font-size: var(--typography-h4-font-size);
+    font-style: var(--typography-h4-font-style);
+    font-weight: var(--typography-h4-font-weight);
+    left: 135px;
+    letter-spacing: var(--typography-h4-letter-spacing);
+    line-height: var(--typography-h4-line-height);
+    position: absolute;
+    top: 299px;
+    width: 1000px;
+}
+
+.view-poll .text-wrapper-3 {
+    color: var(--palette-text-primary);
+    font-family: var(--typography-h4-font-family);
+    font-size: var(--typography-h4-font-size);
+    font-style: var(--typography-h4-font-style);
+    font-weight: var(--typography-h4-font-weight);
+    left: 135px;
+    letter-spacing: var(--typography-h4-letter-spacing);
+    line-height: var(--typography-h4-line-height);
+    position: absolute;
+    top: 399px;
+    width: 1000px;
+}
+
+.view-poll .text-wrapper-4 {
+    color: var(--palette-text-primary);
+    font-family: var(--typography-h4-font-family);
+    font-size: var(--typography-h4-font-size);
+    font-style: var(--typography-h4-font-style);
+    font-weight: var(--typography-h4-font-weight);
+    left: 135px;
+    letter-spacing: var(--typography-h4-letter-spacing);
+    line-height: var(--typography-h4-line-height);
+    position: absolute;
+    top: 499px;
+    width: 1000px;
+}
+
+.view-poll .text-wrapper-5 {
+    color: var(--palette-text-primary);
+    font-family: var(--typography-h4-font-family);
+    font-size: var(--typography-h4-font-size);
+    font-style: var(--typography-h4-font-style);
+    font-weight: var(--typography-h4-font-weight);
+    left: 135px;
+    letter-spacing: var(--typography-h4-letter-spacing);
+    line-height: var(--typography-h4-line-height);
+    position: absolute;
+    top: 601px;
+    width: 1000px;
+}
+
+.view-poll .text-wrapper-6 {
+    color: var(--palette-text-primary);
+    font-family: var(--typography-h4-font-family);
+    font-size: var(--typography-h4-font-size);
+    font-style: var(--typography-h4-font-style);
+    font-weight: var(--typography-h4-font-weight);
+    left: 135px;
+    letter-spacing: var(--typography-h4-letter-spacing);
+    line-height: var(--typography-h4-line-height);
+    position: absolute;
+    top: 701px;
+    width: 1000px;
+}
+
+.view-poll .button-instance {
+    display: flex !important;
+    height: 50px !important;
+    left: 1135px !important;
+    position: absolute !important;
+    top: 200px !important;
+    width: 272px !important;
+}
+
+.view-poll .design-component-instance-node {
+    display: flex !important;
+    height: 50px !important;
+    left: 1135px !important;
+    position: absolute !important;
+    top: 500px !important;
+    width: 272px !important;
+}
+
+.view-poll .button-2 {
+    display: flex !important;
+    height: 50px !important;
+    left: 1135px !important;
+    position: absolute !important;
+    top: 600px !important;
+    width: 272px !important;
+}
+
+.view-poll .button-3 {
+    display: flex !important;
+    height: 50px !important;
+    left: 1135px !important;
+    position: absolute !important;
+    top: 702px !important;
+    width: 272px !important;
+}
+
+.view-poll .button-4 {
+    display: flex !important;
+    height: 50px !important;
+    left: 1135px !important;
+    position: absolute !important;
+    top: 300px !important;
+    width: 272px !important;
+}
+
+.view-poll .button-5 {
+    display: flex !important;
+    height: 50px !important;
+    left: 1135px !important;
+    position: absolute !important;
+    top: 400px !important;
+    width: 272px !important;
+}
+
+.view-poll .text-wrapper-7 {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 48px;
+    font-weight: 400;
+    left: 562px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 41px;
+}

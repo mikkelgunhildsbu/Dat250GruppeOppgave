@@ -1,18 +1,17 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import './styleguide.css';
-import MainMenu from './Screens/MainMenu/MainMenu';
+import App from './App'; // Make sure this import is correct
 import reportWebVitals from './reportWebVitals';
-import {LoginView} from "./Screens/Login/index";
+import { BrowserRouter as Router } from 'react-router-dom';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <LoginView/>
-  </React.StrictMode>
+ReactDOM.render(
+    <React.StrictMode>
+        <Router>
+            <App />
+        </Router>
+    </React.StrictMode>,
+    document.getElementById('root')
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();

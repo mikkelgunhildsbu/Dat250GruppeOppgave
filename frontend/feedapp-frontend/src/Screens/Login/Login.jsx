@@ -1,19 +1,32 @@
-import React from "react";
+import React, { useState } from 'react';
 import { Button } from "../../components/Button";
 import { Link } from "../../components/Link";
 import { TextField } from "../../components/TextField";
 import "./Login.css";
-import { useHistory } from 'react-router-dom'; // Import useHistory
-
+import {useNavigate} from "react-router-dom"
 
 
 
 export const LoginView = () => {
-
+    const navigate = useNavigate(); // Create a history instance
 
     const handleContinueAsGuestClick = () => {
-        console.log("fuckThisShit")
+        navigate("/mainmenu")
     };
+
+    const [inputValue, setInputValue] = useState('');
+    const [passwordValue, setpasswordValue] = useState('');
+
+    const handleInputChange = (event) => {
+        setInputValue(event.target.value);
+    };
+
+    const handlePasswordChange = (event) => {
+        setpasswordValue(event.target.value);
+
+    }
+
+
     return (
 
         <div className="login-view">
@@ -32,7 +45,8 @@ export const LoginView = () => {
                     </div>
                     <TextField
                         className="text-field-instance"
-                        hasValue={false}
+                        value={inputValue}
+                        onChange={handleInputChange}
                         label="Email:"
                         size="medium"
                         stateProp="enabled"
@@ -41,7 +55,9 @@ export const LoginView = () => {
                     />
                     <TextField
                         className="design-component-instance-node"
-                        hasValue={false}
+                        idName="password"
+                        value={passwordValue}
+                        onChange={handlePasswordChange}
                         label="Password:"
                         size="medium"
                         stateProp="enabled"
