@@ -1,8 +1,8 @@
 package no.feedapp.group2.FeedApp.services;
 
-import jakarta.annotation.Nullable;
 import jakarta.transaction.Transactional;
 import no.feedapp.group2.FeedApp.DTO.Customer.CustomerUpdateDTO;
+import no.feedapp.group2.FeedApp.controllers.exceptions.CustomerNotFoundException;
 import no.feedapp.group2.FeedApp.domain.Customer;
 import no.feedapp.group2.FeedApp.repositories.CustomerRepository;
 import no.feedapp.group2.FeedApp.repositories.PollRepository;
@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CustomerService implements ICustomerService{
+public class CustomerService implements ICustomerService {
     private final CustomerRepository customerRepository;
     private final PollRepository pollRepository;
 
@@ -25,38 +25,49 @@ public class CustomerService implements ICustomerService{
         customerRepository.save(customer);
     }
 
-    @Nullable
     @Override
-    public Customer getCustomerById(Long id) {
-       return customerRepository.findByUserId(id);
+    public Customer getCustomerById(Long id) throws CustomerNotFoundException {
+        var customer = customerRepository.findByUserId(id);
+        if (customer == null) {
+            throw new CustomerNotFoundException(id);
+        }
+
+        return customer;
     }
 
     @Override
-    public boolean updateCustomer(Long id, CustomerUpdateDTO updatedCustomer) {
+    public Customer updateCustomer(Long id, CustomerUpdateDTO updatedCustomer) throws CustomerNotFoundException {
         Customer existingCustomer = customerRepository.findByUserId(id);
 
-        if (existingCustomer == null){
-            return false;
+        if (existingCustomer == null) {
+            throw new CustomerNotFoundException(id);
         }
 
-        if (updatedCustomer.getUserName() != null){
+        if (notNullOrEmpty(updatedCustomer.getUserName())) {
             existingCustomer.setUserName(updatedCustomer.getUserName());
         }
-        if (updatedCustomer.getEmail() != null){
+        if (notNullOrEmpty(updatedCustomer.getEmail())) {
             existingCustomer.setEmail(updatedCustomer.getEmail());
         }
-        if (updatedCustomer.getPassword() != null){
+        if (notNullOrEmpty(updatedCustomer.getPassword())) {
             existingCustomer.setPassword(updatedCustomer.getPassword());
         }
 
-        customerRepository.save(existingCustomer);
+        return customerRepository.save(existingCustomer);
+    }
 
-        return true;
+    private boolean notNullOrEmpty(String str) {
+        return !(str == null || str.isEmpty());
     }
 
     @Override
     @Transactional
-    public void deleteCustomer(Long id) {
+    public void deleteCustomer(Long id) throws CustomerNotFoundException {
+        var customer = customerRepository.findByUserId(id);
+        if (customer == null) {
+            throw new CustomerNotFoundException(id);
+        }
+
         pollRepository.deletePollsByUserUserId(id);
         customerRepository.deleteById(id);
     }
