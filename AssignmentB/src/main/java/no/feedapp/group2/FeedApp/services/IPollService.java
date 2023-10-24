@@ -3,6 +3,7 @@ package no.feedapp.group2.FeedApp.services;
 import no.feedapp.group2.FeedApp.DTO.Poll.PollCreateDTO;
 import no.feedapp.group2.FeedApp.DTO.Poll.PollUpdateDTO;
 import no.feedapp.group2.FeedApp.controllers.exceptions.CustomerNotFoundException;
+import no.feedapp.group2.FeedApp.controllers.exceptions.PollClosedException;
 import no.feedapp.group2.FeedApp.controllers.exceptions.PollNotFoundException;
 import no.feedapp.group2.FeedApp.domain.Poll;
 
@@ -40,7 +41,7 @@ public interface IPollService {
      * @param pollUpdateDTO {@link no.feedapp.group2.FeedApp.DTO.Poll.PollUpdateDTO}
      * @return The updated poll if the poll existed, otherwise null
      */
-    Poll updatePoll(Long id, PollUpdateDTO pollUpdateDTO) throws PollNotFoundException;
+    Poll updatePoll(Long id, PollUpdateDTO pollUpdateDTO) throws PollNotFoundException, PollClosedException;
 
     /**
      * A method for deleting a poll.

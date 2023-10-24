@@ -3,9 +3,11 @@ package no.feedapp.group2.FeedApp.services;
 import no.feedapp.group2.FeedApp.DTO.Poll.PollCreateDTO;
 import no.feedapp.group2.FeedApp.DTO.Poll.PollUpdateDTO;
 import no.feedapp.group2.FeedApp.controllers.exceptions.CustomerNotFoundException;
+import no.feedapp.group2.FeedApp.controllers.exceptions.PollClosedException;
 import no.feedapp.group2.FeedApp.controllers.exceptions.PollNotFoundException;
 import no.feedapp.group2.FeedApp.domain.Customer;
 import no.feedapp.group2.FeedApp.domain.Poll;
+import no.feedapp.group2.FeedApp.domain.PollStatus;
 import no.feedapp.group2.FeedApp.repositories.CustomerRepository;
 import no.feedapp.group2.FeedApp.repositories.PollRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,11 +60,15 @@ public class PollService implements IPollService {
     }
 
     @Override
-    public Poll updatePoll(Long id, PollUpdateDTO pollUpdateDTO) throws PollNotFoundException {
+    public Poll updatePoll(Long id, PollUpdateDTO pollUpdateDTO) throws PollNotFoundException, PollClosedException {
         Poll existingPoll = getPollById(id);
 
         if (existingPoll == null) {
             throw new PollNotFoundException(id);
+        }
+
+        if (existingPoll.getStatus() == PollStatus.CLOSED){
+            throw new PollClosedException(id);
         }
 
         if (!(pollUpdateDTO.getQuestion() == null || pollUpdateDTO.getQuestion().isEmpty())) {

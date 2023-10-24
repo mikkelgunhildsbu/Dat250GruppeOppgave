@@ -60,4 +60,14 @@ class CustomErrorHandlingController {
                 new CustomError("Poll not found", e.getMessage()));
         return error;
     }
+
+    @ExceptionHandler(PollClosedException.class)
+    @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
+    @ResponseBody
+    CustomErrorResponse onPollClosedException(PollClosedException e) {
+        CustomErrorResponse error = new CustomErrorResponse();
+        error.getErrors().add(
+                new CustomError("Poll not found", e.getMessage()));
+        return error;
+    }
 }
