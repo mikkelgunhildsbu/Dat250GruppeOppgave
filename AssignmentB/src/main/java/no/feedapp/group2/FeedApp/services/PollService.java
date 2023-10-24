@@ -65,10 +65,21 @@ public class PollService implements IPollService {
             throw new PollNotFoundException(id);
         }
 
-        existingPoll.setQuestion(pollUpdateDTO.getQuestion());
-        existingPoll.setTimeLimitInMinutes(pollUpdateDTO.getTimeLimitInMinutes());
-        existingPoll.setGreenCount(pollUpdateDTO.getGreenCount());
-        existingPoll.setRedCount(pollUpdateDTO.getRedCount());
+        if (!(pollUpdateDTO.getQuestion() == null || pollUpdateDTO.getQuestion().isEmpty())) {
+            existingPoll.setQuestion(pollUpdateDTO.getQuestion());
+        }
+        if (pollUpdateDTO.getStatus() != null) {
+            existingPoll.setStatus(pollUpdateDTO.getStatus());
+        }
+        if (pollUpdateDTO.getTimeLimitInMinutes() != null) {
+            existingPoll.setTimeLimitInMinutes(pollUpdateDTO.getTimeLimitInMinutes());
+        }
+        if (pollUpdateDTO.getGreenCount() != null) {
+            existingPoll.setGreenCount(pollUpdateDTO.getGreenCount());
+        }
+        if (pollUpdateDTO.getRedCount() != null) {
+            existingPoll.setRedCount(pollUpdateDTO.getRedCount());
+        }
 
         pollRepository.save(existingPoll);
 
