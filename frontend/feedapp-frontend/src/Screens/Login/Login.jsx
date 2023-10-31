@@ -4,6 +4,7 @@ import { Link } from "../../components/Link";
 import { TextField } from "../../components/TextField";
 import "./Login.css";
 import {useNavigate} from "react-router-dom"
+import {type} from "@testing-library/user-event/dist/type";
 
 
 
@@ -13,6 +14,8 @@ export const LoginView = () => {
     const handleContinueAsGuestClick = () => {
         navigate("/mainmenu")
     };
+
+
 
     const [inputValue, setInputValue] = useState('');
     const [passwordValue, setpasswordValue] = useState('');
@@ -24,6 +27,25 @@ export const LoginView = () => {
     const handlePasswordChange = (event) => {
         setpasswordValue(event.target.value);
 
+    }
+
+    const validateEmail = (email) => {
+        return email.match(
+            /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        );
+    }
+
+    const handleSignIn = () => {
+
+        if (passwordValue === '' || inputValue === ''){
+            alert("Both email and password must be filled")
+        }else if(!validateEmail(inputValue)){
+            alert("enter valid email")
+        }else {
+            console.log("Email: " + inputValue + "\n Password: " + passwordValue)
+            navigate("/mainmenu")
+            return (inputValue + passwordValue)
+        }
     }
 
 
@@ -43,6 +65,7 @@ export const LoginView = () => {
                         />
                     </div>
                     <TextField
+                        type="email"
                         className="text-field-instance"
                         value={inputValue}
                         onChange={handleInputChange}
@@ -55,6 +78,7 @@ export const LoginView = () => {
                     <TextField
                         className="design-component-instance-node"
                         idName="password"
+                        type = "password"
                         value={passwordValue}
                         onChange={handlePasswordChange}
                         label="Password:"
@@ -70,6 +94,7 @@ export const LoginView = () => {
                         size="medium"
                         stateProp="enabled"
                         variant="contained"
+                        onClick={handleSignIn}
                     />
                     <Button
                         className="button-instance"

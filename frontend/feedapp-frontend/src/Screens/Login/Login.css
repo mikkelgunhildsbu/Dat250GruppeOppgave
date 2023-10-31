@@ -59,7 +59,16 @@ body{
 }
 
 .login-view .link-instance,
-.login-view .text-field-instance,
+.login-view .text-field-instance{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 80%;
+    max-width: 793px;
+    margin: 20px auto
+}
+
 .login-view .design-component-instance-node{
     display: flex;
     align-items: center;

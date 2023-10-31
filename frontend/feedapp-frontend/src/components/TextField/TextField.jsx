@@ -7,10 +7,10 @@ export const TextField = ({
                             value,
                             onChange,
                             placeholder,
-                            className,
+                              className,
                             stateProp,
                             disabled = false,
-                            // other props you might need
+                            type,
                           }) => {
   // Local state to manage focus
   const [isFocused, setIsFocused] = useState(false);
@@ -34,7 +34,7 @@ export const TextField = ({
         {label && <label className={`label state-${fieldState}`}>{label}</label>}
 
         <input
-            type="text"
+            type={type}
             value={value}
             onChange={onChange}
             onFocus={handleFocus}
@@ -53,6 +53,7 @@ export const TextField = ({
 };
 
 TextField.propTypes = {
+  type: PropTypes.string,
   label: PropTypes.string,
   value: PropTypes.string.isRequired, // value is now required
   onChange: PropTypes.func.isRequired, // onChange function is now required

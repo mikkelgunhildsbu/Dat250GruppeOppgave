@@ -57,7 +57,7 @@ export const Switch = ({
 };
 
 function reducer(state, action) {
-    if (state.checked === false && state.color === "default" && state.size === "medium" && state.state === "hovered") {
+    if (state.checked === false && state.color === "default" && state.size === "medium" ) {
         switch (action) {
             case "click":
                 return {
@@ -69,7 +69,7 @@ function reducer(state, action) {
         }
     }
 
-    if (state.checked === false && state.color === "primary" && state.size === "medium" && state.state === "hovered") {
+    if (state.checked === false && state.color === "primary" && state.size === "medium" ) {
         switch (action) {
             case "click":
                 return {
@@ -81,7 +81,7 @@ function reducer(state, action) {
         }
     }
 
-    if (state.checked === false && state.color === "error" && state.size === "medium" && state.state === "hovered") {
+    if (state.checked === false && state.color === "error" && state.size === "medium" ) {
         switch (action) {
             case "click":
                 return {
@@ -93,7 +93,7 @@ function reducer(state, action) {
         }
     }
 
-    if (state.checked === false && state.color === "warning" && state.size === "medium" && state.state === "hovered") {
+    if (state.checked === false && state.color === "warning" && state.size === "medium" ) {
         switch (action) {
             case "click":
                 return {
@@ -105,7 +105,7 @@ function reducer(state, action) {
         }
     }
 
-    if (state.checked === false && state.color === "info" && state.size === "medium" && state.state === "hovered") {
+    if (state.checked === false && state.color === "info" && state.size === "medium" ) {
         switch (action) {
             case "click":
                 return {
@@ -117,7 +117,7 @@ function reducer(state, action) {
         }
     }
 
-    if (state.checked === false && state.color === "success" && state.size === "medium" && state.state === "hovered") {
+    if (state.checked === false && state.color === "success" && state.size === "medium" ) {
         switch (action) {
             case "click":
                 return {
@@ -129,7 +129,7 @@ function reducer(state, action) {
         }
     }
 
-    if (state.checked === true && state.color === "default" && state.size === "medium" && state.state === "hovered") {
+    if (state.checked === true && state.color === "default" && state.size === "medium" ) {
         switch (action) {
             case "click":
                 return {
@@ -141,7 +141,7 @@ function reducer(state, action) {
         }
     }
 
-    if (state.checked === true && state.color === "secondary" && state.size === "medium" && state.state === "hovered") {
+    if (state.checked === true && state.color === "secondary" && state.size === "medium") {
         switch (action) {
             case "click":
                 return {
@@ -153,7 +153,7 @@ function reducer(state, action) {
         }
     }
 
-    if (state.checked === true && state.color === "error" && state.size === "medium" && state.state === "hovered") {
+    if (state.checked === true && state.color === "error" && state.size === "medium") {
         switch (action) {
             case "click":
                 return {
@@ -165,7 +165,7 @@ function reducer(state, action) {
         }
     }
 
-    if (state.checked === true && state.color === "warning" && state.size === "medium" && state.state === "hovered") {
+    if (state.checked === true && state.color === "warning" && state.size === "medium" ) {
         switch (action) {
             case "click":
                 return {
@@ -177,7 +177,7 @@ function reducer(state, action) {
         }
     }
 
-    if (state.checked === true && state.color === "info" && state.size === "medium" && state.state === "hovered") {
+    if (state.checked === true && state.color === "info" && state.size === "medium" ) {
         switch (action) {
             case "click":
                 return {
@@ -189,7 +189,7 @@ function reducer(state, action) {
         }
     }
 
-    if (state.checked === true && state.color === "success" && state.size === "medium" && state.state === "hovered") {
+    if (state.checked === true && state.color === "success" && state.size === "medium" ) {
         switch (action) {
             case "click":
                 return {
@@ -201,7 +201,7 @@ function reducer(state, action) {
         }
     }
 
-    if (state.checked === false && state.color === "default" && state.size === "small" && state.state === "hovered") {
+    if (state.checked === false && state.color === "default" && state.size === "small") {
         switch (action) {
             case "click":
                 return {
@@ -213,7 +213,7 @@ function reducer(state, action) {
         }
     }
 
-    if (state.checked === false && state.color === "primary" && state.size === "small" && state.state === "hovered") {
+    if (state.checked === false && state.color === "primary" && state.size === "small" ) {
         switch (action) {
             case "click":
                 return {
@@ -225,7 +225,7 @@ function reducer(state, action) {
         }
     }
 
-    if (state.checked === false && state.color === "error" && state.size === "small" && state.state === "hovered") {
+    if (state.checked === false && state.color === "error" && state.size === "small" ) {
         switch (action) {
             case "click":
                 return {
@@ -237,7 +237,7 @@ function reducer(state, action) {
         }
     }
 
-    if (state.checked === false && state.color === "warning" && state.size === "small" && state.state === "hovered") {
+    if (state.checked === false && state.color === "warning" && state.size === "small" ) {
         switch (action) {
             case "click":
                 return {
@@ -249,7 +249,7 @@ function reducer(state, action) {
         }
     }
 
-    if (state.checked === false && state.color === "info" && state.size === "small" && state.state === "hovered") {
+    if (state.checked === false && state.color === "info" && state.size === "small" ) {
         switch (action) {
             case "click":
                 return {
@@ -261,7 +261,7 @@ function reducer(state, action) {
         }
     }
 
-    if (state.checked === false && state.color === "success" && state.size === "small" && state.state === "hovered") {
+    if (state.checked === false && state.color === "success" && state.size === "small" ) {
         switch (action) {
             case "click":
                 return {
@@ -273,7 +273,7 @@ function reducer(state, action) {
         }
     }
 
-    if (state.checked === true && state.color === "default" && state.size === "small" && state.state === "hovered") {
+    if (state.checked === true && state.color === "default" && state.size === "small" ) {
         switch (action) {
             case "click":
                 return {
@@ -285,7 +285,7 @@ function reducer(state, action) {
         }
     }
 
-    if (state.checked === true && state.color === "secondary" && state.size === "small" && state.state === "hovered") {
+    if (state.checked === true && state.color === "secondary" && state.size === "small" ) {
         switch (action) {
             case "click":
                 return {
@@ -297,7 +297,7 @@ function reducer(state, action) {
         }
     }
 
-    if (state.checked === true && state.color === "error" && state.size === "small" && state.state === "hovered") {
+    if (state.checked === true && state.color === "error" && state.size === "small" ) {
         switch (action) {
             case "click":
                 return {
@@ -309,7 +309,7 @@ function reducer(state, action) {
         }
     }
 
-    if (state.checked === true && state.color === "warning" && state.size === "small" && state.state === "hovered") {
+    if (state.checked === true && state.color === "warning" && state.size === "small") {
         switch (action) {
             case "click":
                 return {
@@ -321,7 +321,7 @@ function reducer(state, action) {
         }
     }
 
-    if (state.checked === true && state.color === "info" && state.size === "small" && state.state === "hovered") {
+    if (state.checked === true && state.color === "info" && state.size === "small" ) {
         switch (action) {
             case "click":
                 return {
@@ -333,7 +333,7 @@ function reducer(state, action) {
         }
     }
 
-    if (state.checked === true && state.color === "success" && state.size === "small" && state.state === "hovered") {
+    if (state.checked === true && state.color === "success" && state.size === "small" ) {
         switch (action) {
             case "click":
                 return {
@@ -345,7 +345,7 @@ function reducer(state, action) {
         }
     }
 
-    if (state.checked === false && state.color === "secondary" && state.size === "medium" && state.state === "hovered") {
+    if (state.checked === false && state.color === "secondary" && state.size === "medium") {
         switch (action) {
             case "click":
                 return {
@@ -357,7 +357,7 @@ function reducer(state, action) {
         }
     }
 
-    if (state.checked === true && state.color === "primary" && state.size === "medium" && state.state === "hovered") {
+    if (state.checked === true && state.color === "primary" && state.size === "medium") {
         switch (action) {
             case "click":
                 return {
@@ -369,7 +369,7 @@ function reducer(state, action) {
         }
     }
 
-    if (state.checked === false && state.color === "secondary" && state.size === "small" && state.state === "hovered") {
+    if (state.checked === false && state.color === "secondary" && state.size === "small" ) {
         switch (action) {
             case "click":
                 return {
@@ -381,7 +381,7 @@ function reducer(state, action) {
         }
     }
 
-    if (state.checked === true && state.color === "primary" && state.size === "small" && state.state === "hovered") {
+    if (state.checked === true && state.color === "primary" && state.size === "small" ) {
         switch (action) {
             case "click":
                 return {
