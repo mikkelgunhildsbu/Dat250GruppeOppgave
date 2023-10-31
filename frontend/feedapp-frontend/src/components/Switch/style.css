@@ -33,7 +33,7 @@
 }
 
 .switch .knob-2 {
-    box-shadow: var(--elevation-1);
+    box-shadow: var(--palette-secondary-main);
     position: relative;
 }
 
@@ -90,27 +90,27 @@
 }
 
 .switch .state-focused.checked-0-false {
-    background-color: var(--palette-components-switch-slidefill);
+    background-color: var(--palette-secondary-main);
 }
 
 .switch .state-enabled.default {
-    background-color: var(--palette-components-switch-slidefill);
+    background-color: var(--material-colors-purple-700);
 }
 
 .switch .state-enabled.checked-0-false {
-    background-color: var(--palette-components-switch-slidefill);
+    background-color: var(--material-colors-purple-700);
 }
 
 .switch .state-hovered.default {
-    background-color: var(--palette-components-switch-slidefill);
+    background-color: var(--material-colors-purple-700);
 }
 
 .switch .state-hovered.checked-0-false {
-    background-color: var(--palette-components-switch-slidefill);
+    background-color: var(--material-colors-purple-700);
 }
 
 .switch .state-focused.default {
-    background-color: var(--palette-components-switch-slidefill);
+    background-color: var(--material-colors-purple-700);
 }
 
 .switch .checked-0-true.state-enabled.warning {
@@ -206,7 +206,7 @@
 }
 
 .switch .state-0-focused.checked-1-false {
-    background-color: var(--palette-common-white-focusvisible);
+    background-color: var(--palette-common-white-main);
 }
 
 .switch .state-0-hovered.color-default {
@@ -222,7 +222,7 @@
 }
 
 .switch .state-0-focused.color-default {
-    background-color: var(--palette-common-white-focusvisible);
+    background-color: var(--palette-common-white-main);
 }
 
 .switch .checked-1-true.size-2-small {
@@ -231,7 +231,7 @@
 }
 
 .switch .checked-1-true.state-0-focused.color-info {
-    background-color: var(--palette-info-focusvisible);
+    background-color: var(--material-colors-green-400);
 }
 
 .switch .checked-1-true.color-primary.state-0-hovered {
@@ -243,7 +243,7 @@
 }
 
 .switch .checked-1-true.color-error.state-0-focused {
-    background-color: var(--palette-error-focusvisible);
+    background-color: var(--material-colors-red-500);
 }
 
 .switch .checked-1-true.state-0-focused.color-secondary {
@@ -251,7 +251,7 @@
 }
 
 .switch .checked-1-true.state-0-focused.color-warning {
-    background-color: var(--palette-warning-focusvisible);
+    background-color: var(--material-colors-orange-400);
 }
 
 .switch .checked-1-true.color-secondary.state-0-hovered {
@@ -263,11 +263,11 @@
 }
 
 .switch .checked-1-true.state-0-focused.color-primary {
-    background-color: var(--palette-primary-focusvisible);
+    background-color: var(--material-colors-orange-400);
 }
 
 .switch .checked-1-true.color-success.state-0-focused {
-    background-color: var(--palette-success-focusvisible);
+    background-color: var(--material-colors-green-400);
 }
 
 .switch .checked-1-true.color-success.state-0-hovered {
@@ -287,7 +287,7 @@
 }
 
 .switch .knob.state-0-disabled .knob-2 {
-    background-color: var(--palette-components-switch-knowfilldisabled);
+    background-color: var(--palette-secondary-dark);
 }
 
 .switch .knob.size-2-small .knob-2 {
@@ -303,15 +303,15 @@
 }
 
 .switch .knob.state-0-focused.checked-1-false .knob-2 {
-    background-color: var(--palette-components-switch-knobfillenabled);
+    background-color: var(--palette-secondary-main);
 }
 
 .switch .knob.state-0-enabled.checked-1-false .knob-2 {
-    background-color: var(--palette-components-switch-knobfillenabled);
+    background-color: var(--palette-secondary-main);
 }
 
 .switch .knob.state-0-hovered.checked-1-false .knob-2 {
-    background-color: var(--palette-components-switch-knobfillenabled);
+    background-color: var(--palette-secondary-main);
 }
 
 .switch .knob.checked-1-true.state-0-enabled.color-warning .knob-2 {
