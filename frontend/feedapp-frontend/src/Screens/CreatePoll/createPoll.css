@@ -1,95 +1,73 @@
+body{
+    background-color: #0288D10A;
+}
 .create-poll-screen {
-    background-color: #ffffff;
+    align-items: center;
+    background-color: #0288D10A;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    gap: 10px;
+    height: 100vh; /* Viewport Height */
     justify-content: center;
-    width: 100%;
-}
-
-.create-poll-screen .div-2 {
-    background-color: #ffffff;
-    height: 1024px;
+    padding: 0% 10%; /* Relative to parent dimensions */
     position: relative;
-    width: 1440px;
+}
+.form {
+    align-items: center;
+    background-color: #29B6F614;
+    box-shadow: 0px 8px 8px #29B6F614;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    height: 800px;
+    max-height: 80vh;
+    justify-content: center;
+    width: 80%;
+    max-width: 800px;
+    margin: auto;
+    position: relative;
 }
 
+
+.create-poll-screen .button-instance, .create-poll-screen .text-field-instance {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 80%;
+    max-width: 793px;
+    margin: 20px auto
+}
+
+/* Adjustments for individual elements, where needed */
 .create-poll-screen .text-wrapper-2 {
-    color: #000000;
     font-family: "Inter-Regular", Helvetica;
     font-size: 48px;
     font-weight: 400;
-    left: 415px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 169px;
 }
 
 .create-poll-screen .switch-instance {
-    display: flex !important;
-    height: 52px !important;
-    justify-content: center !important;
-    left: 963px !important;
-    position: absolute !important;
-    top: 539px !important;
-    width: 89px !important;
+    display: flex;
+    justify-content: center;
+    height: 52px;
+    width: 89px;
 }
 
-.create-poll-screen .design-component-instance-node {
-    align-self: stretch !important;
-    flex: 1 !important;
-    flex-grow: 1 !important;
-    height: unset !important;
-    width: unset !important;
-}
+/* ... Retain any other unique styles you need for specific elements here ... */
 
-.create-poll-screen .switch-2 {
-    width: 58px !important;
-}
+/* Media queries for responsiveness */
+@media screen and (max-width: 768px) {
+    .create-poll-screen .div-2 {
+        height: auto;
+        padding: 20px;
+    }
 
-.create-poll-screen .switch-3 {
-    display: flex !important;
-    height: 38px !important;
-    width: 58px !important;
-}
-
-.create-poll-screen .button-instance {
-    display: flex !important;
-    height: 100px !important;
-    left: 415px !important;
-    position: absolute !important;
-    top: 734px !important;
-    width: 560px !important;
-}
-
-.create-poll-screen .text-field-instance {
-    align-items: center !important;
-    height: 99px !important;
-    left: 259px !important;
-    position: absolute !important;
-    top: 362px !important;
-    width: 793px !important;
-}
-
-.create-poll-screen .text-field-2 {
-    align-items: center !important;
-    height: 88px !important;
-    left: 259px !important;
-    position: absolute !important;
-    top: 525px !important;
-    width: 311px !important;
-}
-
-.create-poll-screen .text-wrapper-3 {
-    color: var(--palette-text-primary);
-    font-family: var(--typography-h4-font-family);
-    font-size: var(--typography-h4-font-size);
-    font-style: var(--typography-h4-font-style);
-    font-weight: var(--typography-h4-font-weight);
-    left: 813px;
-    letter-spacing: var(--typography-h4-letter-spacing);
-    line-height: var(--typography-h4-line-height);
-    position: absolute;
-    top: 536px;
-    width: 128px;
+    .create-poll-screen .text-wrapper-2,
+    .create-poll-screen .switch-instance,
+    .create-poll-screen .button-instance,
+    .create-poll-screen .text-field-instance,
+    .create-poll-screen .text-field-2,
+    .create-poll-screen .text-wrapper-3 {
+        width: 90%; /* Provide more width on smaller screens */
+    }
 }

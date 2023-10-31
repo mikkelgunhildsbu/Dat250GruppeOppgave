@@ -30,7 +30,6 @@ export const LoginView = () => {
     return (
 
         <div className="login-view">
-            <div className="form-wrapper">
                 <div className="form">
                     <div className="text-wrapper-3">Sign in</div>
                     <div className="span">
@@ -83,7 +82,6 @@ export const LoginView = () => {
 
                     />
                 </div>
-            </div>
         </div>
     );
 };
