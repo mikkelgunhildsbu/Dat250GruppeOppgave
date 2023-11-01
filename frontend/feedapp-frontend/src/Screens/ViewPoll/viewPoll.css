@@ -11,7 +11,9 @@
 }
 
 .view-poll .form{
+    justify-content: flex-start;
     overflow: auto;
+
 }
 
 

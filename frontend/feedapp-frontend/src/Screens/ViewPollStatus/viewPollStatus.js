@@ -1,49 +1,38 @@
+import React, { useState, useEffect } from 'react';
 import logo from '../../logo.svg';
 import { Button } from "../../components/Button";
 import './viewPollStatus.css';
-import {useNavigate} from "react-router-dom"
-import React from "react";
-import '../header.css'
-import {LoginView} from "../Login";
-import { useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import axios from "axios";
 
-
-
-
-
 function ViewPollStatus() {
-    const navigate = useNavigate(); // Create a history instance
-
+    const navigate = useNavigate();
     const location = useLocation();
-    const pollData = location.state?.pollData;
+    const initialPollData = location.state?.pollData;
 
+    const [pollData, setPollData] = useState(initialPollData);
 
-    axios.defaults.baseURL = "http://localhost:8080/poll/"
+    const intervalTime = 5000;  // every 5 seconds
 
-    const updateGreenCount = {
-        /*greenCount : pollData["greenCount"] + 1*/
-    }
+    useEffect(() => {
+        const fetchData = () => {
+            axios.get(`http://localhost:8080/poll/${pollData["id"]}`)
+                .then(response => {
+                    setPollData(response.data);
+                })
+                .catch(error => {
+                    console.error('Error fetching updates:', error);
+                });
+        };
 
-    const updateRedCount ={
-        //redCount : pollData["redCount"] + 1
-    }
+        const intervalId = setInterval(fetchData, intervalTime);
 
-
-    const voteYes = () => {
-        axios.put(String(pollData["id"]), updateGreenCount ) .then(response => {
-            console.log("Updated successfully:", response.data);
-        })
-    };
-
-    const voteNo = () => {
-        axios.put(String(pollData["id"]), updateRedCount ) .then(response => {
-            console.log("Updated successfully:", response.data);
-        })
-    };
+        // Clear the interval when the component is unmounted
+        return () => clearInterval(intervalId);
+    }, [pollData["id"]]); // Depend on pollData["id"] so if it changes, the effect reruns
 
     const backToMainMenu = () => {
-        navigate("/mainmenu")
+        navigate("/mainmenu");
     };
 
     return (
@@ -58,13 +47,13 @@ function ViewPollStatus() {
                 <div className={"loginAs"}>
                     <p>Logged in as:</p>
                 </div>
-                <div className="text-wrapper-3">{pollData?.question}</div>
-                <p className="text-wrapper-3">{pollData?.timeLimitInMinutes} minutes</p>
+                <div className="text-wrapper-3">Results: {pollData?.question}</div>
+                <p className="text-wrapper-3">{pollData?.timeLimitInMinutes} minutes remaining</p>
 
-                <div className={"resultDiv"} color={"primary"}>
+                <div className={"resultDiv"}  id={"yes"}>
                     Yes = {pollData?.greenCount}
                 </div>
-                <div className={"resultDiv"} color={"secondary"}>
+                <div className={"resultDiv"} id={"no"}>
                     No = {pollData?.redCount}
                 </div>
 

@@ -42,8 +42,10 @@ export const CreatePollScreen = () => {
             }
             axios.post("http://localhost:8080/poll", data).then(response => {
                 setQuestionValue('');
-                setTimeValue('');
-                navigate("/poll" ,{state: {pollData: response.data}})
+                navigate("/pollStatus" ,{state: {pollData: response.data}})
+                alert("created a poll with pollId" + response.data["id"] )
+
+
             }).catch(error => {
                 console.error("Error posting data:", error);
             });

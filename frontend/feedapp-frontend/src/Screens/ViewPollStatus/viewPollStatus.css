@@ -16,10 +16,10 @@
     width: 80%; /* This can be adjusted according to your needs */
     margin: 0 auto; /* Centering the button horizontally */
     text-align: center;
-    background-color: red;
 }
 
-
+#yes{background-color: green}
+#no{background-color: red}
 
 /* For smaller devices */
 @media screen and (max-width: 768px) {

@@ -22,11 +22,11 @@ function Poll() {
     axios.defaults.baseURL = "http://localhost:8080/poll/"
 
     const updateGreenCount = {
-        /*greenCount : pollData["greenCount"] + 1*/
+        greenCount : pollData["greenCount"] + 1
     }
 
     const updateRedCount ={
-        //redCount : pollData["redCount"] + 1
+        redCount : pollData["redCount"] + 1
     }
 
 
@@ -40,6 +40,8 @@ function Poll() {
     const voteNo = () => {
         axios.put(String(pollData["id"]), updateRedCount ) .then(response => {
             console.log("Updated successfully:", response.data);
+            navigate("/pollStatus", {state: {pollData: response.data}})
+
         })
     };
 
