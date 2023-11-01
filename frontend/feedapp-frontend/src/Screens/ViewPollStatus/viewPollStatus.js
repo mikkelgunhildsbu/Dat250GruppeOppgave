@@ -51,10 +51,10 @@ function ViewPollStatus() {
                 <p className="text-wrapper-3">{pollData?.timeLimitInMinutes} minutes remaining</p>
 
                 <div className={"resultDiv"}  id={"yes"}>
-                    Yes = {pollData?.greenCount}
+                    YES: {pollData?.greenCount}
                 </div>
                 <div className={"resultDiv"} id={"no"}>
-                    No = {pollData?.redCount}
+                    NO: {pollData?.redCount}
                 </div>
 
 
