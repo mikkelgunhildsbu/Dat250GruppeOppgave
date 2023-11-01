@@ -4,6 +4,8 @@ import './MainMenu.css';
 import {useNavigate} from "react-router-dom"
 import React from "react";
 import '../header.css'
+import {LoginView} from "../Login";
+
 
 
 
@@ -26,6 +28,7 @@ function MainMenu() {
     const backToLogin = () => {
         navigate("/")
     };
+
     return (
       <div className="main-menu">
           {/*<header className={"head"}>
@@ -39,6 +42,10 @@ function MainMenu() {
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
+              </div>
+
+              <div className={"loginAs"}>
+                  <p>Logged in as:</p>
               </div>
               <div className="text-wrapper-3">Main Menu</div>
               <Button
