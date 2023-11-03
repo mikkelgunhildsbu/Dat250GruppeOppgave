@@ -1,53 +1,69 @@
-/*
-We're constantly improving the code you see.
-Please share your feedback here: https://form.asana.com/?k=uvp-HPgd3_hyoXRBw1IcNg&d=1152665201300829
-*/
+import PropTypes from 'prop-types';
+import React, { useReducer } from 'react';
+import './style.css';
 
-import PropTypes from "prop-types";
-import React from "react";
-import { useReducer } from "react";
-import "./style.css";
+// Constants for action types
+const TOGGLE = 'toggle';
+const MOUSE_ENTER = 'mouse_enter';
+const MOUSE_LEAVE = 'mouse_leave';
+
+const switchReducer = (state, action, onChange) => {
+    switch (action.type) {
+        case TOGGLE:
+            const newState = { ...state, checked: !state.checked };
+            // Call the onChange callback if it's provided
+            if (onChange) {
+                onChange(newState.checked);
+            }
+            return newState;
+        case MOUSE_ENTER:
+            return { ...state, state: 'hovered' };
+        case MOUSE_LEAVE:
+            return { ...state, state: 'enabled' };
+        default:
+            return state;
+    }
+};
 
 export const Switch = ({
-                           checked,
-                           size,
-                           color,
-                           stateProp,
-                           className,
-                           switchClassName,
-                           overlapGroupClassName,
-                           slideClassName,
+                           checked = false,
+                            onChange,
+                           size = 'medium',
+                           color = 'default',
+                           stateProp = 'enabled',
+                           className = '',
+                           switchClassName = '',
+                           overlapGroupClassName = '',
+                           slideClassName = ''
                        }) => {
-    const [state, dispatch] = useReducer(reducer, {
-        checked: checked || false,
-        size: size || "medium",
-        color: color || "default",
-        state: stateProp || "enabled",
+    // Update the useReducer hook to include the `onChange` callback
+    const [state, dispatch] = useReducer((state, action) => switchReducer(state, action, onChange), {
+        checked,
+        size,
+        color,
+        state: stateProp
     });
+
+    const handleToggle = () => dispatch({ type: TOGGLE });
+    const handleMouseEnter = () => dispatch({ type: MOUSE_ENTER });
+    const handleMouseLeave = () => dispatch({ type: MOUSE_LEAVE });
+
+    const { checked: isChecked, size: currentSize, color: currentColor, state: currentState } = state;
 
     return (
         <div
             className={`switch ${className}`}
-            onMouseLeave={() => {
-                dispatch("mouse_leave");
-            }}
-            onMouseEnter={() => {
-                dispatch("mouse_enter");
-            }}
-            onClick={() => {
-                dispatch("click");
-            }}
+            onMouseLeave={handleMouseLeave}
+            onMouseEnter={handleMouseEnter}
+            onClick={handleToggle}
+
         >
-            <div className={`overlap-group-wrapper ${state.size} ${switchClassName}`}>
+            <div className={`overlap-group-wrapper ${currentSize} ${switchClassName}`}>
                 <div className={`overlap-group ${overlapGroupClassName}`}>
-                    <div className={`slide ${state.state} size-0-${state.size} checked-${state.checked} ${slideClassName}`}>
-                        <div
-                            className={`div state-${state.state} size-1-${state.size} checked-0-${state.checked} ${state.color}`}
-                        />
+                    <div className={`slide ${currentState} size-0-${currentSize} checked-${isChecked} ${slideClassName}`}>
+                        <div className={`div state-${currentState} size-1-${currentSize} checked-0-${isChecked} ${currentColor}`} />
                     </div>
-                    <div
-                        className={`knob state-0-${state.state} size-2-${state.size} checked-1-${state.checked} color-${state.color}`}
-                    >
+                    <div className={`knob state-0-${currentState} size-2-${currentSize} checked-1-${isChecked} color-${currentColor}`}>
                         <div className="knob-2" />
                     </div>
                 </div>
@@ -56,363 +72,10 @@ export const Switch = ({
     );
 };
 
-function reducer(state, action) {
-    if (state.checked === false && state.color === "default" && state.size === "medium" ) {
-        switch (action) {
-            case "click":
-                return {
-                    checked: true,
-                    color: "default",
-                    size: "medium",
-                    state: "enabled",
-                };
-        }
-    }
-
-    if (state.checked === false && state.color === "primary" && state.size === "medium" ) {
-        switch (action) {
-            case "click":
-                return {
-                    checked: true,
-                    color: "primary",
-                    size: "medium",
-                    state: "enabled",
-                };
-        }
-    }
-
-    if (state.checked === false && state.color === "error" && state.size === "medium" ) {
-        switch (action) {
-            case "click":
-                return {
-                    checked: true,
-                    color: "error",
-                    size: "medium",
-                    state: "enabled",
-                };
-        }
-    }
-
-    if (state.checked === false && state.color === "warning" && state.size === "medium" ) {
-        switch (action) {
-            case "click":
-                return {
-                    checked: true,
-                    color: "warning",
-                    size: "medium",
-                    state: "enabled",
-                };
-        }
-    }
-
-    if (state.checked === false && state.color === "info" && state.size === "medium" ) {
-        switch (action) {
-            case "click":
-                return {
-                    checked: true,
-                    color: "info",
-                    size: "medium",
-                    state: "enabled",
-                };
-        }
-    }
-
-    if (state.checked === false && state.color === "success" && state.size === "medium" ) {
-        switch (action) {
-            case "click":
-                return {
-                    checked: true,
-                    color: "success",
-                    size: "medium",
-                    state: "enabled",
-                };
-        }
-    }
-
-    if (state.checked === true && state.color === "default" && state.size === "medium" ) {
-        switch (action) {
-            case "click":
-                return {
-                    checked: false,
-                    color: "default",
-                    size: "medium",
-                    state: "enabled",
-                };
-        }
-    }
-
-    if (state.checked === true && state.color === "secondary" && state.size === "medium") {
-        switch (action) {
-            case "click":
-                return {
-                    checked: false,
-                    color: "secondary",
-                    size: "medium",
-                    state: "enabled",
-                };
-        }
-    }
-
-    if (state.checked === true && state.color === "error" && state.size === "medium") {
-        switch (action) {
-            case "click":
-                return {
-                    checked: false,
-                    color: "error",
-                    size: "medium",
-                    state: "enabled",
-                };
-        }
-    }
-
-    if (state.checked === true && state.color === "warning" && state.size === "medium" ) {
-        switch (action) {
-            case "click":
-                return {
-                    checked: false,
-                    color: "warning",
-                    size: "medium",
-                    state: "enabled",
-                };
-        }
-    }
-
-    if (state.checked === true && state.color === "info" && state.size === "medium" ) {
-        switch (action) {
-            case "click":
-                return {
-                    checked: false,
-                    color: "info",
-                    size: "medium",
-                    state: "enabled",
-                };
-        }
-    }
-
-    if (state.checked === true && state.color === "success" && state.size === "medium" ) {
-        switch (action) {
-            case "click":
-                return {
-                    checked: false,
-                    color: "success",
-                    size: "medium",
-                    state: "enabled",
-                };
-        }
-    }
-
-    if (state.checked === false && state.color === "default" && state.size === "small") {
-        switch (action) {
-            case "click":
-                return {
-                    checked: true,
-                    color: "default",
-                    size: "small",
-                    state: "enabled",
-                };
-        }
-    }
-
-    if (state.checked === false && state.color === "primary" && state.size === "small" ) {
-        switch (action) {
-            case "click":
-                return {
-                    checked: true,
-                    color: "primary",
-                    size: "small",
-                    state: "enabled",
-                };
-        }
-    }
-
-    if (state.checked === false && state.color === "error" && state.size === "small" ) {
-        switch (action) {
-            case "click":
-                return {
-                    checked: true,
-                    color: "error",
-                    size: "small",
-                    state: "enabled",
-                };
-        }
-    }
-
-    if (state.checked === false && state.color === "warning" && state.size === "small" ) {
-        switch (action) {
-            case "click":
-                return {
-                    checked: true,
-                    color: "warning",
-                    size: "small",
-                    state: "enabled",
-                };
-        }
-    }
-
-    if (state.checked === false && state.color === "info" && state.size === "small" ) {
-        switch (action) {
-            case "click":
-                return {
-                    checked: true,
-                    color: "info",
-                    size: "small",
-                    state: "enabled",
-                };
-        }
-    }
-
-    if (state.checked === false && state.color === "success" && state.size === "small" ) {
-        switch (action) {
-            case "click":
-                return {
-                    checked: true,
-                    color: "success",
-                    size: "small",
-                    state: "enabled",
-                };
-        }
-    }
-
-    if (state.checked === true && state.color === "default" && state.size === "small" ) {
-        switch (action) {
-            case "click":
-                return {
-                    checked: false,
-                    color: "default",
-                    size: "small",
-                    state: "enabled",
-                };
-        }
-    }
-
-    if (state.checked === true && state.color === "secondary" && state.size === "small" ) {
-        switch (action) {
-            case "click":
-                return {
-                    checked: false,
-                    color: "secondary",
-                    size: "small",
-                    state: "enabled",
-                };
-        }
-    }
-
-    if (state.checked === true && state.color === "error" && state.size === "small" ) {
-        switch (action) {
-            case "click":
-                return {
-                    checked: false,
-                    color: "error",
-                    size: "small",
-                    state: "enabled",
-                };
-        }
-    }
-
-    if (state.checked === true && state.color === "warning" && state.size === "small") {
-        switch (action) {
-            case "click":
-                return {
-                    checked: false,
-                    color: "warning",
-                    size: "small",
-                    state: "enabled",
-                };
-        }
-    }
-
-    if (state.checked === true && state.color === "info" && state.size === "small" ) {
-        switch (action) {
-            case "click":
-                return {
-                    checked: false,
-                    color: "info",
-                    size: "small",
-                    state: "enabled",
-                };
-        }
-    }
-
-    if (state.checked === true && state.color === "success" && state.size === "small" ) {
-        switch (action) {
-            case "click":
-                return {
-                    checked: false,
-                    color: "success",
-                    size: "small",
-                    state: "enabled",
-                };
-        }
-    }
-
-    if (state.checked === false && state.color === "secondary" && state.size === "medium") {
-        switch (action) {
-            case "click":
-                return {
-                    checked: true,
-                    color: "secondary",
-                    size: "medium",
-                    state: "enabled",
-                };
-        }
-    }
-
-    if (state.checked === true && state.color === "primary" && state.size === "medium") {
-        switch (action) {
-            case "click":
-                return {
-                    checked: false,
-                    color: "primary",
-                    size: "medium",
-                    state: "enabled",
-                };
-        }
-    }
-
-    if (state.checked === false && state.color === "secondary" && state.size === "small" ) {
-        switch (action) {
-            case "click":
-                return {
-                    checked: true,
-                    color: "secondary",
-                    size: "small",
-                    state: "enabled",
-                };
-        }
-    }
-
-    if (state.checked === true && state.color === "primary" && state.size === "small" ) {
-        switch (action) {
-            case "click":
-                return {
-                    checked: false,
-                    color: "primary",
-                    size: "small",
-                    state: "enabled",
-                };
-        }
-    }
-
-    switch (action) {
-        case "mouse_enter":
-            return {
-                ...state,
-                state: "hovered",
-            };
-
-        case "mouse_leave":
-            return {
-                ...state,
-                state: "enabled",
-            };
-    }
-
-    return state;
-}
-
 Switch.propTypes = {
     checked: PropTypes.bool,
-    size: PropTypes.oneOf(["medium", "small"]),
-    color: PropTypes.oneOf(["warning", "info", "default", "success", "secondary", "primary", "error"]),
-    stateProp: PropTypes.oneOf(["hovered", "disabled", "focused", "enabled"]),
+    onChange: PropTypes.func,
+    size: PropTypes.oneOf(['medium', 'small']),
+    color: PropTypes.oneOf(['warning', 'info', 'default', 'success', 'secondary', 'primary', 'error']),
+    stateProp: PropTypes.oneOf(['hovered', 'disabled', 'focused', 'enabled'])
 };

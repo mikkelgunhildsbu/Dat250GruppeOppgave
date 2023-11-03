@@ -22,19 +22,6 @@ export const JoinPoll = () => {
 
     const [data, setData] = useState(null);
 
-    {/*useEffect(() => {
-        // Replace with your Spring Boot API endpoint
-        const url = 'http://localhost:8080/poll/';
-
-        axios.get(url)
-            .then(response => {
-                setData(response.data);
-                console.log(response.data)
-            })
-            .catch(error => {
-                console.error("There was an error fetching data from the backend:", error);
-            });
-    }, []);*/}
 
     axios.defaults.baseURL = "http://localhost:8080/poll/"
 

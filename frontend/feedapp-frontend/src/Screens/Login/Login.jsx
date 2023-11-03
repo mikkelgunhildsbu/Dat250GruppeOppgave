@@ -5,14 +5,20 @@ import { TextField } from "../../components/TextField";
 import "./Login.css";
 import {useNavigate} from "react-router-dom"
 import {type} from "@testing-library/user-event/dist/type";
+import axios from "axios";
 
 
 
 export const LoginView = () => {
+
+    const [user, setUser] = useState({});
+
+
     const navigate = useNavigate(); // Create a history instance
 
     const handleContinueAsGuestClick = () => {
-        navigate("/mainmenu")
+        navigate("/mainmenu", {state: {userData : user }})
+        console.log(user)
     };
 
 
@@ -48,6 +54,10 @@ export const LoginView = () => {
         }
     }
 
+    const handleLinkClick = () => {
+        navigate("/createUser")
+    }
+
 
     return (
 
@@ -58,6 +68,7 @@ export const LoginView = () => {
                         <div className="text-wrapper-4">New user?</div>
                         <Link
                             className="link-instance"
+                            onClick = {handleLinkClick}
                             color="primary"
                             link="Create an account"
                             stateProp="enabled"

@@ -8,7 +8,7 @@ import React from "react";
 import { useReducer } from "react";
 import "./style.css";
 
-export const Link = ({ link = "Link", color, underline, stateProp, className }) => {
+export const Link = ({ link = "Link", color, onClick, underline, stateProp, className }) => {
   const [state, dispatch] = useReducer(reducer, {
     color: color || "primary",
     underline: underline || "always",
@@ -24,6 +24,7 @@ export const Link = ({ link = "Link", color, underline, stateProp, className }) 
       onMouseEnter={() => {
         dispatch("mouse_enter");
       }}
+      onClick={onClick}
     >
       <div className={`text-wrapper ${state.state} ${state.color}`}>{link}</div>
       {(state.underline === "always" || (state.state === "hovered" && state.underline === "on-hover")) && (

@@ -6,7 +6,8 @@ import {JoinPoll} from "./Screens/JoinPoll";
 import {CreatePollScreen} from "./Screens/CreatePoll";
 import {ViewPoll} from "./Screens/ViewPoll";
 import Poll from "./Screens/Poll/poll";
-import ViewPollStatus from "./Screens/ViewPollStatus/viewPollStatus"; // Import other components as needed
+import ViewPollStatus from "./Screens/ViewPollStatus/viewPollStatus";
+import CreateUser from "./Screens/CreateUser/createUser"; // Import other components as needed
 
 const App = () => {
     return (
@@ -18,6 +19,7 @@ const App = () => {
             <Route path="/viewPoll" element={<ViewPoll/>} />
             <Route path="/poll" element={<Poll/>} />
             <Route path="/pollStatus" element={<ViewPollStatus/>} />
+            <Route path="/createUser" element={<CreateUser/>} />
             {/* ... other routes here ... */}
         </Routes>
     );

@@ -2,13 +2,11 @@ import logo from '../../logo.svg';
 import { Button } from "../../components/Button";
 import './poll.css';
 import {useNavigate} from "react-router-dom"
-import React from "react";
+import React, {useEffect, useState} from "react";
 import '../header.css'
 import {LoginView} from "../Login";
 import { useLocation } from 'react-router-dom';
 import axios from "axios";
-
-
 
 
 
@@ -48,6 +46,32 @@ function Poll() {
     const backToMainMenu = () => {
         navigate("/mainmenu")
     };
+
+    /*const [remainingTime, setRemainingTime] = useState(pollData?.timeLimitInMinutes * 60); // convert minutes to seconds
+
+    useEffect(() => {
+        // Update the document title using the browser API
+        const timer = setInterval(() => {
+            setRemainingTime((prevTime) => {
+                if (prevTime <= 1) {
+                    clearInterval(timer); // clear timer if it reaches zero
+                    // Here you can handle what happens when the timer ends, for example:
+                    navigate('/pollStatus', {state:{pollData}})
+                }
+                return prevTime - 1; // decrease time by one second
+            });
+        }, 1000);
+
+        // Clean up the interval on component unmount
+        return () => clearInterval(timer);
+    }, [navigate]);
+
+    // Function to display the remaining time in minutes and seconds
+    const formatTime = (seconds) => {
+        const minutes = Math.floor(seconds / 60);
+        const secs = seconds % 60;
+        return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
+    };*/
 
     return (
         <div className="poll">

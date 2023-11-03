@@ -7,8 +7,15 @@ import {useNavigate} from "react-router-dom";
 import axios from "axios";
 
 export const CreatePollScreen = () => {
-    const navigate = useNavigate(); // Create a history instance
+    const navigate = useNavigate();
 
+    const [isPrivate, setIsPrivate] = useState(false);
+
+
+    const handleSwitchChange = (checked) => {
+        setIsPrivate(checked)
+
+    };
 
     const backToMainMenu = () => {
         navigate("/mainmenu")
@@ -27,7 +34,6 @@ export const CreatePollScreen = () => {
     }
 
 
-
     const handleCreatePoll = () => {
         if (questionValue === '' || timeValue === ''){
             alert("Please fill out all fields")
@@ -37,7 +43,7 @@ export const CreatePollScreen = () => {
                 "status": "OPEN",
                 "question": questionValue,
                 "timeLimitInMinutes": timeValue,
-                "privatePoll": true,
+                "privatePoll": isPrivate,
 
             }
             axios.post("http://localhost:8080/poll", data).then(response => {
@@ -86,7 +92,8 @@ export const CreatePollScreen = () => {
 
                     <div className="text-wrapper-3">Private</div>
                     <Switch
-                        checked
+                        checked={isPrivate}
+                        onChange={handleSwitchChange}
                         className="switch-instance"
                         color="primary"
                         overlapGroupClassName="switch-2"

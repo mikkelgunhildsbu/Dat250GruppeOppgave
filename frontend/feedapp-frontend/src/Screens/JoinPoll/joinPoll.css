@@ -30,7 +30,7 @@
 .text-wrapper{
     margin-top: 1%;
     font-size: 120%;
-    font-family: "Arial Black";
+    font-family: "Arial Black", serif;
     text-align: center;
 }
 /* Media queries for responsiveness, making it behave like .login-view on smaller screens */
