@@ -1,0 +1,202 @@
+:root {
+  --button-large-font-family: "Roboto-Medium", Helvetica;
+  --button-large-font-size: 15px;
+  --button-large-font-style: normal;
+  --button-large-font-weight: 500;
+  --button-large-letter-spacing: 0.46000000834465027px;
+  --button-large-line-height: 26px;
+  --button-medium-font-family: "Roboto-Medium", Helvetica;
+  --button-medium-font-size: 14px;
+  --button-medium-font-style: normal;
+  --button-medium-font-weight: 500;
+  --button-medium-letter-spacing: 0.4000000059604645px;
+  --button-medium-line-height: 24px;
+  --button-small-font-family: "Roboto-Medium", Helvetica;
+  --button-small-font-size: 13px;
+  --button-small-font-style: normal;
+  --button-small-font-weight: 500;
+  --button-small-letter-spacing: 0.46000000834465027px;
+  --button-small-line-height: 22px;
+  --elevation-2: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+    0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+  --elevation-4: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14),
+    0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+  --elevation-6: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14),
+    0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+  --input-helper-font-family: "Roboto-Regular", Helvetica;
+  --input-helper-font-size: 12px;
+  --input-helper-font-style: normal;
+  --input-helper-font-weight: 400;
+  --input-helper-letter-spacing: 0.4000000059604645px;
+  --input-helper-line-height: 165.9999966621399%;
+  --input-label-font-family: "Roboto-Regular", Helvetica;
+  --input-label-font-size: 12px;
+  --input-label-font-style: normal;
+  --input-label-font-weight: 400;
+  --input-label-letter-spacing: 0.15000000596046448px;
+  --input-label-line-height: 12px;
+  --input-value-font-family: "Roboto-Regular", Helvetica;
+  --input-value-font-size: 16px;
+  --input-value-font-style: normal;
+  --input-value-font-weight: 400;
+  --input-value-letter-spacing: 0.15000000596046448px;
+  --input-value-line-height: 24px;
+  --lightfocus-ring-color: rgba(0, 95, 204, 1);
+  --material-colors-blue-200: rgba(144, 202, 249, 1);
+  --material-colors-blue-400: rgba(66, 165, 245, 1);
+  --material-colors-blue-500: rgba(33, 150, 243, 1);
+  --material-colors-blue-600: rgba(30, 136, 229, 1);
+  --material-colors-green-400: rgba(102, 187, 106, 1);
+  --material-colors-green-700: rgba(56, 142, 60, 1);
+  --material-colors-green-800: rgba(46, 125, 50, 1);
+  --material-colors-green-900: rgba(27, 94, 32, 1);
+  --material-colors-grey-100: rgba(245, 245, 245, 1);
+  --material-colors-grey-300: rgba(224, 224, 224, 1);
+  --material-colors-lightblue-400: rgba(41, 182, 246, 1);
+  --material-colors-lightblue-700: rgba(2, 136, 209, 1);
+  --material-colors-lightblue-900: rgba(1, 87, 155, 1);
+  --material-colors-orange-400: rgba(255, 167, 38, 1);
+  --material-colors-orange-800: rgba(239, 108, 0, 1);
+  --material-colors-purple-200: rgba(206, 147, 216, 1);
+  --material-colors-purple-400: rgba(171, 71, 188, 1);
+  --material-colors-purple-500: rgba(156, 39, 176, 1);
+  --material-colors-purple-700: rgba(123, 31, 162, 1);
+  --material-colors-red-500: rgba(244, 67, 54, 1);
+  --material-colors-red-700: rgba(211, 47, 47, 1);
+  --material-colors-red-800: rgba(198, 40, 40, 1);
+  --palette-action-disabled: rgba(0, 0, 0, 0.38);
+  --palette-action-disabledbackground: rgba(0, 0, 0, 0.12);
+  --palette-action-hover: rgba(0, 0, 0, 0.04);
+  --palette-common-white-main: rgba(255, 255, 255, 1);
+  --palette-error-contrast: rgba(255, 255, 255, 1);
+  --palette-error-dark: var(--material-colors-red-800);
+  --palette-error-hover: rgba(211, 47, 47, 0.04);
+  --palette-error-main: var(--material-colors-red-700);
+  --palette-error-outlinedborder: rgba(211, 47, 47, 0.5);
+  --palette-info-contrast: rgba(255, 255, 255, 1);
+  --palette-info-dark: var(--material-colors-lightblue-900);
+  --palette-info-hover: rgba(2, 136, 209, 0.04);
+  --palette-info-main: var(--material-colors-lightblue-700);
+  --palette-info-outlinedborder: rgba(2, 136, 209, 0.5);
+  --palette-primary-contrast: rgba(255, 255, 255, 1);
+  --palette-primary-dark: var(--material-colors-blue-600);
+  --palette-primary-hover: rgba(33, 150, 243, 0.04);
+  --palette-primary-main: var(--material-colors-blue-500);
+  --palette-primary-outlinedborder: rgba(33, 150, 243, 0.5);
+  --palette-secondary-contrast: rgba(255, 255, 255, 1);
+  --palette-secondary-dark: var(--material-colors-purple-700);
+  --palette-secondary-hover: rgba(156, 39, 176, 0.04);
+  --palette-secondary-main: var(--material-colors-purple-500);
+  --palette-secondary-outlinedborder: rgba(156, 39, 176, 0.5);
+  --palette-success-contrast: rgba(255, 255, 255, 1);
+  --palette-success-dark: var(--material-colors-green-900);
+  --palette-success-hover: rgba(46, 125, 50, 0.04);
+  --palette-success-main: var(--material-colors-green-800);
+  --palette-success-outlinedborder: rgba(46, 125, 50, 0.5);
+  --palette-text-disabled: rgba(0, 0, 0, 0.38);
+  --palette-text-primary: rgba(0, 0, 0, 0.87);
+  --palette-text-secondary: rgba(0, 0, 0, 0.6);
+  --palette-warning-contrast: rgba(255, 255, 255, 1);
+  --palette-warning-hover: rgba(239, 108, 0, 0.04);
+  --palette-warning-main: var(--material-colors-orange-800);
+  --palette-warning-outlinedborder: rgba(239, 108, 0, 0.5);
+  --shape-borderradius: 4px;
+  --typography-body1-font-family: "Roboto-Regular", Helvetica;
+  --typography-body1-font-size: 16px;
+  --typography-body1-font-style: normal;
+  --typography-body1-font-weight: 400;
+  --typography-body1-letter-spacing: 0.15000000596046448px;
+  --typography-body1-line-height: 150%;
+  --typography-h4-font-family: "Roboto-Regular", Helvetica;
+  --typography-h4-font-size: 34px;
+  --typography-h4-font-style: normal;
+  --typography-h4-font-weight: 400;
+  --typography-h4-letter-spacing: 0.25px;
+  --typography-h4-line-height: 123.50000143051147%;
+}
+
+/*
+
+To enable a theme in your HTML, simply add one of the following data attributes to an HTML element, like so:
+
+<body data-palette-mode="light">
+    <!-- the rest of your content -->
+</body>
+
+You can apply the theme on any DOM node, not just the `body`
+
+*/
+
+[data-palette-mode="light"] {
+  --palette-action-disabled: rgba(0, 0, 0, 0.38);
+  --palette-action-disabledbackground: rgba(0, 0, 0, 0.12);
+  --palette-action-hover: rgba(0, 0, 0, 0.04);
+  --palette-error-dark: var(--material-colors-red-800);
+  --palette-error-hover: rgba(211, 47, 47, 0.04);
+  --palette-error-main: var(--material-colors-red-700);
+  --palette-error-outlinedborder: rgba(211, 47, 47, 0.5);
+  --palette-info-contrast: rgba(255, 255, 255, 1);
+  --palette-info-dark: var(--material-colors-lightblue-900);
+  --palette-info-hover: rgba(2, 136, 209, 0.04);
+  --palette-info-main: var(--material-colors-lightblue-700);
+  --palette-info-outlinedborder: rgba(2, 136, 209, 0.5);
+  --palette-primary-contrast: rgba(255, 255, 255, 1);
+  --palette-primary-dark: var(--material-colors-blue-600);
+  --palette-primary-hover: rgba(33, 150, 243, 0.04);
+  --palette-primary-main: var(--material-colors-blue-500);
+  --palette-primary-outlinedborder: rgba(33, 150, 243, 0.5);
+  --palette-secondary-contrast: rgba(255, 255, 255, 1);
+  --palette-secondary-dark: var(--material-colors-purple-700);
+  --palette-secondary-hover: rgba(156, 39, 176, 0.04);
+  --palette-secondary-main: var(--material-colors-purple-500);
+  --palette-secondary-outlinedborder: rgba(156, 39, 176, 0.5);
+  --palette-success-contrast: rgba(255, 255, 255, 1);
+  --palette-success-dark: var(--material-colors-green-900);
+  --palette-success-hover: rgba(46, 125, 50, 0.04);
+  --palette-success-main: var(--material-colors-green-800);
+  --palette-success-outlinedborder: rgba(46, 125, 50, 0.5);
+  --palette-text-disabled: rgba(0, 0, 0, 0.38);
+  --palette-text-primary: rgba(0, 0, 0, 0.87);
+  --palette-text-secondary: rgba(0, 0, 0, 0.6);
+  --palette-warning-contrast: rgba(255, 255, 255, 1);
+  --palette-warning-hover: rgba(239, 108, 0, 0.04);
+  --palette-warning-main: var(--material-colors-orange-800);
+  --palette-warning-outlinedborder: rgba(239, 108, 0, 0.5);
+}
+
+[data-palette-mode="dark"] {
+  --palette-action-disabled: rgba(255, 255, 255, 0.38);
+  --palette-action-disabledbackground: rgba(255, 255, 255, 0.12);
+  --palette-action-hover: rgba(255, 255, 255, 0.08);
+  --palette-error-dark: var(--material-colors-red-700);
+  --palette-error-hover: rgba(244, 67, 54, 0.08);
+  --palette-error-main: var(--material-colors-red-500);
+  --palette-error-outlinedborder: rgba(244, 67, 54, 0.5);
+  --palette-info-contrast: rgba(0, 0, 0, 0.87);
+  --palette-info-dark: var(--material-colors-lightblue-700);
+  --palette-info-hover: rgba(41, 182, 246, 0.08);
+  --palette-info-main: var(--material-colors-lightblue-400);
+  --palette-info-outlinedborder: rgba(41, 182, 246, 0.5);
+  --palette-primary-contrast: rgba(0, 0, 0, 0.87);
+  --palette-primary-dark: var(--material-colors-blue-400);
+  --palette-primary-hover: rgba(144, 202, 249, 0.08);
+  --palette-primary-main: var(--material-colors-blue-200);
+  --palette-primary-outlinedborder: rgba(144, 202, 249, 0.5);
+  --palette-secondary-contrast: rgba(0, 0, 0, 0.87);
+  --palette-secondary-dark: var(--material-colors-purple-400);
+  --palette-secondary-hover: rgba(206, 147, 216, 0.08);
+  --palette-secondary-main: var(--material-colors-purple-200);
+  --palette-secondary-outlinedborder: rgba(206, 147, 216, 0.5);
+  --palette-success-contrast: rgba(0, 0, 0, 0.87);
+  --palette-success-dark: var(--material-colors-green-700);
+  --palette-success-hover: rgba(102, 187, 106, 0.08);
+  --palette-success-main: var(--material-colors-green-400);
+  --palette-success-outlinedborder: rgba(102, 187, 106, 0.5);
+  --palette-text-disabled: rgba(255, 255, 255, 0.38);
+  --palette-text-primary: rgba(255, 255, 255, 1);
+  --palette-text-secondary: rgba(255, 255, 255, 0.7);
+  --palette-warning-contrast: rgba(0, 0, 0, 0.87);
+  --palette-warning-hover: rgba(255, 167, 38, 0.08);
+  --palette-warning-main: var(--material-colors-orange-400);
+  --palette-warning-outlinedborder: rgba(255, 167, 38, 0.5);
+}

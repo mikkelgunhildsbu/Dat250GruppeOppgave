@@ -1,0 +1,1 @@
+export {ViewPoll} from "./viewPoll"

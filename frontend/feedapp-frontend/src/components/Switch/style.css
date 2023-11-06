@@ -1,0 +1,399 @@
+.switch {
+    align-items: center;
+    display: inline-flex;
+    position: relative;
+}
+
+.switch .overlap-group-wrapper {
+    position: relative;
+}
+
+.switch .overlap-group {
+    position: relative;
+}
+
+.switch .slide {
+    align-items: center;
+    display: inline-flex;
+    left: 0;
+    position: absolute;
+    top: 0;
+}
+
+.switch .div {
+    border-radius: 100px;
+    position: relative;
+}
+
+.switch .knob {
+    align-items: center;
+    display: inline-flex;
+    position: absolute;
+    top: 0;
+}
+
+.switch .knob-2 {
+    box-shadow: var(--palette-secondary-main);
+    position: relative;
+}
+
+.switch .medium {
+    height: 38px;
+    width: 58px;
+}
+
+.switch .small {
+    height: 24px;
+    width: 40px;
+}
+
+.switch .disabled {
+    opacity: 0.38;
+}
+
+.switch .size-0-small {
+    padding: 7px;
+}
+
+.switch .size-0-medium {
+    padding: 12px;
+}
+
+.switch .checked-false {
+    opacity: 0.38;
+}
+
+.switch .checked-true.focused {
+    opacity: 0.5;
+}
+
+.switch .checked-true.hovered {
+    opacity: 0.5;
+}
+
+.switch .checked-true.enabled {
+    opacity: 0.5;
+}
+
+.switch .state-disabled {
+    background-color: var(--palette-action-disabledbackground);
+}
+
+.switch .size-1-small {
+    height: 10px;
+    width: 26px;
+}
+
+.switch .size-1-medium {
+    height: 14px;
+    width: 34px;
+}
+
+.switch .state-focused.checked-0-false {
+    background-color: var(--palette-secondary-main);
+}
+
+.switch .state-enabled.default {
+    background-color: var(--material-colors-purple-700);
+}
+
+.switch .state-enabled.checked-0-false {
+    background-color: var(--material-colors-purple-700);
+}
+
+.switch .state-hovered.default {
+    background-color: var(--material-colors-purple-700);
+}
+
+.switch .state-hovered.checked-0-false {
+    background-color: var(--material-colors-purple-700);
+}
+
+.switch .state-focused.default {
+    background-color: var(--material-colors-purple-700);
+}
+
+.switch .checked-0-true.state-enabled.warning {
+    background-color: var(--palette-warning-main);
+}
+
+.switch .checked-0-true.secondary.state-enabled {
+    background-color: var(--palette-secondary-main);
+}
+
+.switch .checked-0-true.state-enabled.info {
+    background-color: var(--palette-info-main);
+}
+
+.switch .checked-0-true.state-focused.info {
+    background-color: var(--palette-info-main);
+}
+
+.switch .checked-0-true.primary.state-hovered {
+    background-color: var(--palette-primary-main);
+}
+
+.switch .checked-0-true.success.state-enabled {
+    background-color: var(--palette-success-main);
+}
+
+.switch .checked-0-true.error.state-hovered {
+    background-color: var(--palette-error-main);
+}
+
+.switch .checked-0-true.error.state-focused {
+    background-color: var(--palette-error-main);
+}
+
+.switch .checked-0-true.primary.state-enabled {
+    background-color: var(--palette-primary-main);
+}
+
+.switch .checked-0-true.state-focused.secondary {
+    background-color: var(--palette-secondary-main);
+}
+
+.switch .checked-0-true.state-focused.warning {
+    background-color: var(--palette-warning-main);
+}
+
+.switch .checked-0-true.secondary.state-hovered {
+    background-color: var(--palette-secondary-main);
+}
+
+.switch .checked-0-true.state-hovered.info {
+    background-color: var(--palette-info-main);
+}
+
+.switch .checked-0-true.state-focused.primary {
+    background-color: var(--palette-primary-main);
+}
+
+.switch .checked-0-true.success.state-focused {
+    background-color: var(--palette-success-main);
+}
+
+.switch .checked-0-true.success.state-hovered {
+    background-color: var(--palette-success-main);
+}
+
+.switch .checked-0-true.state-hovered.warning {
+    background-color: var(--palette-warning-main);
+}
+
+.switch .checked-0-true.error.state-enabled {
+    background-color: var(--palette-error-main);
+}
+
+.switch .state-0-hovered {
+    border-radius: 100px;
+}
+
+.switch .size-2-small {
+    padding: 4px;
+}
+
+.switch .size-2-medium {
+    padding: 9px;
+}
+
+.switch .checked-1-false {
+    left: 0;
+}
+
+.switch .state-0-focused {
+    border-radius: 100px;
+}
+
+.switch .state-0-focused.checked-1-false {
+    background-color: var(--palette-common-white-main);
+}
+
+.switch .state-0-hovered.color-default {
+    background-color: var(--palette-action-hover);
+}
+
+.switch .checked-1-true.size-2-medium {
+    left: 20px;
+}
+
+.switch .state-0-hovered.checked-1-false {
+    background-color: var(--palette-action-hover);
+}
+
+.switch .state-0-focused.color-default {
+    background-color: var(--palette-common-white-main);
+}
+
+.switch .checked-1-true.size-2-small {
+    gap: 10px;
+    left: 16px;
+}
+
+.switch .checked-1-true.state-0-focused.color-info {
+    background-color: var(--material-colors-green-400);
+}
+
+.switch .checked-1-true.color-primary.state-0-hovered {
+    background-color: var(--palette-primary-hover);
+}
+
+.switch .checked-1-true.color-error.state-0-hovered {
+    background-color: var(--palette-error-hover);
+}
+
+.switch .checked-1-true.color-error.state-0-focused {
+    background-color: var(--material-colors-red-500);
+}
+
+.switch .checked-1-true.state-0-focused.color-secondary {
+    background-color: var(--palette-secondary-outlinedborder);
+}
+
+.switch .checked-1-true.state-0-focused.color-warning {
+    background-color: var(--material-colors-orange-400);
+}
+
+.switch .checked-1-true.color-secondary.state-0-hovered {
+    background-color: var(--palette-secondary-hover);
+}
+
+.switch .checked-1-true.state-0-hovered.color-info {
+    background-color: var(--palette-info-hover);
+}
+
+.switch .checked-1-true.state-0-focused.color-primary {
+    background-color: var(--material-colors-orange-400);
+}
+
+.switch .checked-1-true.color-success.state-0-focused {
+    background-color: var(--material-colors-green-400);
+}
+
+.switch .checked-1-true.color-success.state-0-hovered {
+    background-color: var(--palette-success-hover);
+}
+
+.switch .checked-1-true.state-0-hovered.color-warning {
+    background-color: var(--palette-warning-hover);
+}
+
+.switch .overlap-group-wrapper.medium .overlap-group {
+    height: 38px;
+}
+
+.switch .overlap-group-wrapper.small .overlap-group {
+    height: 24px;
+}
+
+.switch .knob.state-0-disabled .knob-2 {
+    background-color: var(--palette-secondary-dark);
+}
+
+.switch .knob.size-2-small .knob-2 {
+    border-radius: 8px;
+    height: 16px;
+    width: 16px;
+}
+
+.switch .knob.size-2-medium .knob-2 {
+    border-radius: 10px;
+    height: 20px;
+    width: 20px;
+}
+
+.switch .knob.state-0-focused.checked-1-false .knob-2 {
+    background-color: var(--palette-secondary-main);
+}
+
+.switch .knob.state-0-enabled.checked-1-false .knob-2 {
+    background-color: var(--palette-secondary-main);
+}
+
+.switch .knob.state-0-hovered.checked-1-false .knob-2 {
+    background-color: var(--palette-secondary-main);
+}
+
+.switch .knob.checked-1-true.state-0-enabled.color-warning .knob-2 {
+    background-color: var(--palette-warning-main);
+}
+
+.switch .knob.checked-1-true.color-secondary.state-0-enabled .knob-2 {
+    background-color: var(--palette-secondary-main);
+}
+
+.switch .knob.checked-1-true.state-0-enabled.color-info .knob-2 {
+    background-color: var(--palette-info-main);
+}
+
+.switch .knob.checked-1-true.state-0-focused.color-info .knob-2 {
+    background-color: var(--palette-info-main);
+}
+
+.switch .knob.checked-1-true.color-primary.state-0-hovered .knob-2 {
+    background-color: var(--palette-primary-main);
+}
+
+.switch .knob.checked-1-true.color-success.state-0-enabled .knob-2 {
+    background-color: var(--palette-success-main);
+}
+
+.switch .knob.checked-1-true.color-error.state-0-hovered .knob-2 {
+    background-color: var(--palette-error-main);
+}
+
+.switch .knob.checked-1-true.state-0-hovered.color-default .knob-2 {
+    background-color: var(--palette-common-white-main);
+}
+
+.switch .knob.checked-1-true.color-error.state-0-focused .knob-2 {
+    background-color: var(--palette-error-main);
+}
+
+.switch .knob.checked-1-true.color-primary.state-0-enabled .knob-2 {
+    background-color: var(--palette-primary-main);
+}
+
+.switch .knob.checked-1-true.state-0-focused.color-secondary .knob-2 {
+    background-color: var(--palette-secondary-main);
+}
+
+.switch .knob.checked-1-true.state-0-focused.color-warning .knob-2 {
+    background-color: var(--palette-warning-main);
+}
+
+.switch .knob.checked-1-true.color-secondary.state-0-hovered .knob-2 {
+    background-color: var(--palette-secondary-main);
+}
+
+.switch .knob.checked-1-true.state-0-hovered.color-info .knob-2 {
+    background-color: var(--palette-info-main);
+}
+
+.switch .knob.checked-1-true.state-0-focused.color-primary .knob-2 {
+    background-color: var(--palette-primary-main);
+}
+
+.switch .knob.checked-1-true.state-0-focused.color-default .knob-2 {
+    background-color: var(--palette-common-white-main);
+}
+
+.switch .knob.checked-1-true.state-0-enabled.color-default .knob-2 {
+    background-color: var(--palette-common-white-main);
+}
+
+.switch .knob.checked-1-true.color-success.state-0-focused .knob-2 {
+    background-color: var(--palette-success-main);
+}
+
+.switch .knob.checked-1-true.color-success.state-0-hovered .knob-2 {
+    background-color: var(--palette-success-main);
+}
+
+.switch .knob.checked-1-true.state-0-hovered.color-warning .knob-2 {
+    background-color: var(--palette-warning-main);
+}
+
+.switch .knob.checked-1-true.color-error.state-0-enabled .knob-2 {
+    background-color: var(--palette-error-main);
+}

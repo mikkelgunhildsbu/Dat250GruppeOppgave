@@ -1,0 +1,29 @@
+
+.poll {
+    align-items: center;
+    background-color: #0288D10A;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 100vh; /* Viewport Height */
+    justify-content: center;
+    padding: 0% 10%; /* Relative to parent dimensions */
+    position: relative;
+}
+
+
+
+/* For smaller devices */
+@media screen and (max-width: 768px) {
+
+    .poll.form {
+        padding: 3% 5%;
+    }
+
+
+
+    .poll .button-instance {
+        height: auto; /* Resetting to auto so the content determines height */
+        width: 90%;
+    }
+}
