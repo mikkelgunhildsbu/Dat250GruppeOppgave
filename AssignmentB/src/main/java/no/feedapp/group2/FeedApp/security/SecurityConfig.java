@@ -37,7 +37,8 @@ public class SecurityConfig {
                         .requestMatchers(new AntPathRequestMatcher("/customer")).permitAll()
                         .anyRequest().authenticated()
                 )
-                .httpBasic(withDefaults());
+                .formLogin(withDefaults());
+        //.httpBasic(withDefaults());
 
         return http.build();
     }
