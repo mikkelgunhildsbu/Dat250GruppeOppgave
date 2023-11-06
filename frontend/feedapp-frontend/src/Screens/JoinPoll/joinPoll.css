@@ -1,0 +1,46 @@
+
+.join-poll {
+    align-items: center;
+    background-color: #0288D10A;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 100vh; /* Viewport Height */
+    justify-content: center;
+    padding: 0% 10%; /* Relative to parent dimensions */
+    position: relative;
+}
+
+
+
+
+/* Using the same styles as .login-view for the inner elements for consistency */
+.join-poll .text-field-instance, .join-poll .button-instance {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 80%;
+    max-width: 793px;
+    margin: 20px auto; /* Add vertical spacing and centering */
+}
+
+
+
+.text-wrapper{
+    margin-top: 1%;
+    font-size: 120%;
+    font-family: "Arial Black", serif;
+    text-align: center;
+}
+/* Media queries for responsiveness, making it behave like .login-view on smaller screens */
+@media screen and (max-width: 768px) {
+    .join-poll .div {
+        height: auto;
+        padding: 20px;
+    }
+
+    .join-poll .text-field-instance, .join-poll .button-instance {
+        width: 90%; /* Provide more width on smaller screens */
+    }
+}

@@ -1,0 +1,53 @@
+.form {
+    align-items: center;
+    background-color: #29B6F614;
+    box-shadow: 0px 8px 8px #29B6F614;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    height: 800px;
+    max-height: 80vh;
+    justify-content: center;
+    width: 80%;
+    max-width: 800px;
+    margin: auto;
+    position: relative;
+}
+
+.text-wrapper-2 {
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 48px;
+    font-weight: 400;
+}
+
+body{
+    background-color: #0288D10A;
+}
+.back-arrow {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.loginAs{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 50px;
+    background-color: #CE93D87F; /* Example color */
+    width: 120%;
+}
+
+.header-item {
+    color: white; /* Example color */
+    cursor: pointer;
+}

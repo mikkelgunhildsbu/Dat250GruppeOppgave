@@ -1,0 +1,166 @@
+.text-field {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 220px;
+}
+
+.text-field .input {
+  align-items: flex-start;
+  align-self: stretch;
+  height: 30px;
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  position: relative;
+  width: 99%;
+}
+
+.text-field .temp-label {
+  font-family: var(--input-label-font-family);
+  font-size: var(--input-label-font-size);
+  font-style: var(--input-label-font-style);
+  font-weight: var(--input-label-font-weight);
+  letter-spacing: var(--input-label-letter-spacing);
+  line-height: var(--input-label-line-height);
+  margin-top: -1px;
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.text-field .label {
+  align-self: stretch;
+  position: relative;
+}
+
+.text-field .value {
+  flex: 1;
+  font-family: var(--input-value-font-family);
+  font-size: var(--input-value-font-size);
+  font-style: var(--input-value-font-style);
+  font-weight: var(--input-value-font-weight);
+  letter-spacing: var(--input-value-letter-spacing);
+  line-height: var(--input-value-line-height);
+  margin-top: -1px;
+  position: relative;
+}
+
+.text-field .img {
+  align-self: stretch;
+  position: relative;
+  width: 100%;
+}
+
+.text-field .medium {
+  gap: 6px;
+}
+
+.text-field .small {
+  gap: 4.5px;
+}
+
+.text-field .state-0-hovered {
+  color: var(--palette-text-secondary);
+}
+
+.text-field .state-0-disabled {
+  color: var(--palette-text-disabled);
+}
+
+.text-field .state-0-error {
+  color: var(--palette-error-main);
+}
+
+.text-field .has-value-false {
+  opacity: 0;
+}
+
+.text-field .state-0-enabled {
+  color: var(--palette-text-secondary);
+}
+
+.text-field .state-0-focused {
+  color: var(--palette-primary-main);
+}
+
+.text-field .has-value-0-true {
+  align-items: center;
+  display: flex;
+  flex: 0 0 auto;
+  min-height: 24px;
+  min-width: 24px;
+  width: 100%;
+}
+
+.text-field .has-value-0-false {
+  font-family: var(--input-value-font-family);
+  font-size: var(--input-value-font-size);
+  font-style: var(--input-value-font-style);
+  font-weight: var(--input-value-font-weight);
+  letter-spacing: var(--input-value-letter-spacing);
+  line-height: var(--input-value-line-height);
+}
+
+.text-field .state-1-enabled.has-value-0-false {
+  color: var(--palette-text-secondary);
+}
+
+.text-field .state-1-focused.has-value-0-false {
+  color: var(--palette-text-secondary);
+}
+
+.text-field .has-value-0-false.state-1-error {
+  color: var(--palette-text-secondary);
+}
+
+.text-field .has-value-0-false.state-1-hovered {
+  color: var(--palette-text-secondary);
+}
+
+.text-field .has-value-0-false.state-1-disabled {
+  color: var(--palette-text-disabled);
+}
+
+.text-field .state-3-hovered {
+  height: 2px;
+}
+
+.text-field .state-3-disabled {
+  height: 1px;
+  object-fit: cover;
+}
+
+.text-field .state-3-focused {
+  height: 2px;
+}
+
+.text-field .state-3-enabled {
+  height: 1px;
+  object-fit: cover;
+}
+
+.text-field .state-3-error {
+  height: 2px;
+}
+
+.text-field .label.state-1-hovered .value {
+  color: var(--palette-text-primary);
+}
+
+.text-field .label.state-1-disabled .value {
+  color: var(--palette-text-disabled);
+}
+
+.text-field .label.state-1-focused .value {
+  color: var(--palette-text-primary);
+}
+
+.text-field .label.state-1-enabled .value {
+  color: var(--palette-text-primary);
+}
+
+.text-field .label.state-1-error .value {
+  color: var(--palette-text-primary);
+}

@@ -1,0 +1,53 @@
+
+.create-poll-screen {
+    align-items: center;
+    background-color: #0288D10A;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 100vh; /* Viewport Height */
+    justify-content: center;
+    padding: 0% 10%; /* Relative to parent dimensions */
+    position: relative;
+}
+
+
+
+.create-poll-screen .button-instance, .create-poll-screen .text-field-instance {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 80%;
+    max-width: 793px;
+    margin: 20px auto
+}
+
+/* Adjustments for individual elements, where needed */
+
+
+.create-poll-screen .switch-instance {
+    display: flex;
+    justify-content: center;
+    height: 52px;
+    width: 89px;
+}
+
+/* ... Retain any other unique styles you need for specific elements here ... */
+
+/* Media queries for responsiveness */
+@media screen and (max-width: 768px) {
+    .create-poll-screen .div-2 {
+        height: auto;
+        padding: 20px;
+    }
+
+    .create-poll-screen .text-wrapper-2,
+    .create-poll-screen .switch-instance,
+    .create-poll-screen .button-instance,
+    .create-poll-screen .text-field-instance,
+    .create-poll-screen .text-field-2,
+    .create-poll-screen .text-wrapper-3 {
+        width: 90%; /* Provide more width on smaller screens */
+    }
+}

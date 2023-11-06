@@ -1,0 +1,47 @@
+.view-poll{
+    align-items: center;
+    background-color: #0288D10A;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 100vh; /* Viewport Height */
+    justify-content: center;
+    padding: 0% 10%; /* Relative to parent dimensions */
+    position: relative;
+}
+
+.view-poll .form{
+    justify-content: flex-start;
+    overflow: auto;
+
+}
+
+
+.previousPoll1 {
+    display: flex;         /* Introduce flex layout */
+    align-items: center;   /* Vertically align items in the middle */
+    justify-content: space-between; /* Distribute space between items */
+    width: 95%;
+
+}
+
+.text-wrapper-4 {
+
+    flex: 1;                /* Allow the text to grow and occupy available space */
+    padding-right: 20px;   /* Some padding before the button */
+}
+
+.view-poll .form .button-instance {
+    white-space: nowrap ;
+    width: 20%;
+    margin-right: 10px;
+    height: 80%;
+
+}
+
+@media screen and (max-width: 768px) {
+    .view-poll.form .button-instance {
+    }
+}
+
+
