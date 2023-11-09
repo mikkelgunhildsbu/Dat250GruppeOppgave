@@ -7,7 +7,6 @@ import no.feedapp.group2.FeedApp.domain.Customer;
 import no.feedapp.group2.FeedApp.repositories.CustomerRepository;
 import no.feedapp.group2.FeedApp.repositories.PollRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.parameters.P;
@@ -35,8 +34,8 @@ public class CustomerService implements ICustomerService {
     }
 
     @Override
-    @PostAuthorize("returnObject.userName == authentication.name || hasRole('ADMIN')")
-    public Customer getCustomerById(Long id) throws CustomerNotFoundException {
+    @PreAuthorize("hasAuthority('CUSTOMER_' + #id) || hasRole('ADMIN')")
+    public Customer getCustomerById(@P("id") Long id) throws CustomerNotFoundException {
         var auth = SecurityContextHolder.getContext().getAuthentication();
 
         var customer = customerRepository.findByUserId(id);
