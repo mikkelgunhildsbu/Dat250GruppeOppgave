@@ -13,10 +13,13 @@ import axios from "axios";
 
 
 
+
+
 function MainMenu() {
     const navigate = useNavigate(); // Create a history instance
 
     const token = Cookies.get('Token');
+    console.log(token)
 
 
     const joinPollClick = () => {
@@ -41,10 +44,12 @@ function MainMenu() {
     useEffect( () => {
         axios.get("1",{
             headers:{
-                "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJGZWVkQXBwIiwic3ViIjoibkBuLmNvbSIsImV4cCI6MTY5OTU0NzEyMCwiaWF0IjoxNjk5NTM2MzIwfQ.9GCue2-vxzzugrP2BHGNuYWalMVi432IDXJ5slwwjMo"
+                "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJGZWVkQXBwIiwic3ViIjoibkBuLmNvbSIsImV4cCI6MTY5OTU0Nzk0NywiaWF0IjoxNjk5NTM3MTQ3fQ.megQ2rGV7IdgXwczma-tczYZgyAbpH1ZGx_opcz67n0"
             }
         }).then(response =>{
             console.log(response.data)
+        }).catch(error => {
+            console.log( error.message)
         })
 
     })
