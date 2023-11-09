@@ -14,6 +14,7 @@ import no.feedapp.group2.FeedApp.domain.Poll;
 import no.feedapp.group2.FeedApp.services.IPollService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -76,6 +77,7 @@ public class PollController {
 
     @Operation(summary = "Delete all polls belonging to a given user")
     @DeleteMapping("/poll")
+    @PreAuthorize("hasAuthority('CUSTOMER_' + #userId) || hasRole('ADMIN')")
     public ResponseEntity<Void> deleteAllPollsBysUserId(@Parameter(description = "The user id") @RequestParam(name = "userId") @Min(1) long userId) throws CustomerNotFoundException {
         pollService.deletePollsByUserId(userId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
