@@ -6,6 +6,7 @@ import "./Login.css";
 import {useNavigate} from "react-router-dom"
 import {type} from "@testing-library/user-event/dist/type";
 import axios from "axios";
+import Cookies from 'js-cookie';
 
 
 
@@ -40,6 +41,10 @@ export const LoginView = () => {
             /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
         );
     }
+    const loginRequest = {
+        email: inputValue,
+        password: passwordValue
+    };
 
     const handleSignIn = () => {
 
@@ -48,9 +53,14 @@ export const LoginView = () => {
         }else if(!validateEmail(inputValue)){
             alert("enter valid email")
         }else {
-            console.log("Email: " + inputValue + "\n Password: " + passwordValue)
-            navigate("/mainmenu")
-            return (inputValue + passwordValue)
+            axios.post("http://localhost:8080/login", loginRequest).then((response) => {
+                console.log('Login successful');
+                Cookies.set('Token', response.data.token);
+                navigate("/mainmenu")
+
+            }).catch((error) => {
+                console.error('Error logging in:', error);
+            });
         }
     }
 

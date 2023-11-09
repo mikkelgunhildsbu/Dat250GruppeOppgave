@@ -22,6 +22,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @Validated
+@CrossOrigin(origins = "http://localhost:3000")
 public class PollController {
 
     private final IPollService pollService;

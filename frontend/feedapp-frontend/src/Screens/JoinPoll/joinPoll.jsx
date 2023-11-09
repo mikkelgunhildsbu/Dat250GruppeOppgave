@@ -5,11 +5,15 @@ import "./joinPoll.css";
 import "../header.css"
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
+import Cookies from 'js-cookie';
+
 
 
 export const JoinPoll = () => {
 
     const navigate = useNavigate(); // Create a history instance
+
+    const token = Cookies.get('Token');
 
     const [inputValue, setInputValue] = useState('');
     const handleInputChange = (event) => {
@@ -29,7 +33,7 @@ export const JoinPoll = () => {
         if (inputValue === ""){
             alert("Enter poll ID")
         } else{
-            axios.get(inputValue).then(response => {
+            axios.get(inputValue, token).then(response => {
                 setData(response.data)
                 navigate("/poll" , {state: {pollData: response.data}})
             }).catch(error => {
