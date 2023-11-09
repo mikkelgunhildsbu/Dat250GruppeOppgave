@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @Validated
+@CrossOrigin
 public class CustomerController {
 
     private final ICustomerService customerService;

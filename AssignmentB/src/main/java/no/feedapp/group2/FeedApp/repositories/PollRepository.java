@@ -15,4 +15,6 @@ public interface PollRepository extends CrudRepository<Poll, Long> {
     @Transactional
     void deletePollsByUserUserId(long Id);
     List<Poll> findPollsByUserUserId(Long UserId);
+
+    //List<Poll> findAllByStatus(PollStatus pollStatus);
 }

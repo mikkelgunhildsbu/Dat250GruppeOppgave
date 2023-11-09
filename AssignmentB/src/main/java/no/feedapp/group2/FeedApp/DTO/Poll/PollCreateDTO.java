@@ -9,6 +9,8 @@ import no.feedapp.group2.FeedApp.domain.Customer;
 import no.feedapp.group2.FeedApp.domain.Poll;
 import no.feedapp.group2.FeedApp.domain.PollStatus;
 
+import java.time.LocalDateTime;
+
 @Setter
 @Getter
 public class PollCreateDTO {
@@ -17,6 +19,7 @@ public class PollCreateDTO {
     private @Valid PollStatus status;
     private String question;
     private int timeLimitInMinutes;
+    private LocalDateTime closingTime;
     private boolean privatePoll;
 
     public PollCreateDTO(long userId, PollStatus pollStatus, String question, int timeLimitInMinutes, boolean privatePoll) {
@@ -25,6 +28,8 @@ public class PollCreateDTO {
         this.question = question;
         this.timeLimitInMinutes = timeLimitInMinutes;
         this.privatePoll = privatePoll;
+        this.closingTime = getClosingTime();
+
     }
 
     public static Poll convertToPoll(PollCreateDTO pollDTO, Customer customer) {

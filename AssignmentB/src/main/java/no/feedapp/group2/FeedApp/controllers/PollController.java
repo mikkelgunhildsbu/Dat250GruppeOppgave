@@ -21,6 +21,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @Validated
+@CrossOrigin
 public class PollController {
 
     private final IPollService pollService;
@@ -79,4 +80,9 @@ public class PollController {
         pollService.deletePollsByUserId(userId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+ /*
+    @Scheduled(fixedRate = 6000)
+    public void closeExpiredPolls() {
+        pollService.closeExpiredPolls();
+    }*/
 }
