@@ -4,7 +4,8 @@ import { Switch } from "../../components/Switch";
 import { TextField } from "../../components/TextField";
 import "./createPoll.css";
 import {useNavigate} from "react-router-dom";
-import axios from "axios";
+import axios, {get} from "axios";
+import {LoginView} from "../Login";
 
 export const CreatePollScreen = () => {
     const navigate = useNavigate();

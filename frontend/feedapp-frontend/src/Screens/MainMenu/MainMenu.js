@@ -5,6 +5,7 @@ import {useNavigate} from "react-router-dom"
 import React from "react";
 import '../header.css'
 import {LoginView} from "../Login";
+import Cookies from 'js-cookie';
 
 
 
@@ -12,6 +13,9 @@ import {LoginView} from "../Login";
 
 function MainMenu() {
     const navigate = useNavigate(); // Create a history instance
+
+    const name = Cookies.get('userKey');
+
 
     const joinPollClick = () => {
         navigate("/joinPoll")

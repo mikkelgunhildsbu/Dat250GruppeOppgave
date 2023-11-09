@@ -6,10 +6,13 @@ import "./Login.css";
 import {useNavigate} from "react-router-dom"
 import {type} from "@testing-library/user-event/dist/type";
 import axios from "axios";
+import Cookies from 'js-cookie';
 
 
 
 export const LoginView = () => {
+
+    Cookies.set('userKey', "2");
 
     const [user, setUser] = useState({});
 
