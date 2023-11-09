@@ -19,8 +19,8 @@ public class CustomerDetailsService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        var customer = customerRepository.findByUserName(username)
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        var customer = customerRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
 
         Collection<GrantedAuthority> authorities = new ArrayList<>();
@@ -28,7 +28,7 @@ public class CustomerDetailsService implements UserDetailsService {
         authorities.add(new SimpleGrantedAuthority("ROLE_" + customer.getRole()));
 
         return User.builder()
-                .username(customer.getUserName())
+                .username(customer.getEmail())
                 .password(customer.getPassword())
                 .authorities(authorities)
                 .build();
