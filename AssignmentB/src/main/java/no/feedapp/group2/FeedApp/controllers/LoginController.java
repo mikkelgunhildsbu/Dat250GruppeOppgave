@@ -1,5 +1,9 @@
 package no.feedapp.group2.FeedApp.controllers;
 
+import no.feedapp.group2.FeedApp.DTO.Login.LoginRequest;
+import no.feedapp.group2.FeedApp.DTO.Login.LoginResponse;
+import no.feedapp.group2.FeedApp.security.JwtUtil;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -18,16 +22,18 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<Void> login(@RequestBody LoginRequest loginRequest) {
+    public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest loginRequest) {
         Authentication authenticationRequest =
-                UsernamePasswordAuthenticationToken.unauthenticated(loginRequest.username(), loginRequest.password());
+                UsernamePasswordAuthenticationToken.unauthenticated(loginRequest.getEmail(), loginRequest.getPassword());
         Authentication authenticationResponse =
                 this.authenticationManager.authenticate(authenticationRequest);
 
-        return ResponseEntity.ok().build();
-    }
+        if (!authenticationResponse.isAuthenticated()) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
 
-    public record LoginRequest(String username, String password) {
+        var token = JwtUtil.createToken(loginRequest.getEmail());
+        var response = new LoginResponse("Bearer " + token);
+        return ResponseEntity.ok(response);
     }
-
 }
