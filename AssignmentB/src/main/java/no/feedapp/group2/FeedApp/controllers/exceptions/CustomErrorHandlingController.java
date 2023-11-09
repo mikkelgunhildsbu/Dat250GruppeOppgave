@@ -31,15 +31,15 @@ class CustomErrorHandlingController {
         return error;
     }
 
-    @ExceptionHandler(IllegalArgumentException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ResponseBody
-    CustomErrorResponse onIllegalArgumentException(IllegalArgumentException e) {
-        CustomErrorResponse error = new CustomErrorResponse();
-        error.getErrors().add(
-                new CustomError("Illegal argument", e.getMessage()));
-        return error;
-    }
+//    @ExceptionHandler(IllegalArgumentException.class)
+//    @ResponseStatus(HttpStatus.BAD_REQUEST)
+//    @ResponseBody
+//    CustomErrorResponse onIllegalArgumentException(IllegalArgumentException e) {
+//        CustomErrorResponse error = new CustomErrorResponse();
+//        error.getErrors().add(
+//                new CustomError("Illegal argument", e.getMessage()));
+//        return error;
+//    }
 
     @ExceptionHandler(CustomerNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)

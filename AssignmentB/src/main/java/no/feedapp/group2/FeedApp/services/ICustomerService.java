@@ -29,6 +29,7 @@ public interface ICustomerService {
      */
     Customer updateCustomer(Long id, CustomerUpdateDTO updatedCustomer) throws CustomerNotFoundException;
 
+
     /**
      * A method for deleting an existing customer
      *

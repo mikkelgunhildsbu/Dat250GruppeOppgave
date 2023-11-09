@@ -9,6 +9,7 @@ import no.feedapp.group2.FeedApp.repositories.PollRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Objects;
 
@@ -24,7 +25,8 @@ public class CustomerServiceTests {
     void setUp() {
         customerRepository = Mockito.mock(CustomerRepository.class);
         pollRepository = Mockito.mock(PollRepository.class);
-        customerService = new CustomerService(customerRepository, pollRepository);
+        PasswordEncoder passwordEncoder = null;
+        customerService = new CustomerService(customerRepository, pollRepository, passwordEncoder);
     }
 
     @Test

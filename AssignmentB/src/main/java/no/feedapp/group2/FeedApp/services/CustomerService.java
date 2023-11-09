@@ -7,6 +7,10 @@ import no.feedapp.group2.FeedApp.domain.Customer;
 import no.feedapp.group2.FeedApp.repositories.CustomerRepository;
 import no.feedapp.group2.FeedApp.repositories.PollRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.parameters.P;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,19 +18,26 @@ public class CustomerService implements ICustomerService {
     private final CustomerRepository customerRepository;
     private final PollRepository pollRepository;
 
+    private final PasswordEncoder passwordEncoder;
+
     @Autowired
-    public CustomerService(CustomerRepository customerRepository, PollRepository pollRepository) {
+    public CustomerService(CustomerRepository customerRepository, PollRepository pollRepository, PasswordEncoder passwordEncoder) {
         this.customerRepository = customerRepository;
         this.pollRepository = pollRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
     public void createCustomer(Customer customer) {
+        customer.setPassword(passwordEncoder.encode(customer.getPassword()));
         customerRepository.save(customer);
     }
 
     @Override
-    public Customer getCustomerById(Long id) throws CustomerNotFoundException {
+    @PreAuthorize("hasAuthority('CUSTOMER_' + #id) || hasRole('ADMIN')")
+    public Customer getCustomerById(@P("id") Long id) throws CustomerNotFoundException {
+        var auth = SecurityContextHolder.getContext().getAuthentication();
+
         var customer = customerRepository.findByUserId(id);
         if (customer == null) {
             throw new CustomerNotFoundException(id);
@@ -36,7 +47,8 @@ public class CustomerService implements ICustomerService {
     }
 
     @Override
-    public Customer updateCustomer(Long id, CustomerUpdateDTO updatedCustomer) throws CustomerNotFoundException {
+    @PreAuthorize("hasAuthority('CUSTOMER_' + #id) || hasRole('ADMIN')")
+    public Customer updateCustomer(@P("id") Long id, CustomerUpdateDTO updatedCustomer) throws CustomerNotFoundException {
         Customer existingCustomer = customerRepository.findByUserId(id);
 
         if (existingCustomer == null) {
@@ -62,7 +74,8 @@ public class CustomerService implements ICustomerService {
 
     @Override
     @Transactional
-    public void deleteCustomer(Long id) throws CustomerNotFoundException {
+    @PreAuthorize("hasAuthority('CUSTOMER_' + #id) || hasRole('ADMIN')")
+    public void deleteCustomer(@P("id") Long id) throws CustomerNotFoundException {
         var customer = customerRepository.findByUserId(id);
         if (customer == null) {
             throw new CustomerNotFoundException(id);
