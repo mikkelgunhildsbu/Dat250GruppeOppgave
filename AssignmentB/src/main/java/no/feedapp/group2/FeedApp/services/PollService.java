@@ -11,9 +11,14 @@ import no.feedapp.group2.FeedApp.domain.PollStatus;
 import no.feedapp.group2.FeedApp.repositories.CustomerRepository;
 import no.feedapp.group2.FeedApp.repositories.PollRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class PollService implements IPollService {
@@ -28,6 +33,7 @@ public class PollService implements IPollService {
     }
 
     @Override
+    @PreAuthorize("hasAuthority('CUSTOMER_' + #pollCreateDTO.getUserId()) || hasRole('ADMIN')")
     public Poll createPoll(PollCreateDTO pollCreateDTO) throws CustomerNotFoundException {
         Customer customer = customerRepository.findByUserId(pollCreateDTO.getUserId());
         if (customer == null) {
@@ -63,11 +69,11 @@ public class PollService implements IPollService {
     public Poll updatePoll(Long id, PollUpdateDTO pollUpdateDTO) throws PollNotFoundException, PollClosedException {
         Poll existingPoll = getPollById(id);
 
-        if (existingPoll == null) {
-            throw new PollNotFoundException(id);
+        if (!Objects.equals(SecurityContextHolder.getContext().getAuthentication().getName(), existingPoll.getUser().getEmail())) {
+            throw new AccessDeniedException("You are not the owner of this poll");
         }
 
-        if (existingPoll.getStatus() == PollStatus.CLOSED){
+        if (existingPoll.getStatus() == PollStatus.CLOSED) {
             throw new PollClosedException(id);
         }
 
@@ -95,12 +101,18 @@ public class PollService implements IPollService {
     @Override
     public void deletePoll(Long id) throws PollNotFoundException {
         var poll = pollRepository.getPollById(id);
+
         if (poll == null) throw new PollNotFoundException(id);
+
+        if (!Objects.equals(SecurityContextHolder.getContext().getAuthentication().getName(), poll.getUser().getEmail())) {
+            throw new AccessDeniedException("You are not the owner of this poll");
+        }
         pollRepository.deletePollById(id);
     }
 
     @Override
-    public void deletePollsByUserId(Long userId) throws CustomerNotFoundException {
+    @PreAuthorize("hasAuthority('CUSTOMER_' + #userId) || hasRole('ADMIN')")
+    public void deletePollsByUserId(@P("userId") Long userId) throws CustomerNotFoundException {
         var customer = customerRepository.findByUserId(userId);
         if (customer == null) throw new CustomerNotFoundException(userId);
 
