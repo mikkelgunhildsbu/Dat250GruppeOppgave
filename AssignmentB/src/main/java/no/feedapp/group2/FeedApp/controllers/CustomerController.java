@@ -33,7 +33,6 @@ public class CustomerController {
 
     @Operation(summary = "Get a customer by its id")
     @GetMapping("/customer/{id}")
-
     public ResponseEntity<CustomerDTO> getCustomerById(@Parameter(description = "The customer id") @PathVariable @Min(1) long id) throws CustomerNotFoundException {
         Customer customer = customerService.getCustomerById(id);
 
