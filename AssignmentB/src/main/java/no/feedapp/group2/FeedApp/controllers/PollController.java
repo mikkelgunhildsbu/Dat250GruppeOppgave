@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @Validated
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin
 public class PollController {
 
     private final IPollService pollService;

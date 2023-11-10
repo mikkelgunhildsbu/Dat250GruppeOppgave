@@ -8,13 +8,6 @@ import {LoginView} from "../Login";
 import Cookies from 'js-cookie';
 import axios from "axios";
 
-
-
-
-
-
-
-
 function MainMenu() {
     const navigate = useNavigate(); // Create a history instance
 
@@ -42,9 +35,9 @@ function MainMenu() {
     axios.defaults.baseURL = "http://localhost:8080/customer/"
 
     useEffect( () => {
-        axios.get("1",{
+        axios.get("2",{
             headers:{
-                "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJGZWVkQXBwIiwic3ViIjoibkBuLmNvbSIsImV4cCI6MTY5OTU0Nzk0NywiaWF0IjoxNjk5NTM3MTQ3fQ.megQ2rGV7IdgXwczma-tczYZgyAbpH1ZGx_opcz67n0"
+                "Authorization": token,
             }
         }).then(response =>{
             console.log(response.data)
