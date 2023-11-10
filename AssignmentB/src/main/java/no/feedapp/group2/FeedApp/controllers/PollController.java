@@ -7,12 +7,11 @@ import jakarta.validation.constraints.Min;
 import no.feedapp.group2.FeedApp.DTO.Poll.PollCreateDTO;
 import no.feedapp.group2.FeedApp.DTO.Poll.PollDTO;
 import no.feedapp.group2.FeedApp.DTO.Poll.PollUpdateDTO;
+import no.feedapp.group2.FeedApp.DTO.Poll.addVoteDTO;
 import no.feedapp.group2.FeedApp.controllers.exceptions.CustomerNotFoundException;
 import no.feedapp.group2.FeedApp.controllers.exceptions.PollClosedException;
 import no.feedapp.group2.FeedApp.controllers.exceptions.PollNotFoundException;
 import no.feedapp.group2.FeedApp.domain.Poll;
-import no.feedapp.group2.FeedApp.domain.PollStatus;
-import no.feedapp.group2.FeedApp.rabbitMQ.Publisher;
 import no.feedapp.group2.FeedApp.services.IPollService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -68,6 +67,15 @@ public class PollController {
         var updatedPoll = pollService.updatePoll(id, pollUpdateDTO);
 
         return ResponseEntity.ok(PollDTO.PollToDTO(updatedPoll));
+    }
+
+    @Operation(summary = "Update vote")
+    @PostMapping("/poll/{id}")
+    public ResponseEntity<PollDTO> addVoteToPoll(@Parameter(description = "The poll id") @PathVariable @Min(1) long id, @Valid addVoteDTO vote) throws PollClosedException, PollNotFoundException {
+        var updatedPoll = pollService.addVote(id, vote.getVote());
+
+        return ResponseEntity.ok(PollDTO.PollToDTO(updatedPoll));
+
     }
 
 

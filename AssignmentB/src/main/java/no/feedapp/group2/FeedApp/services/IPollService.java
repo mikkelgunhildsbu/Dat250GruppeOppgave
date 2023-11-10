@@ -6,6 +6,7 @@ import no.feedapp.group2.FeedApp.controllers.exceptions.CustomerNotFoundExceptio
 import no.feedapp.group2.FeedApp.controllers.exceptions.PollClosedException;
 import no.feedapp.group2.FeedApp.controllers.exceptions.PollNotFoundException;
 import no.feedapp.group2.FeedApp.domain.Poll;
+import no.feedapp.group2.FeedApp.domain.Vote;
 
 import java.util.List;
 
@@ -57,5 +58,7 @@ public interface IPollService {
      */
     void deletePollsByUserId(Long userId) throws CustomerNotFoundException;
 
-   // void closeExpiredPolls();
+    Poll addVote(long id, Vote vote) throws PollNotFoundException, PollClosedException;
+
+    // void closeExpiredPolls();
 }

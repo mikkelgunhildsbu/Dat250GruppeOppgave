@@ -24,31 +24,19 @@ function Poll() {
 
     axios.defaults.baseURL = "http://localhost:8080/poll/"
 
-    const updateGreenCount = {
-        greenCount : pollData["greenCount"] + 1
+    const green = {
+        vote:"GREEN"
     }
-
-    const updateRedCount ={
-        redCount : pollData["redCount"] + 1
-    }
-
-    if (pollData.closingTime === 0){
-        navigate("/pollStatus", {state: pollData})
-
-    }
-
-
     const voteYes = () => {
-        axios.put(String(pollData["id"]), updateGreenCount ) .then(response => {
-            console.log("Updated successfully:", response.data);
+        axios.post(String(pollData["id"]),green) .then(response => {
+            console.log("Updated Green:", response.data);
             navigate("/pollStatus", {state: {pollData: response.data}})
         })
     };
 
 
-
     const voteNo = () => {
-        axios.put(String(pollData["id"]), updateRedCount ) .then(response => {
+        axios.post(String(pollData["id"]), "RED" ) .then(response => {
             console.log("Updated successfully:", response.data);
             navigate("/pollStatus", {state: {pollData: response.data}})
 

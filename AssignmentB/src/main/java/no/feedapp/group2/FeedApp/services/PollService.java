@@ -8,6 +8,7 @@ import no.feedapp.group2.FeedApp.controllers.exceptions.PollNotFoundException;
 import no.feedapp.group2.FeedApp.domain.Customer;
 import no.feedapp.group2.FeedApp.domain.Poll;
 import no.feedapp.group2.FeedApp.domain.PollStatus;
+import no.feedapp.group2.FeedApp.domain.Vote;
 import no.feedapp.group2.FeedApp.rabbitMQ.Publisher;
 import no.feedapp.group2.FeedApp.repositories.CustomerRepository;
 import no.feedapp.group2.FeedApp.repositories.PollRepository;
@@ -128,6 +129,26 @@ public class PollService implements IPollService {
         pollRepository.deletePollsByUserUserId(userId);
 
 
+    }
+
+    @Override
+
+    public Poll addVote(long id, Vote vote) throws PollNotFoundException, PollClosedException {
+        Poll existingPoll = getPollById(id);
+
+        if (existingPoll.getStatus() == PollStatus.CLOSED) {
+            throw new PollClosedException(id);
+        }
+
+        if (vote == Vote.GREEN){
+            existingPoll.setGreenCount(existingPoll.getGreenCount() + 1);
+        } else {
+            existingPoll.setRedCount(existingPoll.getRedCount() + 1);
+        }
+
+        pollRepository.save(existingPoll);
+
+        return existingPoll;
     }
 
 
