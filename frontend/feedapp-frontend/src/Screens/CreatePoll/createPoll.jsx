@@ -61,6 +61,7 @@ export const CreatePollScreen = () => {
 
 
             }).catch(error => {
+                alert(error)
                 console.error("Error posting data:", error);
             });
 

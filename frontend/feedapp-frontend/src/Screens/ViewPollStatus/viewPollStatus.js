@@ -17,9 +17,28 @@ function ViewPollStatus() {
     const intervalTime = 5000;  // every 5 seconds
 
     let email = Cookies.get("Email")
+    let token = Cookies.get("Token")
 
     useEffect(() => {
+        const closingDateTime = new Date(pollData?.closingTime);
+
+
         const fetchData = () => {
+            if (closingDateTime <= new Date() && pollData["status"] === "OPEN" ) {
+                let closeStatus ={
+                    status : "CLOSED"
+                }
+                axios.put(`http://localhost:8080/poll/${pollData["id"]}`, closeStatus, {
+                    headers: {
+                        "Authorization" : token
+                    }
+                }).then(response => {
+                    console.log("Updated successfully:", response.data);
+                }).catch((error) =>(
+                    console.log(error)
+                ))
+            }
+
             axios.get(`http://localhost:8080/poll/${pollData["id"]}`)
                 .then(response => {
                     setPollData(response.data);
@@ -28,6 +47,7 @@ function ViewPollStatus() {
                     console.error('Error fetching updates:', error);
                 });
         };
+
 
         const intervalId = setInterval(fetchData, intervalTime);
 
@@ -38,6 +58,7 @@ function ViewPollStatus() {
     const backToMainMenu = () => {
         navigate("/mainmenu");
     };
+
 
     return (
         <div className="pollStatus">

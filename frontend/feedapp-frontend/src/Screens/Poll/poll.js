@@ -19,6 +19,7 @@ function Poll() {
     const pollData = location.state?.pollData;
 
     let email = Cookies.get("Email")
+    let token = Cookies.get("Token")
 
 
     axios.defaults.baseURL = "http://localhost:8080/poll/"
@@ -44,6 +45,8 @@ function Poll() {
         })
     };
 
+
+
     const voteNo = () => {
         axios.put(String(pollData["id"]), updateRedCount ) .then(response => {
             console.log("Updated successfully:", response.data);
@@ -55,7 +58,36 @@ function Poll() {
     const backToMainMenu = () => {
         navigate("/mainmenu")
     };
-    
+
+    const intervalTime = 5000;  // every 5 seconds
+
+    useEffect(() => {
+        const closingDateTime = new Date(pollData?.closingTime);
+
+        const fetchData = () => {
+
+            if (closingDateTime <= new Date()) {
+                let closeStatus ={
+                    status : "CLOSED"
+                }
+                axios.put(String(pollData["id"]), closeStatus , {
+                    headers: {
+                        "Authorization" : token
+                    }
+                }).then(response => {
+                    console.log("Updated successfully:", response.data);
+                    navigate("/pollStatus", {state: {pollData: response.data}})
+                }).catch((error) =>(
+                    console.log(error)
+                ))
+            }}
+        const intervalId = setInterval(fetchData, intervalTime);
+        return () => clearInterval(intervalId);
+
+    })
+
+
+
 
     return (
         <div className="poll">
