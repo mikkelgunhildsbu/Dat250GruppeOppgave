@@ -8,6 +8,7 @@ import no.feedapp.group2.FeedApp.controllers.exceptions.PollNotFoundException;
 import no.feedapp.group2.FeedApp.domain.Customer;
 import no.feedapp.group2.FeedApp.domain.Poll;
 import no.feedapp.group2.FeedApp.domain.PollStatus;
+import no.feedapp.group2.FeedApp.rabbitMQ.Publisher;
 import no.feedapp.group2.FeedApp.repositories.CustomerRepository;
 import no.feedapp.group2.FeedApp.repositories.PollRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,11 +68,18 @@ public class PollService implements IPollService {
 
 
     @Override
-    public Poll updatePoll(Long id, PollUpdateDTO pollUpdateDTO) throws PollNotFoundException, PollClosedException {
+    public Poll updatePoll(Long id, PollUpdateDTO pollUpdateDTO) throws PollNotFoundException, PollClosedException, Exception {
         Poll existingPoll = getPollById(id);
 
         if (!Objects.equals(SecurityContextHolder.getContext().getAuthentication().getName(), existingPoll.getUser().getEmail())) {
             throw new AccessDeniedException("You are not the owner of this poll");
+        }
+
+        if (pollUpdateDTO.getStatus().equals(PollStatus.CLOSED)){
+            Publisher publisher = new Publisher();
+            String message = id + "," + existingPoll.getQuestion() + "," + existingPoll.getGreenCount() + "," + existingPoll.getRedCount();
+            publisher.Publish(message);
+
         }
 
         if (existingPoll.getStatus() == PollStatus.CLOSED) {
