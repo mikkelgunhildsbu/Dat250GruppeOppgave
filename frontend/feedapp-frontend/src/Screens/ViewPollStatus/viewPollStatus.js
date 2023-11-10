@@ -4,6 +4,7 @@ import { Button } from "../../components/Button";
 import './viewPollStatus.css';
 import { useNavigate, useLocation } from 'react-router-dom';
 import axios from "axios";
+import Cookies from "js-cookie";
 import PollCountdownTimer from "../PollCountDownTimer";
 
 function ViewPollStatus() {
@@ -14,6 +15,8 @@ function ViewPollStatus() {
     const [pollData, setPollData] = useState(initialPollData);
 
     const intervalTime = 5000;  // every 5 seconds
+
+    let email = Cookies.get("Email")
 
     useEffect(() => {
         const fetchData = () => {
@@ -45,8 +48,9 @@ function ViewPollStatus() {
                     </svg>
                 </div>
 
+
                 <div className={"loginAs"}>
-                    <p>Logged in as:</p>
+                    <p>Logged in as: {email}</p>
                 </div>
                 <div className="text-wrapper-3">Results: {pollData?.question}</div>
                 <p className="text-wrapper-3"><PollCountdownTimer closingTime={pollData?.closingTime} /> minutes remaining</p>

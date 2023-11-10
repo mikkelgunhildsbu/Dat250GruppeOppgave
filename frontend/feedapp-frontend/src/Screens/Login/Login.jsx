@@ -21,6 +21,8 @@ export const LoginView = () => {
 
     const handleContinueAsGuestClick = () => {
         navigate("/mainmenu", {state: {userData : user }})
+        Cookies.set("Email", "GUEST")
+
         console.log(user)
     };
 
@@ -63,6 +65,7 @@ export const LoginView = () => {
 
             }).catch((error) => {
                 console.error('Error logging in:', error);
+
             });
         }
     }
