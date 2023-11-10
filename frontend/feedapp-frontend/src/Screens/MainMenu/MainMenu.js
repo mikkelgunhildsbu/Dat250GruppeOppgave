@@ -12,7 +12,7 @@ function MainMenu() {
     const navigate = useNavigate(); // Create a history instance
 
     const token = Cookies.get('Token');
-    console.log(token)
+    const email = Cookies.get('Email');
 
 
     const joinPollClick = () => {
@@ -35,12 +35,13 @@ function MainMenu() {
     axios.defaults.baseURL = "http://localhost:8080/customer/"
 
     useEffect( () => {
-        axios.get("2",{
+        axios.get("1",{
             headers:{
                 "Authorization": token,
             }
         }).then(response =>{
             console.log(response.data)
+            console.log(email)
         }).catch(error => {
             console.log( error.message)
         })

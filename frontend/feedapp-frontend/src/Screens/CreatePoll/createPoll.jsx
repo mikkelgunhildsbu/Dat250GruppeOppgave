@@ -5,6 +5,8 @@ import { TextField } from "../../components/TextField";
 import "./createPoll.css";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
+import Cookies from 'js-cookie';
+
 
 export const CreatePollScreen = () => {
     const navigate = useNavigate();
@@ -33,7 +35,7 @@ export const CreatePollScreen = () => {
 
     }
 
-
+    const token = Cookies.get("Token")
     const handleCreatePoll = () => {
         if (questionValue === '' || timeValue === ''){
             alert("Please fill out all fields")
@@ -46,7 +48,11 @@ export const CreatePollScreen = () => {
                 "privatePoll": isPrivate,
 
             }
-            axios.post("http://localhost:8080/poll", data).then(response => {
+            axios.post("http://localhost:8080/poll", data,{
+                headers:{
+                    "Authorization": token,
+                }
+            }).then(response => {
                 setQuestionValue('');
                 navigate("/pollStatus" ,{state: {pollData: response.data}})
                 alert("created a poll with pollId" + response.data["id"] )

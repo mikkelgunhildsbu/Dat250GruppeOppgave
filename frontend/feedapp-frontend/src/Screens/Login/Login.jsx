@@ -55,6 +55,7 @@ export const LoginView = () => {
         }else {
             axios.post("http://localhost:8080/login", loginRequest).then((response) => {
                 console.log('Login successful');
+                Cookies.set("Email", inputValue)
                 Cookies.set('Token', response.data.token);
                 navigate("/mainmenu")
 
