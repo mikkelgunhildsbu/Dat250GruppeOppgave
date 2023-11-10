@@ -11,6 +11,8 @@ import no.feedapp.group2.FeedApp.controllers.exceptions.CustomerNotFoundExceptio
 import no.feedapp.group2.FeedApp.controllers.exceptions.PollClosedException;
 import no.feedapp.group2.FeedApp.controllers.exceptions.PollNotFoundException;
 import no.feedapp.group2.FeedApp.domain.Poll;
+import no.feedapp.group2.FeedApp.domain.PollStatus;
+import no.feedapp.group2.FeedApp.rabbitMQ.Publisher;
 import no.feedapp.group2.FeedApp.services.IPollService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -62,7 +64,7 @@ public class PollController {
 
     @Operation(summary = "Update a poll by its id")
     @PutMapping("/poll/{id}")
-    public ResponseEntity<PollDTO> updatePoll(@Parameter(description = "The poll id") @PathVariable @Min(1) long id, @Valid @RequestBody PollUpdateDTO pollUpdateDTO) throws PollNotFoundException, PollClosedException {
+    public ResponseEntity<PollDTO> updatePoll(@Parameter(description = "The poll id") @PathVariable @Min(1) long id, @Valid @RequestBody PollUpdateDTO pollUpdateDTO) throws PollNotFoundException, PollClosedException, Exception {
         var updatedPoll = pollService.updatePoll(id, pollUpdateDTO);
 
         return ResponseEntity.ok(PollDTO.PollToDTO(updatedPoll));

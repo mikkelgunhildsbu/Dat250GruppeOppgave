@@ -41,7 +41,7 @@ public interface IPollService {
      * @param pollUpdateDTO {@link no.feedapp.group2.FeedApp.DTO.Poll.PollUpdateDTO}
      * @return The updated poll if the poll existed, otherwise null
      */
-    Poll updatePoll(Long id, PollUpdateDTO pollUpdateDTO) throws PollNotFoundException, PollClosedException;
+    Poll updatePoll(Long id, PollUpdateDTO pollUpdateDTO) throws PollNotFoundException, PollClosedException, Exception;
 
     /**
      * A method for deleting a poll.

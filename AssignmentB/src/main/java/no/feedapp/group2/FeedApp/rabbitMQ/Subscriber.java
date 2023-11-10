@@ -25,13 +25,9 @@ public class Subscriber {
         String queueName = channel.queueDeclare().getQueue();
         channel.queueBind(queueName, EXCHANGE_NAME, "");
 
-
-        System.out.println(" [x] Waiting for messages. To exit press CTRL+C");
-
         DeliverCallback deliverCallback = (consumerTag, delivery) -> {
             String message = new String(delivery.getBody(), "UTF-8");
             String[] list = message.split(",");
-            System.out.println(" [x] Received '" + message + "'");
             String id = list[0];
             String question = list[1];
             String g_count = list[2];
@@ -45,10 +41,6 @@ public class Subscriber {
             } finally {
                 logger.info("End of demo, press any key to exit.");
             }
-            System.out.println("id: " + id);
-            System.out.println("question: " + question);
-            System.out.println("g_count: " + g_count);
-            System.out.println("r_count: " + r_count);
 
         };
         channel.basicConsume(queueName, true, deliverCallback, consumerTag -> {});

@@ -17,7 +17,6 @@ public class Publisher {
             String message = msg;
 
             channel.basicPublish(EXCHANGE_NAME, "", null, message.getBytes("UTF-8"));
-            System.out.println(" [x] Sent '" + message + "'");
         }
     }
 }

@@ -21,6 +21,8 @@ repositories {
     mavenCentral()
 }
 
+extra["springCloudAzureVersion"] = "5.7.0"
+
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-security")
@@ -38,6 +40,16 @@ dependencies {
     implementation("io.jsonwebtoken:jjwt-api:0.12.3")
     runtimeOnly("io.jsonwebtoken:jjwt-impl:0.12.3")
     runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.12.3")
+
+    implementation("org.springframework.boot:spring-boot-starter-amqp")
+    implementation("com.azure.spring:spring-cloud-azure-starter-data-cosmos")
+    testImplementation("org.springframework.amqp:spring-rabbit-test")
+}
+
+dependencyManagement {
+    imports {
+        mavenBom("com.azure.spring:spring-cloud-azure-dependencies:${property("springCloudAzureVersion")}")
+    }
 }
 
 tasks.withType<Test> {
