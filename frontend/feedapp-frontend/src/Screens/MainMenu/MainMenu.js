@@ -8,6 +8,10 @@ import {LoginView} from "../Login";
 import Cookies from 'js-cookie';
 import axios from "axios";
 
+
+
+
+
 function MainMenu() {
     const navigate = useNavigate(); // Create a history instance
 
