@@ -71,7 +71,7 @@ public class PollController {
 
     @Operation(summary = "Update vote")
     @PostMapping("/poll/{id}")
-    public ResponseEntity<PollDTO> addVoteToPoll(@Parameter(description = "The poll id") @PathVariable @Min(1) long id, @Valid addVoteDTO vote) throws PollClosedException, PollNotFoundException {
+    public ResponseEntity<PollDTO> addVoteToPoll(@Parameter(description = "The poll id") @PathVariable @Min(1) long id, @Valid @RequestBody addVoteDTO vote) throws PollClosedException, PollNotFoundException {
         var updatedPoll = pollService.addVote(id, vote.getVote());
 
         return ResponseEntity.ok(PollDTO.PollToDTO(updatedPoll));
