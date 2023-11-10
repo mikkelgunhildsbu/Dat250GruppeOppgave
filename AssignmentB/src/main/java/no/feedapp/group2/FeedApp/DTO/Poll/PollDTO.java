@@ -5,6 +5,8 @@ import lombok.Setter;
 import no.feedapp.group2.FeedApp.domain.Poll;
 import no.feedapp.group2.FeedApp.domain.PollStatus;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 public class PollDTO {
@@ -16,6 +18,7 @@ public class PollDTO {
     private boolean privatePoll;
     private int redCount;
     private int greenCount;
+    private LocalDateTime closingTime;
 
     public static PollDTO PollToDTO(Poll poll) {
         var dto = new PollDTO();
@@ -27,6 +30,7 @@ public class PollDTO {
         dto.setPrivatePoll(poll.isPrivatePoll());
         dto.setRedCount(poll.getRedCount());
         dto.setGreenCount(poll.getGreenCount());
+        dto.setClosingTime(poll.getClosingTime());
 
         return dto;
     }

@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Getter
 @Setter
@@ -27,6 +29,14 @@ public class Poll {
     private int timeLimitInMinutes;
 
     private boolean privatePoll;
+    private LocalDateTime closingTime;
+    private LocalDateTime creationTime;
+
+    @PrePersist
+    protected void onCreate() {
+        this.creationTime = LocalDateTime.now();
+        this.closingTime = this.creationTime.plusMinutes(this.timeLimitInMinutes);
+    }
 
     protected Poll() {
     }

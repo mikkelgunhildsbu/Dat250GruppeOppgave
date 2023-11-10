@@ -7,11 +7,15 @@ import no.feedapp.group2.FeedApp.domain.Customer;
 import no.feedapp.group2.FeedApp.repositories.CustomerRepository;
 import no.feedapp.group2.FeedApp.repositories.PollRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.parameters.P;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class CustomerService implements ICustomerService {
@@ -36,14 +40,21 @@ public class CustomerService implements ICustomerService {
     @Override
     @PreAuthorize("hasAuthority('CUSTOMER_' + #id) || hasRole('ADMIN')")
     public Customer getCustomerById(@P("id") Long id) throws CustomerNotFoundException {
-        var auth = SecurityContextHolder.getContext().getAuthentication();
-
         var customer = customerRepository.findByUserId(id);
         if (customer == null) {
             throw new CustomerNotFoundException(id);
         }
 
         return customer;
+    }
+
+    @Override
+    public Optional<Customer> getCustomerByEmail(String email) {
+        if (!Objects.equals(SecurityContextHolder.getContext().getAuthentication().getName(), email)) {
+            throw new AccessDeniedException("You do not have access to this email");
+        }
+
+        return customerRepository.findByEmail(email);
     }
 
     @Override

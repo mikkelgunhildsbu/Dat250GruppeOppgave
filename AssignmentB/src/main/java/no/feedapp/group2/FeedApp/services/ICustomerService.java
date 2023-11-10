@@ -4,6 +4,8 @@ import no.feedapp.group2.FeedApp.DTO.Customer.CustomerUpdateDTO;
 import no.feedapp.group2.FeedApp.controllers.exceptions.CustomerNotFoundException;
 import no.feedapp.group2.FeedApp.domain.Customer;
 
+import java.util.Optional;
+
 public interface ICustomerService {
     /**
      * A method for creating a customer and persistently store it in the database.
@@ -36,4 +38,6 @@ public interface ICustomerService {
      * @param id The customer id.
      */
     void deleteCustomer(Long id) throws CustomerNotFoundException;
+
+    Optional<Customer> getCustomerByEmail(String email) throws CustomerNotFoundException;
 }

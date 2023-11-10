@@ -4,6 +4,7 @@ import { Button } from "../../components/Button";
 import './viewPollStatus.css';
 import { useNavigate, useLocation } from 'react-router-dom';
 import axios from "axios";
+import PollCountdownTimer from "../PollCountDownTimer";
 
 function ViewPollStatus() {
     const navigate = useNavigate();
@@ -48,7 +49,7 @@ function ViewPollStatus() {
                     <p>Logged in as:</p>
                 </div>
                 <div className="text-wrapper-3">Results: {pollData?.question}</div>
-                <p className="text-wrapper-3">{pollData?.timeLimitInMinutes} minutes remaining</p>
+                <p className="text-wrapper-3"><PollCountdownTimer closingTime={pollData?.closingTime} /> minutes remaining</p>
 
                 <div className={"resultDiv"}  id={"yes"}>
                     YES: {pollData?.greenCount}

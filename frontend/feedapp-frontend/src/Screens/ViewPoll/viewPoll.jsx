@@ -3,14 +3,17 @@ import { Button } from "../../components/Button";
 import "./viewPoll.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios"; // Ensure you have axios installed
+import Cookies from "js-cookie";
 
 export const ViewPoll = () => {
     const navigate = useNavigate();
     const [polls, setPolls] = useState([]);
+    const token = Cookies.get("Token")
+    const userId = Cookies.get("UserID")
 
 
     useEffect(() => {
-        axios.get("http://localhost:8080/poll?userId=1")
+        axios.get("http://localhost:8080/poll?userId=" + userId)
             .then(response => {
                 setPolls(response.data);
 
@@ -30,7 +33,11 @@ export const ViewPoll = () => {
     axios.defaults.baseURL = "http://localhost:8080/poll/"
 
     const  deletePoll = (id) =>{
-        axios.delete(String(id))
+        axios.delete(String(id),{
+            headers:{
+                "Authorization":token
+            }
+        })
             .then((response => {
                 console.log(response.data)
                 alert("poll Deleted")

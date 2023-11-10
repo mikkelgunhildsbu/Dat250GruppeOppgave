@@ -65,6 +65,7 @@ public class PollService implements IPollService {
         return pollRepository.findPollsByUserUserId(userId);
     }
 
+
     @Override
     public Poll updatePoll(Long id, PollUpdateDTO pollUpdateDTO) throws PollNotFoundException, PollClosedException {
         Poll existingPoll = getPollById(id);
@@ -117,5 +118,23 @@ public class PollService implements IPollService {
         if (customer == null) throw new CustomerNotFoundException(userId);
 
         pollRepository.deletePollsByUserUserId(userId);
+
+
     }
+
+
+    /*@Transactional
+    public void closeExpiredPolls() {
+        List<Poll> openPolls = pollRepository.findAllByStatus(PollStatus.valueOf("OPEN"));
+
+        LocalDateTime now = LocalDateTime.now();
+
+        for (Poll poll : openPolls) {
+            if (now.isAfter(poll.getClosingTime())) {
+                poll.setStatus(PollStatus.valueOf("CLOSED"));
+            }
+        }
+
+        pollRepository.saveAll(openPolls);
+    }*/
 }

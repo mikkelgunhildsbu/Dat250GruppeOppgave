@@ -3,6 +3,7 @@ package no.feedapp.group2.FeedApp.controllers;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Min;
 import no.feedapp.group2.FeedApp.DTO.Customer.CustomerDTO;
 import no.feedapp.group2.FeedApp.DTO.Customer.CustomerUpdateDTO;
@@ -13,6 +14,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @Validated
@@ -36,6 +39,15 @@ public class CustomerController {
     @GetMapping("/customer/{id}")
     public ResponseEntity<CustomerDTO> getCustomerById(@Parameter(description = "The customer id") @PathVariable @Min(1) long id) throws CustomerNotFoundException {
         Customer customer = customerService.getCustomerById(id);
+
+        return ResponseEntity.ok(CustomerDTO.ConvertToDTO(customer));
+    }
+
+    @Operation(summary = "Get a customer by email")
+    @GetMapping("/customer")
+    public ResponseEntity<CustomerDTO> getCustomerByEmail(@RequestParam(name = "email") @Email String email) throws CustomerNotFoundException {
+        Optional<Customer> optionalCustomer = customerService.getCustomerByEmail(email);
+        Customer customer = optionalCustomer.orElseThrow(() -> new CustomerNotFoundException(email));
 
         return ResponseEntity.ok(CustomerDTO.ConvertToDTO(customer));
     }
