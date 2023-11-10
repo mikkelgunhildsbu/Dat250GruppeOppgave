@@ -7,6 +7,7 @@ import '../header.css'
 import {LoginView} from "../Login";
 import { useLocation } from 'react-router-dom';
 import axios from "axios";
+import Cookies from "js-cookie";
 import PollCountdownTimer from "../PollCountDownTimer";
 
 
@@ -16,6 +17,8 @@ function Poll() {
 
     const location = useLocation();
     const pollData = location.state?.pollData;
+
+    let email = Cookies.get("Email")
 
 
     axios.defaults.baseURL = "http://localhost:8080/poll/"
@@ -64,7 +67,7 @@ function Poll() {
                 </div>
 
                 <div className={"loginAs"}>
-                    <p>Logged in as:</p>
+                    <p>Logged in as: {email}</p>
                 </div>
                 <div className="text-wrapper-3">{pollData?.question}</div>
                 <p className="text-wrapper-3"><PollCountdownTimer closingTime={pollData?.closingTime} /> minutes</p>
