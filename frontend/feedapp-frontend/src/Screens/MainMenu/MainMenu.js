@@ -33,21 +33,26 @@ function MainMenu() {
 
     const backToLogin = () => {
         navigate("/")
+        Cookies.remove("Token", "")
+        Cookies.remove("Email", "")
+        Cookies.remove("UserID", "")
+
     };
 
 
-    axios.defaults.baseURL = "http://localhost:8080/customer/"
-
+    axios.defaults.baseURL = "http://localhost:8080/"
     useEffect( () => {
-        axios.get("1",{
+        axios.get("customer?email=" + email,{
             headers:{
                 "Authorization": token,
             }
         }).then(response =>{
+            Cookies.set("UserID", response.data["userId"])
             console.log(response.data)
             console.log(email)
         }).catch(error => {
             console.log( error.message)
+
         })
 
     })
@@ -62,7 +67,7 @@ function MainMenu() {
               </div>
 
               <div className={"loginAs"}>
-                  <p>Logged in as:</p>
+                  <p>Logged in as: {email}</p>
               </div>
               <div className="text-wrapper-3">Main Menu</div>
               <Button

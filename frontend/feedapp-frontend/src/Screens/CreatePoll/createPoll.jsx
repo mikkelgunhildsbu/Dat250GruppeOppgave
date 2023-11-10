@@ -36,12 +36,13 @@ export const CreatePollScreen = () => {
     }
 
     const token = Cookies.get("Token")
+    const userId = Cookies.get("UserID")
     const handleCreatePoll = () => {
         if (questionValue === '' || timeValue === ''){
             alert("Please fill out all fields")
         } else {
             let data = {
-                "userId": 1,
+                "userId": userId,
                 "status": "OPEN",
                 "question": questionValue,
                 "timeLimitInMinutes": timeValue,
