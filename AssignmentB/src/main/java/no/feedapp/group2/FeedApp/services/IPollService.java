@@ -56,4 +56,6 @@ public interface IPollService {
      * @param userId the user id.
      */
     void deletePollsByUserId(Long userId) throws CustomerNotFoundException;
+
+   // void closeExpiredPolls();
 }
