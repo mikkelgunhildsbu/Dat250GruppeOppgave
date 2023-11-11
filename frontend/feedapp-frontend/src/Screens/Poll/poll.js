@@ -28,7 +28,7 @@ function Poll() {
         vote:"GREEN"
     }
     const voteYes = () => {
-        axios.post(String(pollData["id"]),green) .then(response => {
+        axios.post(String(pollData["id"]), green) .then(response => {
             console.log("Updated Green:", response.data);
             navigate("/pollStatus", {state: {pollData: response.data}})
         })
@@ -36,7 +36,7 @@ function Poll() {
 
 
     const voteNo = () => {
-        axios.post(String(pollData["id"]), "RED" ) .then(response => {
+        axios.post(String(pollData["id"]), {vote:"RED"} ) .then(response => {
             console.log("Updated successfully:", response.data);
             navigate("/pollStatus", {state: {pollData: response.data}})
 
@@ -47,7 +47,7 @@ function Poll() {
         navigate("/mainmenu")
     };
 
-    const intervalTime = 5000;  // every 5 seconds
+    const intervalTime = 500;  // every 5 seconds
 
     useEffect(() => {
         const closingDateTime = new Date(pollData?.closingTime);
@@ -66,7 +66,7 @@ function Poll() {
                     console.log("Updated successfully:", response.data);
                     navigate("/pollStatus", {state: {pollData: response.data}})
                 }).catch((error) =>(
-                    console.log(error)
+                    navigate("/pollStatus", {state: {pollData}})
                 ))
             }}
         const intervalId = setInterval(fetchData, intervalTime);

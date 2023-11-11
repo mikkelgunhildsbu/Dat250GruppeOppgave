@@ -48,8 +48,6 @@ function MainMenu() {
             }
         }).then(response =>{
             Cookies.set("UserID", response.data["userId"])
-            console.log(response.data)
-            console.log(email)
         }).catch(error => {
             console.log( error.message)
 

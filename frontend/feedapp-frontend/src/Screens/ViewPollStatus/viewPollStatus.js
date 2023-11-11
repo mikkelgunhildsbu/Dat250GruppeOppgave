@@ -14,7 +14,7 @@ function ViewPollStatus() {
 
     const [pollData, setPollData] = useState(initialPollData);
 
-    const intervalTime = 5000;  // every 5 seconds
+    let intervalTime = 1000;  // every 5 seconds
 
     let email = Cookies.get("Email")
     let token = Cookies.get("Token")
@@ -33,9 +33,11 @@ function ViewPollStatus() {
                         "Authorization" : token
                     }
                 }).then(response => {
+                    setPollData(response.data)
                     console.log("Updated successfully:", response.data);
+                    pollData["status"] = "CLOSED"
                 }).catch((error) =>(
-                    console.log(error)
+                    pollData["status"] = "CLOSED"
                 ))
             }
 
