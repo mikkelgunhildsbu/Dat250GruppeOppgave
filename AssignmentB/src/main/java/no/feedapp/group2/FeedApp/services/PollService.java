@@ -76,7 +76,7 @@ public class PollService implements IPollService {
             throw new AccessDeniedException("You are not the owner of this poll");
         }
 
-        if (pollUpdateDTO.getStatus().equals(PollStatus.CLOSED)){
+        if (pollUpdateDTO.getStatus().equals(PollStatus.CLOSED)) {
             Publisher publisher = new Publisher();
             String message = id + "," + existingPoll.getQuestion() + "," + existingPoll.getGreenCount() + "," + existingPoll.getRedCount();
             publisher.Publish(message);
@@ -140,7 +140,11 @@ public class PollService implements IPollService {
             throw new PollClosedException(id);
         }
 
-        if (vote == Vote.GREEN){
+        if (existingPoll.isPrivatePoll() && !(SecurityContextHolder.getContext().getAuthentication().isAuthenticated())) {
+            throw new AccessDeniedException("You need to be logged in to vote on this poll");
+        }
+
+        if (vote == Vote.GREEN) {
             existingPoll.setGreenCount(existingPoll.getGreenCount() + 1);
         } else {
             existingPoll.setRedCount(existingPoll.getRedCount() + 1);

@@ -26,12 +26,7 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         String accessToken = JwtUtil.resolveToken(request);
 
-        if (accessToken == null) {
-            filterChain.doFilter(request, response);
-            return;
-        }
-
-        if (!JwtUtil.validToken(accessToken)) {
+        if (accessToken == null || !JwtUtil.validToken(accessToken)) {
             filterChain.doFilter(request, response);
             return;
         }
