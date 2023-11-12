@@ -140,7 +140,7 @@ public class PollService implements IPollService {
             throw new PollClosedException(id);
         }
 
-        if (existingPoll.isPrivatePoll() && !(SecurityContextHolder.getContext().getAuthentication().isAuthenticated())) {
+        if (existingPoll.isPrivatePoll() && Objects.equals(SecurityContextHolder.getContext().getAuthentication().getName(), "anonymousUser")) {
             throw new AccessDeniedException("You need to be logged in to vote on this poll");
         }
 
