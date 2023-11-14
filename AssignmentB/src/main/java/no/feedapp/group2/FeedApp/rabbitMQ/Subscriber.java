@@ -9,15 +9,16 @@ import no.feedapp.group2.FeedApp.Cosmos.CosmosApp;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.List;
+import java.nio.charset.StandardCharsets;
 
 public class Subscriber {
     private static final String EXCHANGE_NAME = "logs";
-    private static Logger logger = LoggerFactory.getLogger(CosmosApp.class.getSimpleName());
+    private static final Logger logger = LoggerFactory.getLogger(CosmosApp.class.getSimpleName());
 
     public void Subscriber() throws Exception {
         ConnectionFactory factory = new ConnectionFactory();
-        factory.setHost("localhost");
+        factory.setHost("172.17.0.2");
+        factory.setPort(5672);
         Connection connection = factory.newConnection();
         Channel channel = connection.createChannel();
 
@@ -26,7 +27,7 @@ public class Subscriber {
         channel.queueBind(queueName, EXCHANGE_NAME, "");
 
         DeliverCallback deliverCallback = (consumerTag, delivery) -> {
-            String message = new String(delivery.getBody(), "UTF-8");
+            String message = new String(delivery.getBody(), StandardCharsets.UTF_8);
             String[] list = message.split(",");
             String id = list[0];
             String question = list[1];
@@ -43,7 +44,8 @@ public class Subscriber {
             }
 
         };
-        channel.basicConsume(queueName, true, deliverCallback, consumerTag -> {});
+        channel.basicConsume(queueName, true, deliverCallback, consumerTag -> {
+        });
     }
 }
 
