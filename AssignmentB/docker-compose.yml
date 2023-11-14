@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3.12-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    network_mode: bridge
+
+  feedapp:
+    build:
+      context: .
+    container_name: feedapp
+    ports:
+      - "8080:8080"
+    depends_on:
+      - rabbitmq
+    env_file:
+      - .env
+    network_mode: bridge
