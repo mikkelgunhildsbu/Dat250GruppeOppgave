@@ -18,6 +18,7 @@ public class FeedAppApplication {
         while (retryCount < maxRetryCount)
             try {
                 new Subscriber().Subscriber();
+                System.out.println("SUCCESS: Connected to RabbitMQ");
                 break;
             } catch (Exception e) {
                 System.out.println("Error: " + e);
