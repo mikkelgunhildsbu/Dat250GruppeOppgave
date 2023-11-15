@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 
 @Entity
 @Getter
@@ -34,7 +35,8 @@ public class Poll {
 
     @PrePersist
     protected void onCreate() {
-        this.creationTime = LocalDateTime.now();
+        ZoneId zoneId = ZoneId.of("Europe/Oslo"); // Oslo timezone for CET
+        this.creationTime = LocalDateTime.now(zoneId);
         this.closingTime = this.creationTime.plusMinutes(this.timeLimitInMinutes);
     }
 
