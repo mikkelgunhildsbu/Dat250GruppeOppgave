@@ -14,7 +14,7 @@ function ViewPollStatus() {
 
     const [pollData, setPollData] = useState(initialPollData);
 
-    let intervalTime = 1000;  // every 5 seconds
+    let intervalTime = 1000;
 
     let email = Cookies.get("Email")
     let token = Cookies.get("Token")

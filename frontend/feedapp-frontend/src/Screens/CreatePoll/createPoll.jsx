@@ -59,10 +59,14 @@ export const CreatePollScreen = () => {
                 navigate("/pollStatus" ,{state: {pollData: response.data}})
                 alert("created a poll with pollId" + response.data["id"] )
 
-
             }).catch(error => {
-                alert(error)
-                console.error("Error posting data:", error);
+                if (error.response) {
+                    if (error.response.status === 403) {
+                        alert("Access denied! You must be logged in to create poll");
+                    } else {
+                        // Handle other HTTP errors
+                        alert("An unexpected error occurred: " + error.response.status);
+                    }}
             });
 
         }

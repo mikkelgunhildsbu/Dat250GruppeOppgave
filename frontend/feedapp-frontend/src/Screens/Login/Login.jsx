@@ -64,8 +64,13 @@ export const LoginView = () => {
                 navigate("/mainmenu")
 
             }).catch((error) => {
-                console.error('Error logging in:', error);
-
+                if (error.response) {
+                    if (error.response.status === 403) {
+                        alert("Access denied! Wrong password or email!");
+                    } else {
+                        // Handle other HTTP errors
+                        alert("An unexpected error occurred: " + error.response.status);
+                    }}
             });
         }
     }

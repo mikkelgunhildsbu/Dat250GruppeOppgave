@@ -34,12 +34,24 @@ export const JoinPoll = () => {
         if (inputValue === ""){
             alert("Enter poll ID")
         } else{
-            axios.get(inputValue, token).then(response => {
+            axios.get(inputValue, {
+                headers:{
+                    "Authorization": token,
+                }
+            }).then(response => {
                 setData(response.data)
                 navigate("/poll" , {state: {pollData: response.data}})
             }).catch(error => {
-                alert("Poll does not exist " + error.message)
-            })
+                if (error.response) {
+                    if (error.response.status === 403) {
+                        alert("Access denied! You do not have permission to access this poll.");
+                    } else if (error.response.status === 404) {
+                        alert("Poll not found! The requested poll does not exist.");
+                    } else {
+                        alert("An unexpected error occurred: " + error.response.status);
+                    }}
+
+            });
 
             }
 
