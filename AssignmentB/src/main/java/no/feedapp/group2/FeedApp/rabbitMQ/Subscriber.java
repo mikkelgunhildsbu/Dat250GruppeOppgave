@@ -17,7 +17,7 @@ public class Subscriber {
 
     public void Subscriber() throws Exception {
         ConnectionFactory factory = new ConnectionFactory();
-        factory.setHost("172.17.0.2");
+        factory.setHost("localhost");
         factory.setPort(5672);
         Connection connection = factory.newConnection();
         Channel channel = connection.createChannel();

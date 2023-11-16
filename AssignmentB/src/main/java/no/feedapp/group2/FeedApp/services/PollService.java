@@ -79,8 +79,11 @@ public class PollService implements IPollService {
         if (pollUpdateDTO.getStatus().equals(PollStatus.CLOSED)) {
             Publisher publisher = new Publisher();
             String message = id + "," + existingPoll.getQuestion() + "," + existingPoll.getGreenCount() + "," + existingPoll.getRedCount();
-            publisher.Publish(message);
-
+            try {
+                publisher.Publish(message);
+            } catch (Exception e) {
+                throw new Exception("Error while publishing message");
+            }
         }
 
         if (existingPoll.getStatus() == PollStatus.CLOSED) {
